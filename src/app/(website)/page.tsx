@@ -1,7 +1,10 @@
 export default function Home() {
   return (
-    <div className="min-h-screen flex justify-center items-center font-nimbus text-[24px] leading-[28px] tracking-[15%] ">
-      Monir Hossain Rabby
+    <div
+      className=" h-screen bg-cover bg-center bg-no-repeat"
+      style={{ backgroundImage: `url(/images/hero.webp)` }}
+    >
+      fsdf
     </div>
   );
 }
