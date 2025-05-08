@@ -1,3 +1,4 @@
+import SectionHeader from "@/components/section/section-header";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 
@@ -21,7 +22,9 @@ export default function Home() {
           </Button>
         </div>
       </div>
-      <div className="h-[300vh] bg-white"></div>
+      <div className="h-[300vh] bg-white">
+        <SectionHeader />
+      </div>
     </>
   );
 }

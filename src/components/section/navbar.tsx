@@ -95,11 +95,11 @@ const Navbar = () => {
           <div className="md:hidden flex items-center justify-between gap-x-4 w-full">
             <Sheet>
               <SheetTrigger asChild>
-                <Button variant="ghost" className="p-1">
+                <Button variant="ghost" className="p-1" size="icon">
                   <Menu />
                 </Button>
               </SheetTrigger>
-              <SheetContent side="top" className="bg-[#047857] text-white">
+              <SheetContent side="top" className="bg-white text-black">
                 <div className="flex flex-col items-center gap-y-8 mt-6">
                   {/* Login button for mobile */}
 
