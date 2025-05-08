@@ -76,7 +76,7 @@ const Navbar = () => {
             ))}
           </div>
           <div className="absolute left-1/2 -translate-x-1/2 top-2">
-            <Image src="/logos/logo.png" height={80} width={80} alt="Logo" />
+            <Image src="/logos/logo.png" height={60} width={60} alt="Logo" />
           </div>
 
           {/* Login button */}

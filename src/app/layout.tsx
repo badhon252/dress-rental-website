@@ -5,14 +5,14 @@ import localFont from "next/font/local";
 import "./globals.css";
 
 const nimbus = localFont({
-  src: "./fonts/NimbusSanNovD.ttf",
+  src: "./fonts/nimbus/NimbusSanNovD.ttf",
   variable: "--font-nimbus",
   weight: "100 900",
   preload: true,
 });
 
 const avenir = localFont({
-  src: "./fonts/Avenir Regular.ttf",
+  src: "./fonts/avenir/Avenir Regular.ttf",
   variable: "--font-avenir",
   weight: "100 900",
 });
