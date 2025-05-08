@@ -29,7 +29,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={cn("antialiased", avenir.variable, nimbus.variable)}>
+      <body className={cn("antialiased", nimbus.className, avenir.variable)}>
         <AppProvider>{children}</AppProvider>
       </body>
     </html>

@@ -7,7 +7,6 @@ import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 
 // Components
-import { cn } from "@/lib/utils";
 import Image from "next/image";
 import { Button } from "../ui/button";
 import { Sheet, SheetClose, SheetContent, SheetTrigger } from "../ui/sheet";
@@ -18,12 +17,12 @@ const Navbar = () => {
   const pathname = usePathname(); // Get current route to highlight active menu
 
   const menus = [
-    { id: 1, href: "/", linkText: "Home" },
-    { id: 2, href: "/packages", linkText: "Discover" },
-    { id: 3, href: "/news", linkText: "News" },
-    { id: 4, href: "/about", linkText: "About Us" },
-    { id: 5, href: "/Contact", linkText: "Contact" },
-    { id: 6, href: "/dashboard", linkText: "Dashboard" },
+    { id: 1, href: "/", linkText: "HOME" },
+    { id: 2, href: "/shop", linkText: "SHOP" },
+    { id: 3, href: "/about", linkText: "ABOUT" },
+    { id: 4, href: "/how-it-works", linkText: "HOW IT WORKS" },
+    { id: 5, href: "/become-lender", linkText: "BECOME A LENDER" },
+    { id: 6, href: "/find-near", linkText: "FIND NEAR YOU" },
   ];
 
   // Track window scroll to update navbar style
@@ -45,8 +44,8 @@ const Navbar = () => {
 
   return (
     <div
-      className={`py-3 fixed top-0 z-50 text-white w-full h-[60px] ${
-        scrolling && "bg-tourHub-green-dark" // Add background when scrolling
+      className={`py-3 fixed top-0 z-50 text-white w-full h-[60px]  ${
+        scrolling && "bg-transparent" // Add background when scrolling
       }  ${
         pathname === "/"
           ? !scrolling && "md:mt-7" // Add margin on homepage when not scrolling
@@ -55,48 +54,45 @@ const Navbar = () => {
     >
       <div className="container mx-auto">
         <div className="flex justify-between items-center">
-          <div className="hidden md:flex items-center md:gap-x-5 lg:gap-x-10">
+          <div className="hidden md:flex items-center md:gap-x-3 lg:gap-x-2">
             {/* Desktop Menu Links */}
             {menus.map((menu) => (
-              <Link
+              <Button
                 key={menu.id}
-                href={menu.href}
-                className={`${
-                  pathname === menu.href ? "font-semibold" : "font-light" // Highlight active menu
-                }`}
+                variant="link"
+                effect="hoverUnderline"
+                asChild
+                className="text-white"
               >
-                {menu.linkText}
-              </Link>
+                <Link
+                  href={menu.href}
+                  className={`${
+                    pathname === menu.href ? "font-semibold" : "font-light" // Highlight active menu
+                  }`}
+                >
+                  {menu.linkText}
+                </Link>
+              </Button>
             ))}
           </div>
-          <div className="">
+          <div className="absolute left-1/2 -translate-x-1/2 top-2">
             <Image src="/logos/logo.png" height={80} width={80} alt="Logo" />
           </div>
 
           {/* Login button */}
           <div className="hidden md:block">
             <Button
-              className={cn(
-                scrolling && "border-[1px] border-b  border-white", // Add border when scrolling
-                " bg-transparent " // Change hover color for button
-              )}
+              variant="link"
+              effect="hoverUnderline"
+              asChild
+              className="text-white"
             >
-              Sign In
+              <Link href="/login">Login</Link>
             </Button>
           </div>
 
           {/* Mobile Responsive */}
-          <div className="md:hidden flex items-center gap-x-4">
-            <div>
-              <Button
-                className={cn(
-                  scrolling && "border-[1px] border-white/10", // Add border when scrolling
-                  "bg-tourHub-green-dark hover:bg-[#3a6f54]" // Change hover color for button
-                )}
-              >
-                Sign In
-              </Button>
-            </div>
+          <div className="md:hidden flex items-center justify-between gap-x-4 w-full">
             <Sheet>
               <SheetTrigger asChild>
                 <Button variant="ghost" className="p-1">
@@ -126,6 +122,16 @@ const Navbar = () => {
                 </div>
               </SheetContent>
             </Sheet>
+            <div>
+              <Button
+                variant="link"
+                effect="hoverUnderline"
+                asChild
+                className="text-white"
+              >
+                <Link href="/login">Login</Link>
+              </Button>
+            </div>
           </div>
         </div>
       </div>
