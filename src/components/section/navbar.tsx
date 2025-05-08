@@ -67,8 +67,8 @@ const Navbar = () => {
                 <Link
                   href={menu.href}
                   className={`${
-                    pathname === menu.href ? "font-semibold" : "font-light" // Highlight active menu
-                  }`}
+                    pathname === menu.href ? "font-normal" : "font-light" // Highlight active menu
+                  } leading-[20px] tracking-[20%]`}
                 >
                   {menu.linkText}
                 </Link>

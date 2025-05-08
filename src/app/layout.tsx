@@ -5,16 +5,17 @@ import localFont from "next/font/local";
 import "./globals.css";
 
 const nimbus = localFont({
-  src: "./fonts/nimbus/NimbusSanNovD.ttf",
+  src: "./fonts/nimbus/nimbussannovdlig.ttf",
   variable: "--font-nimbus",
   weight: "100 900",
-  preload: true,
+  display: "swap",
 });
 
 const avenir = localFont({
   src: "./fonts/avenir/Avenir Regular.ttf",
   variable: "--font-avenir",
   weight: "100 900",
+  display: "swap",
 });
 
 export const metadata: Metadata = {
