@@ -27,7 +27,7 @@ const BecomeLender = () => {
                 <div className="mb-4 flex h-16 w-16 items-center justify-center">
                   <Image src="/images/pwmg1.png" alt="Trusted Platform" width={64} height={64} />
                 </div>
-                <h3 className="mb-2 text-2xl lg:text-3xl uppercase tracking-widest">Trusted Platform</h3>
+                <h3 className="mb-2 text-2xl lg:text-[32px] uppercase tracking-widest">Trusted Platform</h3>
                 <p className="text-xl text-gray-600">
                   List your dresses on a platform <br /> trusted by thousands of renters.
                 </p>
@@ -37,7 +37,7 @@ const BecomeLender = () => {
                 <div className="mb-4 flex h-16 w-16 items-center justify-center">
                   <Image src="/images/pwmg2.png" alt="Wider Audience" width={64} height={64} />
                 </div>
-                <h3 className="mb-2 text-2xl lg:text-3xl uppercase tracking-widest">Wider Audience</h3>
+                <h3 className="mb-2 text-2xl lg:text-[32px] uppercase tracking-widest">Wider Audience</h3>
                 <p className="text-xl text-gray-600">Expand your reach and <br /> get more bookings.</p>
               </div>
 
@@ -45,7 +45,7 @@ const BecomeLender = () => {
                 <div className="mb-4 flex h-16 w-16 items-center justify-center">
                   <Image src="/images/pwmg3.png" alt="Seamless Management" width={64} height={64} />
                 </div>
-                <h3 className="mb-2 text-2xl lg:text-3xl uppercase tracking-widest">Seamless Management</h3>
+                <h3 className="mb-2 text-2xl lg:text-[32px] uppercase tracking-widest">Seamless Management</h3>
                 <p className="text-xl text-gray-600">Manage rentals <br /> with our intuitive tools and support.</p>
               </div>
             </div>
@@ -111,15 +111,15 @@ const BecomeLender = () => {
         {/* Support You Can Count On */}
         <section className="py-12 md:py-16">
           <div className="container px-4 md:px-6">
-            <h2 className="mb-10 text-center text-2xl font-normal uppercase tracking-widest md:text-3xl">
+            <h2 className="mb-10 text-center  font-normal uppercase tracking-widest  sub-title">
               Support You Can Count On
             </h2>
             <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
               <div className="flex flex-col items-center text-center">
                 <div className="mb-4 flex h-16 w-16 items-center justify-center">
-                  <Image src="/customer-support-icon.png" alt="Dedicated Support" width={64} height={64} />
+                  <Image src="/images/sycco1.png" alt="Dedicated Support" width={64} height={64} />
                 </div>
-                <h3 className="mb-2 text-xs uppercase tracking-widest">Dedicated Support</h3>
+                <h3 className="mb-2 text-2xl lg:text-[32px] uppercase tracking-widest">Dedicated Support</h3>
                 <p className="text-xs text-gray-600">
                   Our team is here to help you every step from onboarding to daily operations.
                 </p>
@@ -127,9 +127,9 @@ const BecomeLender = () => {
 
               <div className="flex flex-col items-center text-center">
                 <div className="mb-4 flex h-16 w-16 items-center justify-center">
-                  <Image src="/placeholder.svg?key=pfitp" alt="Insurance Coverage" width={64} height={64} />
+                  <Image src="/images/sycco2.png" alt="Insurance Coverage" width={64} height={64} />
                 </div>
-                <h3 className="mb-2 text-xs uppercase tracking-widest">Insurance Coverage</h3>
+                <h3 className="mb-2 text-2xl lg:text-[32px] uppercase tracking-widest">Insurance Coverage</h3>
                 <p className="text-xs text-gray-600">
                   Optional insurance coverage to protect your dresses against minor accidents.
                 </p>
@@ -137,9 +137,9 @@ const BecomeLender = () => {
 
               <div className="flex flex-col items-center text-center">
                 <div className="mb-4 flex h-16 w-16 items-center justify-center">
-                  <Image src="/dispute-resolution-icon.png" alt="Dispute Handling" width={64} height={64} />
+                  <Image src="/images/sycco3.png" alt="Dispute Handling" width={64} height={64} />
                 </div>
-                <h3 className="mb-2 text-xs uppercase tracking-widest">Dispute Handling</h3>
+                <h3 className="mb-2 text-2xl lg:text-[32px] uppercase tracking-widest">Dispute Handling</h3>
                 <p className="text-xs text-gray-600">
                   We manage disputes and ensure you don't lose out on getting paid what's owed.
                 </p>
@@ -147,9 +147,9 @@ const BecomeLender = () => {
 
               <div className="flex flex-col items-center text-center">
                 <div className="mb-4 flex h-16 w-16 items-center justify-center">
-                  <Image src="/secure-payment-icon.png" alt="Secure Payments" width={64} height={64} />
+                  <Image src="/images/sycco4.png" alt="Secure Payments" width={64} height={64} />
                 </div>
-                <h3 className="mb-2 text-xs uppercase tracking-widest">Secure Payments</h3>
+                <h3 className="mb-2 text-2xl lg:text-[32px] uppercase tracking-widest">Secure Payments</h3>
                 <p className="text-xs text-gray-600">
                   Reliable payment processing so you get paid fast and securely after each rental.
                 </p>
