@@ -299,14 +299,14 @@ const BecomeLender = () => {
         {/* Plan Comparison */}
         <section className="overflow-x-auto py-12 md:py-16">
           <div className="container px-4 md:px-6">
-            <h2 className="mb-10 text-center text-2xl font-normal uppercase tracking-widest md:text-3xl">
+            <h2 className="mb-10 text-center  font-normal uppercase tracking-widest sub-title">
               Plan Comparison
             </h2>
 
             <div className="min-w-[768px]">
               <table className="w-full border-collapse">
                 <thead>
-                  <tr className="border-b">
+                  <tr className="">
                     <th className="py-4 text-left text-xl font-normal"></th>
                     <th className="py-4 text-center text-xl font-normal uppercase">Founder's Collective</th>
                     <th className="py-4 text-center text-xl font-normal uppercase">Signature</th>
@@ -314,31 +314,31 @@ const BecomeLender = () => {
                   </tr>
                 </thead>
                 <tbody>
-                  <tr className="border-b">
+                  <tr className="">
                     <td className="py-4 text-left text-xl">Perfect For</td>
                     <td className="py-4 text-center text-xl">Early boutique getting started</td>
                     <td className="py-4 text-center text-xl">Growing to mid-sized boutique</td>
                     <td className="py-4 text-center text-xl">Premium, high-volume boutiques</td>
                   </tr>
-                  <tr className="border-b">
+                  <tr className="">
                     <td className="py-4 text-left text-xl">Monthly Fee</td>
                     <td className="py-4 text-center text-xl">Free (first 3 months)</td>
                     <td className="py-4 text-center text-xl">$49/month</td>
                     <td className="py-4 text-center text-xl">$129/month</td>
                   </tr>
-                  <tr className="border-b">
+                  <tr className="">
                     <td className="py-4 text-left text-xl">Commission</td>
                     <td className="py-4 text-center text-xl">0%</td>
                     <td className="py-4 text-center text-xl">10%</td>
                     <td className="py-4 text-center text-xl">5%</td>
                   </tr>
-                  <tr className="border-b">
+                  <tr className="">
                     <td className="py-4 text-left text-xl">Return Shipping</td>
                     <td className="py-4 text-center text-xl">✕</td>
                     <td className="py-4 text-center text-xl">✕</td>
                     <td className="py-4 text-center text-xl">Covered by Muse Gala</td>
                   </tr>
-                  <tr className="border-b">
+                  <tr className="">
                     <td className="py-4 text-left text-xl">Events</td>
                     <td className="py-4 text-center text-xl">✕</td>
                     <td className="py-4 text-center text-xl">Invite Based</td>
@@ -353,13 +353,13 @@ const BecomeLender = () => {
         {/* List With Muse Gala */}
         <section className="py-12 text-center md:py-16">
           <div className="container px-4 md:px-6">
-            <h2 className="mb-4 text-2xl font-normal uppercase tracking-widest md:text-3xl">List With Muse Gala</h2>
+            <h2 className="mb-4 text-2xl font-normal uppercase tracking-widest sub-title">List With Muse Gala</h2>
             <p className="mb-8 text-xl text-gray-600">
               No listing fees. No hidden costs. Just more exposure, more rentals, and a seamless dashboard.
             </p>
             <Link
               href="#"
-              className="inline-block border border-black px-6 py-2 text-xl uppercase tracking-widest hover:bg-black hover:text-white"
+              className="inline-block border-b border-black px-6 py-2 text-md uppercase tracking-widest hover:bg-black hover:text-white"
             >
               Become A Lender
             </Link>
