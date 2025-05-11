@@ -6,13 +6,13 @@ import { Input } from '../ui/input'
 
 const Footer = () => {
   return (
-    <footer className="w-full border-t border-gray-200 bg-white">
+    <footer className="w-full  bg-white">
     <div className="container mx-auto px-4 py-12">
       <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
         {/* CUSTOMER SECTION */}
         <div className="space-y-4">
-          <h3 className="text-lg font-medium tracking-wider">CUSTOMER</h3>
-          <nav className="flex flex-col space-y-2">
+          <h3 className="text-[25px] lg:text-[30px] font-medium tracking-wider">CUSTOMER</h3>
+          <nav className="flex flex-col space-y-2 text-xl">
             <Link href="#" className="text-gray-600 hover:text-gray-900">
               FAQ
             </Link>
@@ -33,8 +33,8 @@ const Footer = () => {
 
         {/* LENDERS SECTION */}
         <div className="space-y-4">
-          <h3 className="text-lg font-medium tracking-wider">LENDERS</h3>
-          <nav className="flex flex-col space-y-2">
+          <h3 className="text-[25px] lg:text-[30px] font-medium tracking-wider">LENDERS</h3>
+          <nav className="flex flex-col space-y-2 text-xl">
             <Link href="#" className="text-gray-600 hover:text-gray-900">
               Become a Lender
             </Link>
@@ -52,8 +52,8 @@ const Footer = () => {
 
         {/* COMPANY SECTION */}
         <div className="space-y-4">
-          <h3 className="text-lg font-medium tracking-wider">COMPANY</h3>
-          <nav className="flex flex-col space-y-2">
+          <h3 className="text-[25px] lg:text-[30px] font-medium tracking-wider">COMPANY</h3>
+          <nav className="flex flex-col space-y-2 text-xl">
             <Link href="#" className="text-gray-600 hover:text-gray-900">
               About
             </Link>
@@ -74,7 +74,7 @@ const Footer = () => {
 
         {/* STAY CONNECTED SECTION */}
         <div className="space-y-4">
-          <h3 className="text-lg font-medium tracking-wider">STAY CONNECTED</h3>
+          <h3 className="text-[25px] lg:text-[30px] font-medium tracking-wider">STAY CONNECTED</h3>
           <div className="flex space-x-4">
             <Link href="#" aria-label="Facebook" className="text-gray-600 hover:text-gray-900">
               <Facebook className="h-6 w-6" />
@@ -103,7 +103,7 @@ const Footer = () => {
             </Link>
           </div>
           <div className="space-y-2">
-            <p className="text-gray-600">Subscribe to our newsletter</p>
+            <p className="text-gray-600 text-xl">Subscribe to our newsletter</p>
             <div className="flex">
               <Input type="email" placeholder="your-Email@example.com" className="rounded-r-none border-r-0" />
               <button
@@ -114,7 +114,7 @@ const Footer = () => {
                 <Send className="h-5 w-5" />
               </button>
             </div>
-            <p className="text-xs text-gray-500">
+            <p className="text-sm text-gray-500">
               By subscribing, you agree to our{" "}
               <Link href="#" className="text-gray-700 hover:underline">
                 Privacy Policy
@@ -125,19 +125,19 @@ const Footer = () => {
       </div>
 
       {/* LOGO AND PAYMENT METHODS */}
-      <div className="mt-12 flex flex-col items-center justify-between space-y-6 border-t border-gray-200 pt-8 md:flex-row md:space-y-0">
+      <div className="mt-12 flex flex-col items-center justify-between space-y-6  pt-8 md:flex-row md:space-y-0">
         <div className="flex flex-col items-center space-y-4 md:flex-row md:space-x-4 md:space-y-0">
           <div className="flex space-x-4">
+          <Image src="/images/amex.png" alt="Mastercard" width={50} height={30} className="h-8 w-auto" />
             <Image
-              src="/american-express-logo.png"
+              src="/images/ipay.png"
               alt="American Express"
-              width={40}
+              width={50}
               height={30}
               className="h-8 w-auto"
             />
-            <Image src="/apple-pay-logo.png" alt="Apple Pay" width={40} height={30} className="h-8 w-auto" />
-            <Image src="/google-pay-logo.png" alt="Google Pay" width={40} height={30} className="h-8 w-auto" />
-            <Image src="/mastercard-logo.png" alt="Mastercard" width={40} height={30} className="h-8 w-auto" />
+            <Image src="/images/gpay.png" alt="Apple Pay" width={50} height={30} className="h-8 w-auto" />
+            <Image src="/images/pay.png" alt="Google Pay" width={50} height={30} className="h-8 w-auto" />
           </div>
         </div>
 
@@ -145,10 +145,11 @@ const Footer = () => {
           <div className="flex items-center space-x-2">
             <span className="text-2xl font-bold">MUSE GALA</span>
           </div>
-          <p className="text-sm text-gray-500">© MUSE GALA 2025</p>
+          
         </div>
       </div>
     </div>
+    <p className='text-center border-t border-gray-700 py-4'>© MUSE GALA 2025</p>
   </footer>
   )
 }
