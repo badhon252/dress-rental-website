@@ -62,7 +62,13 @@ const Navbar = () => {
                 variant="link"
                 effect="hoverUnderline"
                 asChild
-                className="text-white"
+                // className={`text-black ${
+                //   pathname === "/become-lender" ? "text-black"
+                // }` }
+
+                className={`text-xl ${
+                  pathname === "/become-lender" ? "text-black" : "text-white"
+                } `}
               >
                 <Link
                   href={menu.href}
@@ -85,7 +91,9 @@ const Navbar = () => {
               variant="link"
               effect="hoverUnderline"
               asChild
-              className="text-white"
+              className={`text-xl ${
+                pathname === "/become-lender" ? "text-black" : "text-white"
+              } `}
             >
               <Link href="/login">Login</Link>
             </Button>

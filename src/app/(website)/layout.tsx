@@ -8,7 +8,7 @@ export default function WebsiteLayout({
   return (
     <div className="min-h-screen">
       <Navbar />
-      <div className="bg-primary-valentine">{children}</div>
+      <div className="">{children}</div>
     </div>
   );
 }

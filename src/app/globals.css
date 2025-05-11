@@ -72,3 +72,19 @@
     @apply bg-background text-foreground;
   }
 }
+
+.sub-title {
+  font-weight: 400;
+  font-size: 48px;
+  line-height: 48px;
+  letter-spacing: 20px;
+  text-transform: uppercase;
+}
+
+@media (max-width: 768px) {
+  .sub-title {
+    font-size: 24px;
+    line-height: 24px;
+    letter-spacing: 10px;
+  }
+}
