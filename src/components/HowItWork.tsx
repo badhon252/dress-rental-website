@@ -5,8 +5,8 @@ const HowItWork = () => {
   return (
     <div>
         <div className="max-w-6xl mx-auto px-4 py-16 text-center">
-        <h2 className="text-3xl tracking-[0.3em] mb-4 sub-title">HOW IT WORKS</h2>
-        <p className="mb-12 text-[30px]">WE MADE IT SIMPLE. YOU MAKE IT STYLISH.</p>
+        <h2 className=" tracking-[0.3em] mb-4 sub-title">HOW IT WORKS</h2>
+        <p className="mb-12 lg:text-[30px]">WE MADE IT SIMPLE. YOU MAKE IT STYLISH.</p>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div className="space-y-4">
