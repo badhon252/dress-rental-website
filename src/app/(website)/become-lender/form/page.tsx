@@ -41,7 +41,7 @@ export default function FormPage() {
       // If no plan is selected, redirect back to the pricing page
       router.push("/become-lender")
     }
-  }, [])
+  }, [router])
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target
@@ -216,7 +216,7 @@ export default function FormPage() {
               />
             </div>
 
-            <p className="text-sm text-gray-500 italic">Important if you're offering local pickup options later.</p>
+            <p className="text-sm text-gray-500 italic">Important if you&apos;re offering local pickup options later.</p>
           </div>
         </CollapsibleSection>
 
@@ -348,7 +348,7 @@ export default function FormPage() {
                 required
               />
               <Label htmlFor="agreeStandards" className="text-sm">
-                I confirm that all dresses listed meet Muse Gala's curation and quality standards.
+                I confirm that all dresses listed meet Muse Gala&apos;s curation and quality standards.
               </Label>
             </div>
 
@@ -360,7 +360,7 @@ export default function FormPage() {
                 required
               />
               <Label htmlFor="agreeTerms" className="text-sm">
-                I agree to Muse Gala's <span className="text-red-500">Lender Terms & Conditions</span>.
+                I agree to Muse Gala&apos;s <span className="text-red-500">Lender Terms & Conditions</span>.
               </Label>
             </div>
           </div>

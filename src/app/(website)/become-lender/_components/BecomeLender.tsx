@@ -142,7 +142,7 @@ const BecomeLender = () => {
                 </div>
                 <h3 className="mb-2 text-2xl lg:text-[32px] uppercase tracking-widest">Dispute Handling</h3>
                 <p className="text-xl text-gray-600">
-                  We manage disputes and ensure you don't lose out on getting paid what's owed.
+                  We manage disputes and ensure you don&apos;t lose out on getting paid what&apos;s owed.
                 </p>
               </div>
 
@@ -174,7 +174,7 @@ const BecomeLender = () => {
                 <thead>
                   <tr className="">
                     <th className="py-4 text-left text-xl font-normal"></th>
-                    <th className="py-4 text-center text-xl font-normal uppercase">Founder's Collective</th>
+                    <th className="py-4 text-center text-xl font-normal uppercase">Founder&apos;s Collective</th>
                     <th className="py-4 text-center text-xl font-normal uppercase">Signature</th>
                     <th className="py-4 text-center text-xl font-normal uppercase">Vault Society</th>
                   </tr>
