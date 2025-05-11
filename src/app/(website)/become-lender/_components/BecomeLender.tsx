@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
+import PricingPlan from './pricing-plan'
 
 const BecomeLender = () => {
   return (
@@ -159,142 +160,7 @@ const BecomeLender = () => {
         </section>
 
         {/* Pricing Plans */}
-        <section className="py-12 md:py-16">
-          <div className="container px-4 md:px-6">
-            <h2 className="mb-2 text-center text-2xl font-normal uppercase tracking-widest md:text-3xl">
-              Choose The Plan
-            </h2>
-            <h3 className="mb-10 text-center text-xl font-normal uppercase tracking-widest">That Grows With You</h3>
-
-            <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
-              {/* Founder's Collective */}
-              <div className="flex flex-col border p-6">
-                <div className="mb-6 text-center">
-                  <h4 className="mb-1 text-lg font-normal uppercase tracking-widest">Founder's Collective</h4>
-                  <p className="text-xl text-gray-600">Exclusive Onboarding Tier</p>
-                </div>
-
-                <div className="mb-6 text-center">
-                  <p className="text-lg font-medium uppercase">Free</p>
-                  <p className="text-xl text-gray-600">Limited Availability</p>
-                </div>
-
-                <div className="mb-6 text-center">
-                  <p className="text-sm">0% Commission</p>
-                </div>
-
-                <ul className="mb-6 space-y-2">
-                  <li className="flex items-center text-xl">
-                    <span className="mr-2 inline-block h-2 w-2 rounded-full bg-black"></span>
-                    Core Platform Access
-                  </li>
-                  <li className="flex items-center text-xl">
-                    <span className="mr-2 inline-block h-2 w-2 rounded-full bg-black"></span>
-                    Standard Listing (5 Items)
-                  </li>
-                  <li className="flex items-center text-xl">
-                    <span className="mr-2 inline-block h-2 w-2 rounded-full bg-black"></span>
-                    No Commission Fees
-                  </li>
-                </ul>
-
-                <div className="mt-auto text-center">
-                  <button className="w-full border border-black px-4 py-2 text-xl uppercase tracking-widest hover:bg-black hover:text-white">
-                    Choose Plan
-                  </button>
-                </div>
-              </div>
-
-              {/* Signature */}
-              <div className="flex flex-col border p-6">
-                <div className="mb-6 text-center">
-                  <h4 className="mb-1 text-lg font-normal uppercase tracking-widest">Signature</h4>
-                  <p className="text-xl text-gray-600">Growth Plan</p>
-                </div>
-
-                <div className="mb-6 text-center">
-                  <p className="text-lg font-medium uppercase">$79</p>
-                  <p className="text-xl text-gray-600">Per Month</p>
-                </div>
-
-                <div className="mb-6 text-center">
-                  <p className="text-sm">10% Commission</p>
-                </div>
-
-                <ul className="mb-6 space-y-2">
-                  <li className="flex items-center text-xl">
-                    <span className="mr-2 inline-block h-2 w-2 rounded-full bg-black"></span>
-                    Premium Platform Access
-                  </li>
-                  <li className="flex items-center text-xl">
-                    <span className="mr-2 inline-block h-2 w-2 rounded-full bg-black"></span>
-                    Extended Listings (20)
-                  </li>
-                  <li className="flex items-center text-xl">
-                    <span className="mr-2 inline-block h-2 w-2 rounded-full bg-black"></span>
-                    Priority Exposure
-                  </li>
-                  <li className="flex items-center text-xl">
-                    <span className="mr-2 inline-block h-2 w-2 rounded-full bg-black"></span>
-                    Dedicated VIP Support
-                  </li>
-                </ul>
-
-                <div className="mt-auto text-center">
-                  <button className="w-full border border-black px-4 py-2 text-xl uppercase tracking-widest hover:bg-black hover:text-white">
-                    Choose Plan
-                  </button>
-                </div>
-              </div>
-
-              {/* Vault Society */}
-              <div className="flex flex-col border p-6">
-                <div className="mb-6 text-center">
-                  <h4 className="mb-1 text-lg font-normal uppercase tracking-widest">Vault Society</h4>
-                  <p className="text-xl text-gray-600">Premium Plan</p>
-                </div>
-
-                <div className="mb-6 text-center">
-                  <p className="text-lg font-medium uppercase">$129</p>
-                  <p className="text-xl text-gray-600">Per Month</p>
-                </div>
-
-                <div className="mb-6 text-center">
-                  <p className="text-sm">5% Commission</p>
-                </div>
-
-                <ul className="mb-6 space-y-2">
-                  <li className="flex items-center text-xl">
-                    <span className="mr-2 inline-block h-2 w-2 rounded-full bg-black"></span>
-                    Premium Platform Access
-                  </li>
-                  <li className="flex items-center text-xl">
-                    <span className="mr-2 inline-block h-2 w-2 rounded-full bg-black"></span>
-                    Unlimited Listings
-                  </li>
-                  <li className="flex items-center text-xl">
-                    <span className="mr-2 inline-block h-2 w-2 rounded-full bg-black"></span>
-                    Lower Commission Rate
-                  </li>
-                  <li className="flex items-center text-xl">
-                    <span className="mr-2 inline-block h-2 w-2 rounded-full bg-black"></span>
-                    Gold Medal Shipping
-                  </li>
-                  <li className="flex items-center text-xl">
-                    <span className="mr-2 inline-block h-2 w-2 rounded-full bg-black"></span>
-                    Enhanced VIP Access
-                  </li>
-                </ul>
-
-                <div className="mt-auto text-center">
-                  <button className="w-full border border-black px-4 py-2 text-xl uppercase tracking-widest hover:bg-black hover:text-white">
-                    Choose Plan
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
+        <PricingPlan/>
 
         {/* Plan Comparison */}
         <section className="overflow-x-auto py-12 md:py-16">
@@ -349,6 +215,7 @@ const BecomeLender = () => {
             </div>
           </div>
         </section>
+       
 
         {/* List With Muse Gala */}
         <section className="py-12 text-center md:py-16">
