@@ -3,6 +3,7 @@ import AppProvider from "@/providers/AppProvider";
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
+import Footer from "@/components/Footer/Footer";
 
 const nimbus = localFont({
   src: "./fonts/nimbus/nimbussannovdlig.ttf",
@@ -31,7 +32,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={cn("antialiased", nimbus.className, avenir.variable)}>
-        <AppProvider>{children}</AppProvider>
+        <AppProvider>{children}
+        <Footer/>
+        </AppProvider>
       </body>
     </html>
   );
