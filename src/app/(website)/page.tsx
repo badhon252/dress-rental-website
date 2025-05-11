@@ -5,6 +5,7 @@ import Link from "next/link";
 import { getTrendingProducts } from "@/data/product-data";
 import HowItWork from "@/components/HowItWork";
 import ServiceFeatures from "@/components/ServiceFeatures";
+import Image from "next/image";
 
 export default function Home() {
   const trendingProducts = getTrendingProducts();
@@ -34,6 +35,48 @@ export default function Home() {
           subtitle="EXPLORE THE EDIT"
           products={trendingProducts}
         />
+
+
+
+{/* FIND YOUR DRESS NEAR YOUr map */}
+<div className="flex flex-col md:flex-row w-full ">
+      {/* Text content section */}
+      <div className="w-full md:w-1/2 p-6 md:p-12 flex flex-col justify-center ">
+        <div className="max-w-3xl mx-auto md:mx-0">
+          <h1 className=" font-bold tracking-wider mb-6 sub-title">FIND YOUR DRESS NEAR YOU</h1>
+          <p className="text-xl mb-8 text-gray-700">Discover rentals ready for pick up. Real time availability.</p>
+          {/* <Button
+            variant="outline"
+            className="border-black text-black hover:bg-black hover:text-white transition-colors uppercase tracking-wider font-medium py-6 px-8"
+          >
+            Explore nearby dresses
+          </Button> */}
+            <Link
+              href="#"
+              className="inline-block border-b border-black px-6 py-2 text-xl uppercase tracking-widest hover:bg-black hover:text-white"
+            >
+              Start Listing Today
+            </Link>
+        </div>
+      </div>
+
+      {/* Map section */}
+      <div className="w-full md:w-1/2  md:h-auto relative">
+        {/* Map image */}
+        <Image
+          src="/images/Map.png"
+          alt="map" 
+          width={500}
+          height={500}
+          className="w-full h-[400px] object-cover"
+        />
+
+     
+      </div>
+
+  
+    </div>
+
                 <HowItWork />
                 <ProductGrid
           title="THE MUSE EDIT"
