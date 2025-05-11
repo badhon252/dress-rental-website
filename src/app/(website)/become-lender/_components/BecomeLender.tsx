@@ -55,8 +55,8 @@ const BecomeLender = () => {
         {/* What You Can Expect */}
         <section className="py-12 text-center md:py-16">
           <div className="container px-4 md:px-6">
-            <h2 className="mb-10 text-2xl font-normal uppercase tracking-widest md:text-[48px]">What You Can Expect</h2>
-            <div className="mx-auto max-w-5xl space-y-3 text-[28px]">
+            <h2 className="mb-10  text-3xl font-normal uppercase tracking-widest  sub-title">What You Can Expect</h2>
+            <div className="mx-auto max-w-5xl space-y-3 md:text-[28px]">
               <p>• 80% of listings receive a booking within the first 30 days.</p>
               <p>• Lenders grow their rental bookings by up to 40% within the first 6 months.</p>
               <p>• 85% of customers prefer booking from curated boutique collections.</p>
