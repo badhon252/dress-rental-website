@@ -2,8 +2,9 @@ import { ProductGrid } from "@/components/product/product-grid";
 import SectionHeader from "@/components/section/section-header";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import { getTrendingProducts } from '@/data/product-data';
+import { getTrendingProducts } from "@/data/product-data";
 import HowItWork from "@/components/HowItWork";
+import ServiceFeatures from "@/components/ServiceFeatures";
 
 export default function Home() {
   const trendingProducts = getTrendingProducts();
@@ -27,8 +28,19 @@ export default function Home() {
         </div>
       </div>
       <div className="h-[300vh] bg-white">
-<HowItWork/>
-          <ProductGrid title="TRENDING NOW" subtitle="EXPLORE THE EDIT" products={trendingProducts} />
+
+        <ProductGrid
+          title="TRENDING NOW"
+          subtitle="EXPLORE THE EDIT"
+          products={trendingProducts}
+        />
+                <HowItWork />
+                <ProductGrid
+          title="THE MUSE EDIT"
+          subtitle="EXPLORE THE EDIT"
+          products={trendingProducts}
+        />
+                <ServiceFeatures/>
       </div>
     </>
   );
