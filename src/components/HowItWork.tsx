@@ -18,7 +18,7 @@ const HowItWork = () => {
 
             </div>
             <h3 className="text-3xl tracking-widest">BOOK</h3>
-            <p className="text-xl">Choose your size and rental dates and what's available instantly.</p>
+            <p className="text-xl">Choose your size and rental dates and what&lsquo;s available instantly.</p>
           </div>
 
           <div className="space-y-4">
