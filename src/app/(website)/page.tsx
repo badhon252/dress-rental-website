@@ -30,7 +30,7 @@ export default function Home() {
           </Button>
         </div>
       </div>
-      <div className="h-[300vh] bg-white">
+      <div className=" bg-white">
         <ProductGrid
           title="TRENDING NOW"
           subtitle="EXPLORE THE EDIT"

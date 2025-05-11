@@ -1,3 +1,4 @@
+
 import Navbar from "@/components/section/navbar";
 
 export default function WebsiteLayout({
@@ -6,9 +7,10 @@ export default function WebsiteLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <div className="min-h-screen">
+    <div className="">
       <Navbar />
       <div className="">{children}</div>
+  
     </div>
   );
 }
