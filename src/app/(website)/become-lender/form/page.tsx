@@ -113,7 +113,7 @@ export default function FormPage() {
     <div className="pt-20">
       <h1 className="sub-title text-center">APPLY TO LEND WITH MUSE GALA</h1>
       <p className="text-center text-[30px] font-normal my-5">
-        Join Australia's curated fashion rental platform. Showcase your collection, <br /> expand your reach, and grow
+        Join Australia&apos;s curated fashion rental platform. Showcase your collection, <br /> expand your reach, and grow
         with us.
       </p>
       <div className="max-w-5xl mx-auto px-4 py-12">
