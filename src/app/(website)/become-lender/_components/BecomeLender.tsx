@@ -12,7 +12,7 @@ const BecomeLender = () => {
             <h1 className="mb-6 text-3xl font-normal uppercase tracking-widest md:text-4xl">Partner with Muse Gala</h1>
             <Link
               href="#"
-              className="inline-block border-b border-black px-6 py-2 text-xs uppercase tracking-widest hover:bg-black hover:text-white"
+              className="inline-block border-b border-black px-6 py-2 text-xl uppercase tracking-widest hover:bg-black hover:text-white"
             >
               Start Listing Today
             </Link>
@@ -120,7 +120,7 @@ const BecomeLender = () => {
                   <Image src="/images/sycco1.png" alt="Dedicated Support" width={64} height={64} />
                 </div>
                 <h3 className="mb-2 text-2xl lg:text-[32px] uppercase tracking-widest">Dedicated Support</h3>
-                <p className="text-xs text-gray-600">
+                <p className="text-xl text-gray-600">
                   Our team is here to help you every step from onboarding to daily operations.
                 </p>
               </div>
@@ -130,7 +130,7 @@ const BecomeLender = () => {
                   <Image src="/images/sycco2.png" alt="Insurance Coverage" width={64} height={64} />
                 </div>
                 <h3 className="mb-2 text-2xl lg:text-[32px] uppercase tracking-widest">Insurance Coverage</h3>
-                <p className="text-xs text-gray-600">
+                <p className="text-xl text-gray-600">
                   Optional insurance coverage to protect your dresses against minor accidents.
                 </p>
               </div>
@@ -140,7 +140,7 @@ const BecomeLender = () => {
                   <Image src="/images/sycco3.png" alt="Dispute Handling" width={64} height={64} />
                 </div>
                 <h3 className="mb-2 text-2xl lg:text-[32px] uppercase tracking-widest">Dispute Handling</h3>
-                <p className="text-xs text-gray-600">
+                <p className="text-xl text-gray-600">
                   We manage disputes and ensure you don't lose out on getting paid what's owed.
                 </p>
               </div>
@@ -150,7 +150,7 @@ const BecomeLender = () => {
                   <Image src="/images/sycco4.png" alt="Secure Payments" width={64} height={64} />
                 </div>
                 <h3 className="mb-2 text-2xl lg:text-[32px] uppercase tracking-widest">Secure Payments</h3>
-                <p className="text-xs text-gray-600">
+                <p className="text-xl text-gray-600">
                   Reliable payment processing so you get paid fast and securely after each rental.
                 </p>
               </div>
@@ -171,12 +171,12 @@ const BecomeLender = () => {
               <div className="flex flex-col border p-6">
                 <div className="mb-6 text-center">
                   <h4 className="mb-1 text-lg font-normal uppercase tracking-widest">Founder's Collective</h4>
-                  <p className="text-xs text-gray-600">Exclusive Onboarding Tier</p>
+                  <p className="text-xl text-gray-600">Exclusive Onboarding Tier</p>
                 </div>
 
                 <div className="mb-6 text-center">
                   <p className="text-lg font-medium uppercase">Free</p>
-                  <p className="text-xs text-gray-600">Limited Availability</p>
+                  <p className="text-xl text-gray-600">Limited Availability</p>
                 </div>
 
                 <div className="mb-6 text-center">
@@ -184,22 +184,22 @@ const BecomeLender = () => {
                 </div>
 
                 <ul className="mb-6 space-y-2">
-                  <li className="flex items-center text-xs">
+                  <li className="flex items-center text-xl">
                     <span className="mr-2 inline-block h-2 w-2 rounded-full bg-black"></span>
                     Core Platform Access
                   </li>
-                  <li className="flex items-center text-xs">
+                  <li className="flex items-center text-xl">
                     <span className="mr-2 inline-block h-2 w-2 rounded-full bg-black"></span>
                     Standard Listing (5 Items)
                   </li>
-                  <li className="flex items-center text-xs">
+                  <li className="flex items-center text-xl">
                     <span className="mr-2 inline-block h-2 w-2 rounded-full bg-black"></span>
                     No Commission Fees
                   </li>
                 </ul>
 
                 <div className="mt-auto text-center">
-                  <button className="w-full border border-black px-4 py-2 text-xs uppercase tracking-widest hover:bg-black hover:text-white">
+                  <button className="w-full border border-black px-4 py-2 text-xl uppercase tracking-widest hover:bg-black hover:text-white">
                     Choose Plan
                   </button>
                 </div>
@@ -209,12 +209,12 @@ const BecomeLender = () => {
               <div className="flex flex-col border p-6">
                 <div className="mb-6 text-center">
                   <h4 className="mb-1 text-lg font-normal uppercase tracking-widest">Signature</h4>
-                  <p className="text-xs text-gray-600">Growth Plan</p>
+                  <p className="text-xl text-gray-600">Growth Plan</p>
                 </div>
 
                 <div className="mb-6 text-center">
                   <p className="text-lg font-medium uppercase">$79</p>
-                  <p className="text-xs text-gray-600">Per Month</p>
+                  <p className="text-xl text-gray-600">Per Month</p>
                 </div>
 
                 <div className="mb-6 text-center">
@@ -222,26 +222,26 @@ const BecomeLender = () => {
                 </div>
 
                 <ul className="mb-6 space-y-2">
-                  <li className="flex items-center text-xs">
+                  <li className="flex items-center text-xl">
                     <span className="mr-2 inline-block h-2 w-2 rounded-full bg-black"></span>
                     Premium Platform Access
                   </li>
-                  <li className="flex items-center text-xs">
+                  <li className="flex items-center text-xl">
                     <span className="mr-2 inline-block h-2 w-2 rounded-full bg-black"></span>
                     Extended Listings (20)
                   </li>
-                  <li className="flex items-center text-xs">
+                  <li className="flex items-center text-xl">
                     <span className="mr-2 inline-block h-2 w-2 rounded-full bg-black"></span>
                     Priority Exposure
                   </li>
-                  <li className="flex items-center text-xs">
+                  <li className="flex items-center text-xl">
                     <span className="mr-2 inline-block h-2 w-2 rounded-full bg-black"></span>
                     Dedicated VIP Support
                   </li>
                 </ul>
 
                 <div className="mt-auto text-center">
-                  <button className="w-full border border-black px-4 py-2 text-xs uppercase tracking-widest hover:bg-black hover:text-white">
+                  <button className="w-full border border-black px-4 py-2 text-xl uppercase tracking-widest hover:bg-black hover:text-white">
                     Choose Plan
                   </button>
                 </div>
@@ -251,12 +251,12 @@ const BecomeLender = () => {
               <div className="flex flex-col border p-6">
                 <div className="mb-6 text-center">
                   <h4 className="mb-1 text-lg font-normal uppercase tracking-widest">Vault Society</h4>
-                  <p className="text-xs text-gray-600">Premium Plan</p>
+                  <p className="text-xl text-gray-600">Premium Plan</p>
                 </div>
 
                 <div className="mb-6 text-center">
                   <p className="text-lg font-medium uppercase">$129</p>
-                  <p className="text-xs text-gray-600">Per Month</p>
+                  <p className="text-xl text-gray-600">Per Month</p>
                 </div>
 
                 <div className="mb-6 text-center">
@@ -264,30 +264,30 @@ const BecomeLender = () => {
                 </div>
 
                 <ul className="mb-6 space-y-2">
-                  <li className="flex items-center text-xs">
+                  <li className="flex items-center text-xl">
                     <span className="mr-2 inline-block h-2 w-2 rounded-full bg-black"></span>
                     Premium Platform Access
                   </li>
-                  <li className="flex items-center text-xs">
+                  <li className="flex items-center text-xl">
                     <span className="mr-2 inline-block h-2 w-2 rounded-full bg-black"></span>
                     Unlimited Listings
                   </li>
-                  <li className="flex items-center text-xs">
+                  <li className="flex items-center text-xl">
                     <span className="mr-2 inline-block h-2 w-2 rounded-full bg-black"></span>
                     Lower Commission Rate
                   </li>
-                  <li className="flex items-center text-xs">
+                  <li className="flex items-center text-xl">
                     <span className="mr-2 inline-block h-2 w-2 rounded-full bg-black"></span>
                     Gold Medal Shipping
                   </li>
-                  <li className="flex items-center text-xs">
+                  <li className="flex items-center text-xl">
                     <span className="mr-2 inline-block h-2 w-2 rounded-full bg-black"></span>
                     Enhanced VIP Access
                   </li>
                 </ul>
 
                 <div className="mt-auto text-center">
-                  <button className="w-full border border-black px-4 py-2 text-xs uppercase tracking-widest hover:bg-black hover:text-white">
+                  <button className="w-full border border-black px-4 py-2 text-xl uppercase tracking-widest hover:bg-black hover:text-white">
                     Choose Plan
                   </button>
                 </div>
@@ -307,42 +307,42 @@ const BecomeLender = () => {
               <table className="w-full border-collapse">
                 <thead>
                   <tr className="border-b">
-                    <th className="py-4 text-left text-xs font-normal"></th>
-                    <th className="py-4 text-center text-xs font-normal uppercase">Founder's Collective</th>
-                    <th className="py-4 text-center text-xs font-normal uppercase">Signature</th>
-                    <th className="py-4 text-center text-xs font-normal uppercase">Vault Society</th>
+                    <th className="py-4 text-left text-xl font-normal"></th>
+                    <th className="py-4 text-center text-xl font-normal uppercase">Founder's Collective</th>
+                    <th className="py-4 text-center text-xl font-normal uppercase">Signature</th>
+                    <th className="py-4 text-center text-xl font-normal uppercase">Vault Society</th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr className="border-b">
-                    <td className="py-4 text-left text-xs">Perfect For</td>
-                    <td className="py-4 text-center text-xs">Early boutique getting started</td>
-                    <td className="py-4 text-center text-xs">Growing to mid-sized boutique</td>
-                    <td className="py-4 text-center text-xs">Premium, high-volume boutiques</td>
+                    <td className="py-4 text-left text-xl">Perfect For</td>
+                    <td className="py-4 text-center text-xl">Early boutique getting started</td>
+                    <td className="py-4 text-center text-xl">Growing to mid-sized boutique</td>
+                    <td className="py-4 text-center text-xl">Premium, high-volume boutiques</td>
                   </tr>
                   <tr className="border-b">
-                    <td className="py-4 text-left text-xs">Monthly Fee</td>
-                    <td className="py-4 text-center text-xs">Free (first 3 months)</td>
-                    <td className="py-4 text-center text-xs">$49/month</td>
-                    <td className="py-4 text-center text-xs">$129/month</td>
+                    <td className="py-4 text-left text-xl">Monthly Fee</td>
+                    <td className="py-4 text-center text-xl">Free (first 3 months)</td>
+                    <td className="py-4 text-center text-xl">$49/month</td>
+                    <td className="py-4 text-center text-xl">$129/month</td>
                   </tr>
                   <tr className="border-b">
-                    <td className="py-4 text-left text-xs">Commission</td>
-                    <td className="py-4 text-center text-xs">0%</td>
-                    <td className="py-4 text-center text-xs">10%</td>
-                    <td className="py-4 text-center text-xs">5%</td>
+                    <td className="py-4 text-left text-xl">Commission</td>
+                    <td className="py-4 text-center text-xl">0%</td>
+                    <td className="py-4 text-center text-xl">10%</td>
+                    <td className="py-4 text-center text-xl">5%</td>
                   </tr>
                   <tr className="border-b">
-                    <td className="py-4 text-left text-xs">Return Shipping</td>
-                    <td className="py-4 text-center text-xs">✕</td>
-                    <td className="py-4 text-center text-xs">✕</td>
-                    <td className="py-4 text-center text-xs">Covered by Muse Gala</td>
+                    <td className="py-4 text-left text-xl">Return Shipping</td>
+                    <td className="py-4 text-center text-xl">✕</td>
+                    <td className="py-4 text-center text-xl">✕</td>
+                    <td className="py-4 text-center text-xl">Covered by Muse Gala</td>
                   </tr>
                   <tr className="border-b">
-                    <td className="py-4 text-left text-xs">Events</td>
-                    <td className="py-4 text-center text-xs">✕</td>
-                    <td className="py-4 text-center text-xs">Invite Based</td>
-                    <td className="py-4 text-center text-xs">Guaranteed Invite</td>
+                    <td className="py-4 text-left text-xl">Events</td>
+                    <td className="py-4 text-center text-xl">✕</td>
+                    <td className="py-4 text-center text-xl">Invite Based</td>
+                    <td className="py-4 text-center text-xl">Guaranteed Invite</td>
                   </tr>
                 </tbody>
               </table>
@@ -354,12 +354,12 @@ const BecomeLender = () => {
         <section className="py-12 text-center md:py-16">
           <div className="container px-4 md:px-6">
             <h2 className="mb-4 text-2xl font-normal uppercase tracking-widest md:text-3xl">List With Muse Gala</h2>
-            <p className="mb-8 text-xs text-gray-600">
+            <p className="mb-8 text-xl text-gray-600">
               No listing fees. No hidden costs. Just more exposure, more rentals, and a seamless dashboard.
             </p>
             <Link
               href="#"
-              className="inline-block border border-black px-6 py-2 text-xs uppercase tracking-widest hover:bg-black hover:text-white"
+              className="inline-block border border-black px-6 py-2 text-xl uppercase tracking-widest hover:bg-black hover:text-white"
             >
               Become A Lender
             </Link>
