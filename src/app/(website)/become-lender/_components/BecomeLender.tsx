@@ -27,7 +27,7 @@ const BecomeLender = () => {
                 <div className="mb-4 flex h-16 w-16 items-center justify-center">
                   <Image src="/images/pwmg1.png" alt="Trusted Platform" width={64} height={64} />
                 </div>
-                <h3 className="mb-2 text-3xl uppercase tracking-widest">Trusted Platform</h3>
+                <h3 className="mb-2 text-2xl lg:text-3xl uppercase tracking-widest">Trusted Platform</h3>
                 <p className="text-xl text-gray-600">
                   List your dresses on a platform <br /> trusted by thousands of renters.
                 </p>
@@ -37,7 +37,7 @@ const BecomeLender = () => {
                 <div className="mb-4 flex h-16 w-16 items-center justify-center">
                   <Image src="/images/pwmg2.png" alt="Wider Audience" width={64} height={64} />
                 </div>
-                <h3 className="mb-2 text-3xl uppercase tracking-widest">Wider Audience</h3>
+                <h3 className="mb-2 text-2xl lg:text-3xl uppercase tracking-widest">Wider Audience</h3>
                 <p className="text-xl text-gray-600">Expand your reach and <br /> get more bookings.</p>
               </div>
 
@@ -45,7 +45,7 @@ const BecomeLender = () => {
                 <div className="mb-4 flex h-16 w-16 items-center justify-center">
                   <Image src="/images/pwmg3.png" alt="Seamless Management" width={64} height={64} />
                 </div>
-                <h3 className="mb-2 text-3xl uppercase tracking-widest">Seamless Management</h3>
+                <h3 className="mb-2 text-2xl lg:text-3xl uppercase tracking-widest">Seamless Management</h3>
                 <p className="text-xl text-gray-600">Manage rentals <br /> with our intuitive tools and support.</p>
               </div>
             </div>
@@ -57,7 +57,7 @@ const BecomeLender = () => {
           <div className="container px-4 md:px-6">
             <h2 className="mb-10  text-3xl font-normal uppercase tracking-widest  sub-title">What You Can Expect</h2>
             <div className="mx-auto max-w-5xl space-y-3 md:text-[28px]">
-              <p>• 80% of listings receive a booking within the first 30 days.</p>
+              <p className=''>• 80% of listings receive a booking within the first 30 days.</p>
               <p>• Lenders grow their rental bookings by up to 40% within the first 6 months.</p>
               <p>• 85% of customers prefer booking from curated boutique collections.</p>
             </div>
@@ -67,39 +67,39 @@ const BecomeLender = () => {
         {/* How It Works */}
         <section className="py-12 md:py-16">
           <div className="container px-4 md:px-6">
-            <h2 className="mb-10 text-center text-2xl font-normal uppercase tracking-widest md:text-3xl">
+            <h2 className="mb-10 text-center  font-normal uppercase tracking-widest  sub-title">
               How It Works
             </h2>
             <div className="mx-auto max-w-2xl space-y-8">
               <div className="flex items-start space-x-4">
-                <div className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-black text-white">
+                <div className="flex h-8 md:h-10 w-8 md:w-10 flex-shrink-0 items-center justify-center rounded-full bg-black text-white">
                   <span>1</span>
                 </div>
                 <div>
-                  <h3 className="mb-1 text-sm font-medium">Sign Up</h3>
-                  <p className="text-xs text-gray-600">Create your lender account with your business details.</p>
+                  <h3 className="mb-1 text-[24px] font-medium">Sign Up</h3>
+                  <p className="text-[18px] text-gray-600">Create your lender account with your business details.</p>
                 </div>
               </div>
 
               <div className="flex items-start space-x-4">
-                <div className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-black text-white">
+                <div className="flex h-8 md:h-10 w-8 md:w-10 flex-shrink-0 items-center justify-center rounded-full bg-black text-white">
                   <span>2</span>
                 </div>
                 <div>
-                  <h3 className="mb-1 text-sm font-medium">List Your Dresses</h3>
-                  <p className="text-xs text-gray-600">
+                  <h3 className="mb-1 text-[24px] font-medium">List Your Dresses</h3>
+                  <p className="text-[18px] text-gray-600">
                     Upload your inventory with photos, descriptions, and availability.
                   </p>
                 </div>
               </div>
 
               <div className="flex items-start space-x-4">
-                <div className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-black text-white">
+                <div className="flex h-8 md:h-10 w-8 md:w-10 flex-shrink-0 items-center justify-center rounded-full bg-black text-white">
                   <span>3</span>
                 </div>
                 <div>
-                  <h3 className="mb-1 text-sm font-medium">Manage Rentals</h3>
-                  <p className="text-xs text-gray-600">
+                  <h3 className="mb-1 text-[24px] font-medium">Manage Rentals</h3>
+                  <p className="text-[18px] text-gray-600">
                     Track bookings, communicate with renters, and receive payment seamlessly.
                   </p>
                 </div>
