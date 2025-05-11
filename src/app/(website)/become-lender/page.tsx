@@ -1,9 +1,10 @@
 import React from 'react'
+import BecomeLender from './_components/BecomeLender'
 
 const page = () => {
   return (
-    <div className='h-screen bg-cover bg-center bg-no-repeat'>
-      becode-lender
+    <div className='pt-20'>
+    <BecomeLender/>
     </div>
   )
 }
