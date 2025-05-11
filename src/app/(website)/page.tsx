@@ -3,6 +3,7 @@ import SectionHeader from "@/components/section/section-header";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { getTrendingProducts } from '@/data/product-data';
+import HowItWork from "@/components/HowItWork";
 
 export default function Home() {
   const trendingProducts = getTrendingProducts();
@@ -26,7 +27,7 @@ export default function Home() {
         </div>
       </div>
       <div className="h-[300vh] bg-white">
-        <SectionHeader />
+<HowItWork/>
           <ProductGrid title="TRENDING NOW" subtitle="EXPLORE THE EDIT" products={trendingProducts} />
       </div>
     </>
