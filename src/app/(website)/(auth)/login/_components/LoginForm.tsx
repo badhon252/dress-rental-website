@@ -14,6 +14,7 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import Image from "next/image";
+import Link from "next/link";
 
 const formSchema = z.object({
   email: z.string().email("Invalid email address"),
@@ -80,9 +81,22 @@ const LoginForm = () => {
                   name="password"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel className="text-sm font-normal text-black leading-[20px] uppercase">
-                        Password
-                      </FormLabel>
+                      <div className="w-full flex justify-between items-center">
+                        <FormLabel className="text-sm font-normal text-black leading-[20px] uppercase">
+                          Password
+                        </FormLabel>
+                        <div>
+                          <Link href="/forgot-password">
+                            <button
+                              className="text-base font-normal text-black leading-[20px] uppercase"
+                              type="button"
+                            >
+                              Forgot Password?
+                            </button>
+                          </Link>
+                        </div>
+                      </div>
+
                       <FormControl>
                         <Input
                           placeholder=""
@@ -109,12 +123,14 @@ const LoginForm = () => {
             NEW HERE? JOIN MUSE CLUB
           </h2>
           <div className="w-full flex justify-end items-center pg-[15px] md:pt-[22px] lg:pt-[30px]">
-            <button
-              className="text-base font-normal text-black leading-[20px] border-b border-black py-[10px] uppercase"
-              type="button"
-            >
-              JOIN THE MUSE CLUB
-            </button>
+            <Link href="/sign-up">
+              <button
+                className="text-base font-normal text-black leading-[20px] border-b border-black py-[10px] uppercase"
+                type="button"
+              >
+                JOIN THE MUSE CLUB
+              </button>
+            </Link>
           </div>
         </div>
       </div>

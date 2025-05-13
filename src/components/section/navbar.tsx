@@ -22,7 +22,7 @@ const Navbar = () => {
     { id: 3, href: "/about", linkText: "ABOUT" },
     { id: 4, href: "/how-it-works", linkText: "HOW IT WORKS" },
     { id: 5, href: "/become-lender", linkText: "BECOME A LENDER" },
-    { id: 6, href: "/find-near", linkText: "FIND NEAR YOU" },
+    { id: 6, href: "/find-near-you", linkText: "FIND NEAR YOU" },
   ];
 
   // Track window scroll to update navbar style
