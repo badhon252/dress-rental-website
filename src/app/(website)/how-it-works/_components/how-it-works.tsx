@@ -1,3 +1,6 @@
+"use client"
+import { Button } from "@/components/ui/button";
+import { signOut } from "next-auth/react";
 import Image from "next/image";
 import React from "react";
 
@@ -46,6 +49,8 @@ const HowItWork = () => {
         <p className="text-2xl md:text-[27px] lg:text-3xl font-normal text-black leading-[36px] text-center">
           We made it simple. You make it stylish.
         </p>
+
+        <Button onClick={()=> signOut({callbackUrl:"/"})}>LogOut</Button>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-0 pt-[40px] md:pt-[70x] lg:pt-[100px]">
           {howItWorksData?.map((item) => {
             return (
