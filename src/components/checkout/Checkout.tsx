@@ -191,11 +191,11 @@ export default function CheckoutPage() {
           <h2 className="text-xl font-bold border-b-[1px] border-b-black/50 pb-2 mb-4">CUSTOMER DETAILS</h2>
 
           <div className="space-y-2">
-            <Label htmlFor="fullName">
+            <Label className="text-[24px] font-normal" htmlFor="fullName">
               Full Name <span className="text-red-500">*</span>
             </Label>
             <Input
-              className="border-0 border-b-[1px] rounded-none border-b-black/50 focus-visible:ring-0"
+              className="border-0 border-b-[1px] rounded-none border-b-black/50 focus-visible:ring-0 "
               id="fullName"
               name="fullName"
               value={customerDetails.fullName}
@@ -205,7 +205,7 @@ export default function CheckoutPage() {
           </div>
 
           <div className="space-y-2">
-            <Label htmlFor="emailAddress">
+            <Label className="text-[24px] font-normal" htmlFor="emailAddress">
               Email Address <span className="text-red-500">*</span>
             </Label>
             <Input
@@ -220,7 +220,7 @@ export default function CheckoutPage() {
           </div>
 
           <div className="space-y-2">
-            <Label htmlFor="phoneNumber">
+            <Label className="text-[24px] font-normal" htmlFor="phoneNumber">
               Phone Number <span className="text-red-500">*</span>
             </Label>
             <Input
@@ -234,7 +234,7 @@ export default function CheckoutPage() {
           </div>
 
           <div className="space-y-2">
-            <Label htmlFor="address">
+            <Label className="text-[24px] font-normal" htmlFor="address">
               Address <span className="text-red-500">*</span>
             </Label>
             <Input
@@ -248,7 +248,7 @@ export default function CheckoutPage() {
           </div>
 
           <div className="space-y-2">
-            <Label htmlFor="idVerification">
+            <Label className="text-[24px] font-normal" htmlFor="idVerification">
               ID Verification <span className="text-red-500">*</span>
             </Label>
             {!idPreview ? (
