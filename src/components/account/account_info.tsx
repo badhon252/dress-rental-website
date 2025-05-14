@@ -15,7 +15,8 @@ const AccountInfo = () => {
   });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
   const handleSubmit = () => {
@@ -106,8 +107,10 @@ const AccountInfo = () => {
               />
             ) : (
               <div className="relative">
-                <p className=" pb-1 mb-4 tracking-[10px]">{formData.passport}</p>
-                <CircleCheckBig className="absolute top-0 text-[#891D33] w-5 h-5 left-80"/>
+                <p className=" pb-1 mb-4 tracking-[10px]">
+                  {formData.passport}
+                </p>
+                <CircleCheckBig className="absolute top-0 text-[#891D33] w-5 h-5 left-80" />
               </div>
             )}
 
