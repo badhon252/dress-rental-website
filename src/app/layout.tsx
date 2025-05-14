@@ -4,6 +4,8 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import Footer from "@/components/Footer/Footer";
+import { Toaster } from "@/components/ui/toaster";
+import AuthSessionProvider from "@/providers/AuthSessionProvider";
 
 const nimbus = localFont({
   src: "./fonts/nimbus/nimbussannovdlig.ttf",
@@ -32,9 +34,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={cn("antialiased", nimbus.className, avenir.variable)}>
-        <AppProvider>{children}
-        <Footer/>
-        </AppProvider>
+        <AuthSessionProvider>
+          <AppProvider>
+            {children}
+            <Footer />
+            <Toaster />
+          </AppProvider>
+        </AuthSessionProvider>
       </body>
     </html>
   );
