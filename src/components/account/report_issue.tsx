@@ -61,10 +61,9 @@ export default function ReportIssueModal({
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Here you would typically send the form data to your API
+
     console.log("Form submitted:", { ...formData, photo: photoFile });
 
-    // Reset form and close modal
     setFormData({ orderId: "", issueType: "", description: "" });
     setPhotoFile(null);
     setPhotoPreview(null);
@@ -74,9 +73,11 @@ export default function ReportIssueModal({
   return (
     <Dialog open={open} onOpenChange={setonOpenChange}>
       <DialogContent className="sm:max-w-md p-6 lg:max-w-6xl rounded-none border shadow-lg">
-       <div className="w-full pt-10">
-        <h1 className="text-center font-normal text-[32px] ">Report an Issue</h1>
-       </div>
+        <div className="w-full pt-10">
+          <h1 className="text-center font-normal text-[32px] ">
+            Report an Issue
+          </h1>
+        </div>
         <form onSubmit={handleSubmit} className="space-y-8 mt-6">
           <div className="space-y-1">
             <label htmlFor="orderId" className="text-sm flex items-center">
