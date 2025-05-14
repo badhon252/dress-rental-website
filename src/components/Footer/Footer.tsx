@@ -1,10 +1,15 @@
+'use client'
 import { Facebook, Instagram, Send } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
-import React from 'react'
+import React, { useState } from 'react'
 import { Input } from '../ui/input'
+import LenderTermsConditions from '../tmc/lender -terms-Conditions'
+import CustomerTermsConditionsDialog from '../tmc/customer-terms-conditions-dialog'
 
 const Footer = () => {
+  const [open,setOpne] = useState(false)
+  const [open1,setOpne1] = useState(false)
   return (
     <footer className="w-full  bg-white">
     <div className="container mx-auto px-4 py-12">
@@ -44,9 +49,10 @@ const Footer = () => {
             <Link href="#" className="text-gray-600 hover:text-gray-900">
               Lender Login
             </Link>
-            <Link href="#" className="text-gray-600 hover:text-gray-900">
+            <Link onClick={()=>setOpne(true)} href="" className="text-gray-600 hover:text-gray-900">
               Lender Terms & Conditions
             </Link>
+            <LenderTermsConditions open={open} setOpen={setOpne}/>
           </nav>
         </div>
 
@@ -60,10 +66,11 @@ const Footer = () => {
             <Link href="#" className="text-gray-600 hover:text-gray-900">
               Privacy Policy
             </Link>
-            <Link href="#" className="text-gray-600 hover:text-gray-900">
+            <Link onClick={()=>setOpne1(true)} href="" className="text-gray-600 hover:text-gray-900">
               Terms & Conditions
             </Link>
-            <Link href="#" className="text-gray-600 hover:text-gray-900">
+            <CustomerTermsConditionsDialog open={open1} setOpen={setOpne1}/>
+            <Link  href="#" className="text-gray-600 hover:text-gray-900">
               Dispute Resolution
             </Link>
             <Link href="#" className="text-gray-600 hover:text-gray-900">

@@ -9,7 +9,7 @@ const nimbus = localFont({
   src: "./fonts/nimbus/nimbussannovdlig.ttf",
   variable: "--font-nimbus",
   weight: "100 900",
-  display: "swap",
+  display: "auto",
 });
 
 const avenir = localFont({

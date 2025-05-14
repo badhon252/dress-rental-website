@@ -97,7 +97,7 @@ export default function Home() {
               >
                 BROWSE THE EDIT
               </Button> */}
-                <Link
+              <Link
                 href="#"
                 className="inline-block border-b border-black px-6 py-2 text-xl uppercase tracking-widest hover:bg-black hover:text-white"
               >
@@ -113,7 +113,9 @@ export default function Home() {
                 I found my dress in five minutes — and actually loved everything
                 I saw.
               </p>
-              <span className="text-[14px] text-gray-600">@HIRINGWITHGRACE</span>
+              <span className="text-[14px] text-gray-600">
+                @HIRINGWITHGRACE
+              </span>
             </div>
 
             <div className="flex flex-col space-y-4 justify-between min-h-[116px]">
@@ -161,7 +163,7 @@ export default function Home() {
                 href="#"
                 className="inline-block border-b border-black px-6 py-2 text-xl uppercase tracking-widest hover:bg-black hover:text-white"
               >
-            BECOME A LENDER
+                BECOME A LENDER
               </Link>
             </div>
           </section>
