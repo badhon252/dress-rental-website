@@ -188,13 +188,14 @@ export default function CheckoutPage() {
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
         {/* Left Column - Customer Details */}
         <div className="space-y-6">
-          <h2 className="text-xl font-bold border-b pb-2 mb-4">CUSTOMER DETAILS</h2>
+          <h2 className="text-xl font-bold border-b-[1px] border-b-black/50 pb-2 mb-4">CUSTOMER DETAILS</h2>
 
           <div className="space-y-2">
             <Label htmlFor="fullName">
               Full Name <span className="text-red-500">*</span>
             </Label>
             <Input
+              className="border-0 border-b-[1px] rounded-none border-b-black/50 focus-visible:ring-0"
               id="fullName"
               name="fullName"
               value={customerDetails.fullName}
@@ -208,6 +209,7 @@ export default function CheckoutPage() {
               Email Address <span className="text-red-500">*</span>
             </Label>
             <Input
+               className="border-0 border-b-[1px] rounded-none border-b-black/50 focus-visible:ring-0"
               id="emailAddress"
               name="emailAddress"
               type="email"
@@ -222,6 +224,7 @@ export default function CheckoutPage() {
               Phone Number <span className="text-red-500">*</span>
             </Label>
             <Input
+               className="border-0 border-b-[1px] rounded-none border-b-black/50 focus-visible:ring-0"
               id="phoneNumber"
               name="phoneNumber"
               value={customerDetails.phoneNumber}
@@ -235,6 +238,7 @@ export default function CheckoutPage() {
               Address <span className="text-red-500">*</span>
             </Label>
             <Input
+               className="border-0 border-b-[1px] rounded-none border-b-black/50 focus-visible:ring-0"
               id="address"
               name="address"
               value={customerDetails.address}
