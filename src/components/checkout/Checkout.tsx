@@ -348,8 +348,8 @@ export default function CheckoutPage() {
               className="w-full"
               onValueChange={(value) => handleOrderChange("rentalOption", value)}
             >
-              <TabsList className="grid w-full grid-cols-2">
-                <TabsTrigger value="4day">4 DAY RENT</TabsTrigger>
+              <TabsList className="grid w-full grid-cols-2 ">
+                <TabsTrigger className="bg-none" value="4day ">4 DAY RENT</TabsTrigger>
                 <TabsTrigger value="8day">8 DAY RENT(+$15 PER ITEM)</TabsTrigger>
               </TabsList>
             </Tabs>
