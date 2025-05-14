@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { ChevronDown, Search, X, Trash2 } from "lucide-react"
+import { ChevronDown, Search, X, Trash2, Upload } from "lucide-react"
 import Image from "next/image"
 
 // Product type definition
@@ -252,9 +252,9 @@ export default function CheckoutPage() {
               ID Verification <span className="text-red-500">*</span>
             </Label>
             {!idPreview ? (
-              <div className="border-2 border-dashed rounded-md p-6 text-center">
+              <div className=" rounded-md p-6 text-center">
                 <div className="flex justify-center mb-4">
-                  <div className="w-12 h-12 rounded-full border-2 flex items-center justify-center">
+                  {/* <div className="w-12 h-12 rounded-full border-2 flex items-center justify-center">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                       <path
                         d="M12 5V19M5 12H19"
@@ -264,7 +264,7 @@ export default function CheckoutPage() {
                         strokeLinejoin="round"
                       />
                     </svg>
-                  </div>
+                  </div> */}
                 </div>
                 <Input
                   id="idVerification"
@@ -274,9 +274,12 @@ export default function CheckoutPage() {
                   className="hidden"
                   onChange={handleCustomerChange}
                 />
-                <Label htmlFor="idVerification" className="cursor-pointer text-sm">
-                  Upload a valid photo ID to complete your booking. No $1 hold will be placed.
+                <Label htmlFor="idVerification" className="cursor-pointer text-sm border-2 border-dashed border-gray-400 rounded-md p-4 flex flex-col items-center justify-center">
+                <Upload className="h-[100px] w-[100px] mx-auto my-5  " />
+                
                 </Label>
+
+                <p className="border-0 border-t-[1px] rounded-none border-b-black pt-5">  Upload a valid photo ID to complete your booking. No $1 hold will be placed.</p>
               </div>
             ) : (
               <div className="relative border rounded-md overflow-hidden">
