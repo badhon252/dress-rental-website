@@ -15,12 +15,17 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import { useMutation } from "@tanstack/react-query";
+import { toast } from "sonner";
+import { useRouter } from "next/navigation";
 
 const formSchema = z.object({
   email: z.string().email("Invalid email address"),
 });
 
 const ForgotPasswordForm = () => {
+  const router = useRouter();
+
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -28,8 +33,30 @@ const ForgotPasswordForm = () => {
     },
   });
 
+  const { mutate, isPending } = useMutation({
+    mutationKey: ["forgot-password"],
+    mutationFn: (email : string) =>
+      fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/auth/forget-password`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({email}),
+      }).then((res) => res.json()),
+    onSuccess: (data, email) => {
+      if (!data.status) {
+        toast.error(data.message || "Something went wrong");
+        return;
+      }
+      toast.success(data.message || "Check your email for reset link");
+      form.reset();
+      router.push(`/otp?email=${encodeURIComponent(email)}`);
+    },
+  });
+
   async function onSubmit(values: z.infer<typeof formSchema>) {
     console.log(values);
+    mutate(values.email);
   }
 
   return (
@@ -79,10 +106,11 @@ const ForgotPasswordForm = () => {
               </div>
               <div className="w-full flex justify-center items-center pt-[20px]">
                 <button
+                  disabled={isPending}
                   className="text-base font-normal text-black leading-[20px] border-b border-black py-[10px] uppercase"
                   type="submit"
                 >
-                  Send Reset Link
+                  {isPending ? "Sending..." : "Send OTP"}
                 </button>
               </div>
             </form>

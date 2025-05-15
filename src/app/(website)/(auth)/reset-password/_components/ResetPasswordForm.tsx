@@ -15,6 +15,9 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import { useMutation } from "@tanstack/react-query";
+import { useRouter, useSearchParams } from "next/navigation";
+import { toast } from "sonner";
 
 const formSchema = z
   .object({
@@ -29,6 +32,11 @@ const formSchema = z
   });
 
 const ResetPasswordForm = () => {
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  const email = searchParams.get("email") || "";
+  const decodeEmail = decodeURIComponent(email);
+
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -37,8 +45,42 @@ const ResetPasswordForm = () => {
     },
   });
 
+  // reset password api integration
+  const { mutate, isPending } = useMutation({
+    mutationKey: ["reset-password"],
+    mutationFn: (values: { email: string; newPassword: string }) =>
+      fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/auth/reset-password`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(values),
+      }).then((res) => res.json()),
+    onSuccess: (data) => {
+      if (!data.status) {
+        toast.error(data.message || "Something went wrong");
+        return;
+      }
+      toast.success(data.message || "Password reset successfully");
+      form.reset();
+
+      setTimeout(() => {
+        router.push("/login");
+      }, 1000);
+    },
+  });
+
   async function onSubmit(values: z.infer<typeof formSchema>) {
     console.log(values);
+    if (!decodeEmail) {
+      toast.error("Email is required");
+      return;
+    }
+
+    mutate({
+      email: decodeEmail,
+      newPassword: values.password,
+    });
   }
 
   return (
@@ -110,10 +152,11 @@ const ResetPasswordForm = () => {
               </div>
               <div className="w-full flex justify-center items-center pt-[20px]">
                 <button
+                  disabled={isPending}
                   className="text-base font-normal text-black leading-[20px] border-b border-black py-[10px] uppercase"
                   type="submit"
                 >
-                  Reset Password
+                  {isPending ? "Sending..." : "Reset Password"}
                 </button>
               </div>
             </form>
