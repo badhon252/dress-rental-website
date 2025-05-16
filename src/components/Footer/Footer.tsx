@@ -6,6 +6,8 @@ import React, { useState } from 'react'
 import { Input } from '../ui/input'
 import LenderTermsConditions from '../tmc/lender -terms-Conditions'
 import CustomerTermsConditionsDialog from '../tmc/customer-terms-conditions-dialog'
+import { FaTiktok } from "react-icons/fa6";
+
 
 const Footer = () => {
   const [open,setOpne] = useState(false)
@@ -90,23 +92,7 @@ const Footer = () => {
               <Instagram className="h-6 w-6" />
             </Link>
             <Link href="#" aria-label="TikTok" className="text-gray-600 hover:text-gray-900">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                className="h-6 w-6"
-              >
-                <path d="M9 12a4 4 0 1 0 0 8 4 4 0 0 0 0-8z" />
-                <path d="M15 8h.01" />
-                <path d="M11 16.01V16" />
-                <path d="M19.42 9.61a7 7 0 0 1-7.42-7.61v.8a7 7 0 0 1-7 7" />
-              </svg>
+              <FaTiktok className="h-6 w-6"/>
             </Link>
           </div>
           <div className="space-y-2">
@@ -148,11 +134,17 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="flex flex-col items-center space-y-4 md:items-end md:space-y-2">
+        <div className="flex flex-col items-center">
+          <div>
+            <Image src={'/logos/Logo_black.png'} width={500} height={500} alt='logo' className='w-16 h-16'/>
+          </div>
           <div className="flex items-center space-x-2">
             <span className="text-2xl font-bold">MUSE GALA</span>
           </div>
           
+        </div>
+        <div>
+
         </div>
       </div>
     </div>

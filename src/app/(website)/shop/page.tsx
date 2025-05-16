@@ -7,6 +7,8 @@ import { ProductGrid } from "@/components/product/product-grid";
 import { ProductGridSkeleton } from "@/components/product/product-skeleton";
 import { SearchBar } from "@/components/product/search-bar";
 import { ShopFilters } from "@/components/product/shop-filters";
+import HowItWork from "@/components/HowItWork";
+import GiveAndTake from "@/components/section/GiveAndTake";
 
 // Number of products to show per "page"
 const PRODUCTS_PER_PAGE = 8;
@@ -70,10 +72,10 @@ export default function ShopPage() {
   const nextBatchSize = Math.min(remainingProducts, PRODUCTS_PER_PAGE);
 
   return (
-    <div className="container mx-auto px-4 py-8">
+    <div className="container mx-auto px-4 py-8 mt-20">
       <div className="text-center mb-12">
-        <h1 className="text-3xl font-medium tracking-[0.5em] mb-2">SHOP</h1>
-        <p className="text-sm tracking-wider text-gray-600">
+        <h1 className="text-[56px] font-medium tracking-[0.5em] mb-2">SHOP</h1>
+        <p className="text-3xl tracking-wider text-gray-600">
           CURATED DESIGNER RENTALS FOR EVERY MOMENT.
         </p>
       </div>
@@ -134,6 +136,9 @@ export default function ShopPage() {
               </button>
             </div>
           )}
+          <HowItWork/>
+
+          <GiveAndTake/>
 
           {!hasMoreProducts && filteredProducts.length > 0 && (
             <div className="text-center mt-8 text-sm text-gray-500 tracking-wider">
@@ -142,6 +147,7 @@ export default function ShopPage() {
           )}
         </div>
       </div>
+      
     </div>
   );
 }
