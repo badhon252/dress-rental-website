@@ -1,108 +1,144 @@
-"use client"
+"use client";
 
-import type React from "react"
+import type React from "react";
 
-import { useState, useRef, useEffect } from "react"
-import { toast } from "sonner"
-import Image from "next/image"
-import Link from "next/link"
+import { useState, useRef, useEffect } from "react";
+import { toast } from "sonner";
+import Image from "next/image";
+import Link from "next/link";
+import { useRouter, useSearchParams } from "next/navigation";
+import { useMutation } from "@tanstack/react-query";
 
 const OtpForm = () => {
-  const [otp, setOtp] = useState<string[]>(Array(6).fill(""))
-  const [isError, setIsError] = useState(false)
-  const inputRefs = useRef<(HTMLInputElement | null)[]>([])
+  const [otp, setOtp] = useState<string[]>(Array(6).fill(""));
+  const [isError, setIsError] = useState(false);
+  const inputRefs = useRef<(HTMLInputElement | null)[]>([]);
+  const router = useRouter();
+  const searchParams = useSearchParams();
+
+  const email = searchParams.get("email") || "";
+  const decodeEmail = decodeURIComponent(email);
 
   // Initialize refs array
   useEffect(() => {
-    inputRefs.current = inputRefs.current.slice(0, 6)
-  }, [])
+    inputRefs.current = inputRefs.current.slice(0, 6);
+  }, []);
 
   const handleChange = (index: number, value: string) => {
     // Only allow numbers
-    if (!/^\d*$/.test(value)) return
+    if (!/^\d*$/.test(value)) return;
 
-    const newOtp = [...otp]
+    const newOtp = [...otp];
     // Take only the last character if multiple are pasted
-    newOtp[index] = value.slice(-1)
-    setOtp(newOtp)
-    setIsError(false)
+    newOtp[index] = value.slice(-1);
+    setOtp(newOtp);
+    setIsError(false);
 
     // Auto-focus next input if current input is filled
     if (value && index < 5) {
-      inputRefs.current[index + 1]?.focus()
+      inputRefs.current[index + 1]?.focus();
     }
-  }
+  };
 
-  const handleKeyDown = (index: number, e: React.KeyboardEvent<HTMLInputElement>) => {
+  const handleKeyDown = (
+    index: number,
+    e: React.KeyboardEvent<HTMLInputElement>
+  ) => {
     // Move to previous input on backspace if current input is empty
     if (e.key === "Backspace" && !otp[index] && index > 0) {
-      inputRefs.current[index - 1]?.focus()
+      inputRefs.current[index - 1]?.focus();
     }
-  }
+  };
 
   const handlePaste = (e: React.ClipboardEvent<HTMLInputElement>) => {
-    e.preventDefault()
-    const pastedData = e.clipboardData.getData("text/plain").trim()
+    e.preventDefault();
+    const pastedData = e.clipboardData.getData("text/plain").trim();
 
     // Check if pasted content is a number and has a reasonable length
-    if (!/^\d+$/.test(pastedData)) return
+    if (!/^\d+$/.test(pastedData)) return;
 
-    const newOtp = [...otp]
-    const pastedChars = pastedData.split("").slice(0, 6)
+    const newOtp = [...otp];
+    const pastedChars = pastedData.split("").slice(0, 6);
 
     pastedChars.forEach((char, idx) => {
-      if (idx < 6) newOtp[idx] = char
-    })
+      if (idx < 6) newOtp[idx] = char;
+    });
 
-    setOtp(newOtp)
-    setIsError(false)
+    setOtp(newOtp);
+    setIsError(false);
 
     // Focus the next empty input or the last input if all are filled
-    const nextEmptyIndex = newOtp.findIndex((val) => !val)
+    const nextEmptyIndex = newOtp.findIndex((val) => !val);
     if (nextEmptyIndex !== -1) {
-      inputRefs.current[nextEmptyIndex]?.focus()
+      inputRefs.current[nextEmptyIndex]?.focus();
     } else {
-      inputRefs.current[5]?.focus()
+      inputRefs.current[5]?.focus();
     }
-  }
+  };
+
+  // otp api integration
+  const { mutate, isPending } = useMutation({
+    mutationKey: ["verify-otp"],
+    mutationFn: (values: { otp: string; email: string }) =>
+      fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/auth/verify-code`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(values),
+      }).then((res) => res.json()),
+    onSuccess: (data) => {
+      if (!data.status) {
+        toast.error(data.message || "Something went wrong");
+        return;
+      }
+      toast.success(data.message || "OTP verified successfully");
+      router.push(`/reset-password?email=${encodeURIComponent(decodeEmail)}`);
+    },
+  });
+
+  // otp api integration
+  const { mutate: forgotPasswordMutate, isPending: forgotPasswordPending } =
+    useMutation({
+      mutationKey: ["forgot-password"],
+      mutationFn: (email: string) =>
+        fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/auth/forget-password`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ email }),
+        }).then((res) => res.json()),
+      onSuccess: (data) => {
+        if (!data.status) {
+          toast.error(data.message || "Something went wrong");
+          return;
+        }
+        toast.success(data.message || "Check your email for reset link");
+      },
+    });
 
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-    const otpValue = otp.join("")
+    e.preventDefault();
+    const otpValue = otp.join("");
 
     // Check if OTP is complete
     if (otpValue.length !== 6) {
-      toast.error("Please enter all 6 digits")
-      return
+      toast.error("Please enter all 6 digits");
+      return;
     }
 
-    try {
-      // Here you would call your API to verify the OTP
-      // For demo purposes, we'll simulate an incorrect OTP
-      if (otpValue === "123456") {
-        toast.success("OTP verified successfully")
-        // Redirect to reset password page
-        window.location.href = "/reset-password"
-      } else {
-        setIsError(true)
-        toast.error("Invalid verification code. Please try again.")
-      }
-    } catch (error) {
-      console.error("OTP verification error:", error)
-      setIsError(true)
-      toast.error("Failed to verify code. Please try again.")
+    mutate({ otp: otpValue, email: decodeEmail });
+  };
+
+  const handleResendCode = () => {
+    if (!decodeEmail) {
+      toast.error("New verification code sent to your email");
+      return;
     }
-  }
 
-  const resendCode = () => {
-    // Reset the form
-    setOtp(Array(6).fill(""))
-    setIsError(false)
-    inputRefs.current[0]?.focus()
-
-    // Here you would call your API to resend the code
-    toast.success("New verification code sent to your email")
-  }
+    forgotPasswordMutate(decodeEmail);
+  };
 
   return (
     <div className="mt-20">
@@ -150,26 +186,30 @@ const OtpForm = () => {
             </div>
 
             {isError && (
-              <p className="text-red-500 text-sm mb-4 text-center">Incorrect verification code. Please try again.</p>
+              <p className="text-red-500 text-sm mb-4 text-center">
+                Incorrect verification code. Please try again.
+              </p>
             )}
 
             <div className="w-full flex justify-center items-center pt-[20px]">
               <button
+                disabled={isPending}
                 className="text-base font-normal text-black leading-[20px] border-b border-black py-[10px] uppercase"
                 type="submit"
               >
-                Verify Code
+                {isPending ? "Verifying..." : "Verify Code"}
               </button>
             </div>
           </form>
 
           <div className="w-full flex justify-between items-center pt-[25px] md:pt-[45px] lg:pt-[60px]">
             <button
+              disabled={forgotPasswordPending}
               className="text-base font-normal text-black leading-[20px] border-b border-black py-[10px] uppercase"
               type="button"
-              onClick={resendCode}
+              onClick={handleResendCode}
             >
-              Resend Code
+              {forgotPasswordPending ? "Resending..." : "Resend Code"}
             </button>
             <Link href="/forgot-password">
               <button
@@ -183,7 +223,7 @@ const OtpForm = () => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default OtpForm
+export default OtpForm;
