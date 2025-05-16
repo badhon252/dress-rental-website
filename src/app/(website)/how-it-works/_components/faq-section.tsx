@@ -118,10 +118,17 @@ export default function FAQSection() {
       <h1 className="text-4xl md:text-[42px] lg:text-[48px] font-normal text-black leading-[48px] text-center pb-[30px] md:pb-[45px] lg:pb-[60px]">
         F A Q
       </h1>
- 
+
       <div className="space-y-4">
         {faqCategories.map((category) => (
-          <div key={category.id} className={`${category.id ? "border-b-[1px] border-black" : "border-t-[1px] border-black"}`}>
+          <div
+            key={category.id}
+            className={`${
+              category.id
+                ? "border-b-[1px] border-black"
+                : "border-t-[1px] border-black"
+            }`}
+          >
             <button
               onClick={() => handleCategoryToggle(category.id)}
               className="flex justify-between items-center w-full pb-2 pt-3 text-left text-2xl font-normal text-black leading-[24px] focus:outline-none"

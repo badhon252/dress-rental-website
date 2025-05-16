@@ -1,4 +1,5 @@
 import CheckoutPage from '@/components/checkout/Checkout'
+import GiveAndTake from '@/components/section/GiveAndTake'
 import React from 'react'
 
 const page = () => {
@@ -6,6 +7,7 @@ const page = () => {
     <div>
 
       <CheckoutPage/>
+      <GiveAndTake/>
     </div>
   )
 }

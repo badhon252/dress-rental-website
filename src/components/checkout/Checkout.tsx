@@ -1,21 +1,21 @@
-"use client"
+"use client";
 
-import type React from "react"
+import type React from "react";
 
-import { useState, useEffect } from "react"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { ChevronDown, Search, X, Trash2, Upload } from "lucide-react"
-import Image from "next/image"
+import { useState, useEffect } from "react";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { ChevronDown, Search, X, Trash2, Upload } from "lucide-react";
+import Image from "next/image";
 
 // Product type definition
 interface Product {
-  id: string
-  name: string
-  price: number
-  image: string
+  id: string;
+  name: string;
+  price: number;
+  image: string;
 }
 
 export default function CheckoutPage() {
@@ -26,10 +26,10 @@ export default function CheckoutPage() {
     phoneNumber: "",
     address: "",
     idVerification: "",
-  })
+  });
 
   // ID preview state
-  const [idPreview, setIdPreview] = useState<string | null>(null)
+  const [idPreview, setIdPreview] = useState<string | null>(null);
 
   // Order details state
   const [orderDetails, setOrderDetails] = useState({
@@ -38,7 +38,7 @@ export default function CheckoutPage() {
     endDate: "",
     deliveryOption: "shipping",
     postCode: "",
-  })
+  });
 
   // Products state - sample data
   const [products, setProducts] = useState<Product[]>([
@@ -54,7 +54,7 @@ export default function CheckoutPage() {
       price: 180.0,
       image: "/elegant-evening-gown.png",
     },
-  ])
+  ]);
 
   // Price state
   const [pricing, setPricing] = useState({
@@ -63,15 +63,19 @@ export default function CheckoutPage() {
     shipping: 10.0,
     additionalFee: 0.0,
     total: 415.0,
-  })
+  });
 
   // Size guide state
-  const [isSizeGuideOpen, setIsSizeGuideOpen] = useState(false)
+  const [isSizeGuideOpen, setIsSizeGuideOpen] = useState(false);
 
   // Calculate total pricing
   useEffect(() => {
-    const baseRentalFee = products.reduce((sum, product) => sum + product.price, 0)
-    const additionalFee = orderDetails.rentalOption === "8day" ? 15.0 * products.length : 0.0
+    const baseRentalFee = products.reduce(
+      (sum, product) => sum + product.price,
+      0
+    );
+    const additionalFee =
+      orderDetails.rentalOption === "8day" ? 15.0 * products.length : 0.0;
 
     setPricing({
       rentalFee: baseRentalFee,
@@ -79,81 +83,81 @@ export default function CheckoutPage() {
       shipping: 10.0,
       additionalFee: additionalFee,
       total: baseRentalFee + 5.0 + 10.0 + additionalFee,
-    })
-  }, [products, orderDetails.rentalOption])
+    });
+  }, [products, orderDetails.rentalOption]);
 
   // Handle customer details change
   const handleCustomerChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target
+    const { name, value } = e.target;
     setCustomerDetails((prev) => ({
       ...prev,
       [name]: value,
-    }))
+    }));
 
     // Handle file upload for ID verification
     if (name === "idVerification" && e.target.files && e.target.files[0]) {
-      const file = e.target.files[0]
-      const reader = new FileReader()
+      const file = e.target.files[0];
+      const reader = new FileReader();
 
       reader.onload = (event) => {
         if (event.target && event.target.result) {
-          setIdPreview(event.target.result as string)
+          setIdPreview(event.target.result as string);
         }
-      }
+      };
 
-      reader.readAsDataURL(file)
+      reader.readAsDataURL(file);
     }
-  }
+  };
 
   // Handle order details change
   interface OrderDetails {
-    rentalOption: string
-    startDate: string
-    endDate: string
-    deliveryOption: string
-    postCode: string
+    rentalOption: string;
+    startDate: string;
+    endDate: string;
+    deliveryOption: string;
+    postCode: string;
   }
 
   const handleOrderChange = (name: keyof OrderDetails, value?: string) => {
     setOrderDetails((prev) => ({
       ...prev,
       [name]: value,
-    }))
+    }));
 
     // If start date changes, calculate end date based on rental option
     if (name === "startDate" && value) {
-      const startDate = new Date(value)
-      const days = orderDetails.rentalOption === "4day" ? 4 : 8
-      const endDate = new Date(startDate)
-      endDate.setDate(startDate.getDate() + days)
+      const startDate = new Date(value);
+      const days = orderDetails.rentalOption === "4day" ? 4 : 8;
+      const endDate = new Date(startDate);
+      endDate.setDate(startDate.getDate() + days);
 
       // Format the date as YYYY-MM-DD for the input
-      const formattedEndDate = endDate.toISOString().split("T")[0]
+      const formattedEndDate = endDate.toISOString().split("T")[0];
 
       setOrderDetails((prev) => ({
         ...prev,
         endDate: formattedEndDate,
-      }))
+      }));
     }
-  }
+  };
 
   // Update end date when rental option changes
   useEffect(() => {
     if (orderDetails.startDate) {
-      const startDate = new Date(orderDetails.startDate)
-      const days = orderDetails.rentalOption === "4day" ? 4 : 8
-      const endDate = new Date(startDate)
-      endDate.setDate(startDate.getDate() + days)
+      const startDate = new Date(orderDetails.startDate);
+      const days = orderDetails.rentalOption === "4day" ? 4 : 8;
+      const endDate = new Date(startDate);
+      endDate.setDate(startDate.getDate() + days);
 
       // Format the date as YYYY-MM-DD for the input
-      const formattedEndDate = endDate.toISOString().split("T")[0]
+      const formattedEndDate = endDate.toISOString().split("T")[0];
 
       setOrderDetails((prev) => ({
         ...prev,
         endDate: formattedEndDate,
-      }))
+      }));
     }
-  }, [orderDetails.rentalOption, orderDetails.startDate])
+  }, [orderDetails.rentalOption, orderDetails.startDate]);
 
   // Handle form submission
   const handleSubmit = () => {
@@ -162,24 +166,24 @@ export default function CheckoutPage() {
       orderDetails,
       products,
       pricing,
-    }
+    };
 
-    console.log("Checkout Data:", allData)
-  }
+    console.log("Checkout Data:", allData);
+  };
 
   // Handle removing ID preview
   const handleRemoveIdPreview = () => {
-    setIdPreview(null)
+    setIdPreview(null);
     setCustomerDetails((prev) => ({
       ...prev,
       idVerification: "",
-    }))
-  }
+    }));
+  };
 
   // Handle removing a product
   const handleRemoveProduct = (productId: string) => {
-    setProducts(products.filter((product) => product.id !== productId))
-  }
+    setProducts(products.filter((product) => product.id !== productId));
+  };
 
   return (
     <div className="container mx-auto py-8 px-4">
@@ -188,7 +192,9 @@ export default function CheckoutPage() {
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
         {/* Left Column - Customer Details */}
         <div className="space-y-6">
-          <h2 className="text-xl font-bold border-b-[1px] border-b-black/50 pb-2 mb-4">CUSTOMER DETAILS</h2>
+          <h2 className="text-xl font-bold border-b-[1px] border-b-black/50 pb-2 mb-4">
+            CUSTOMER DETAILS
+          </h2>
 
           <div className="space-y-2">
             <Label className="text-[24px] font-normal" htmlFor="fullName">
@@ -209,7 +215,7 @@ export default function CheckoutPage() {
               Email Address <span className="text-red-500">*</span>
             </Label>
             <Input
-               className="border-0 border-b-[1px] rounded-none border-b-black/50 focus-visible:ring-0"
+              className="border-0 border-b-[1px] rounded-none border-b-black/50 focus-visible:ring-0"
               id="emailAddress"
               name="emailAddress"
               type="email"
@@ -224,7 +230,7 @@ export default function CheckoutPage() {
               Phone Number <span className="text-red-500">*</span>
             </Label>
             <Input
-               className="border-0 border-b-[1px] rounded-none border-b-black/50 focus-visible:ring-0"
+              className="border-0 border-b-[1px] rounded-none border-b-black/50 focus-visible:ring-0"
               id="phoneNumber"
               name="phoneNumber"
               value={customerDetails.phoneNumber}
@@ -238,7 +244,7 @@ export default function CheckoutPage() {
               Address <span className="text-red-500">*</span>
             </Label>
             <Input
-               className="border-0 border-b-[1px] rounded-none border-b-black/50 focus-visible:ring-0"
+              className="border-0 border-b-[1px] rounded-none border-b-black/50 focus-visible:ring-0"
               id="address"
               name="address"
               value={customerDetails.address}
@@ -274,12 +280,18 @@ export default function CheckoutPage() {
                   className="hidden"
                   onChange={handleCustomerChange}
                 />
-                <Label htmlFor="idVerification" className="cursor-pointer text-sm border-2 border-dashed border-gray-400 rounded-md p-4 flex flex-col items-center justify-center">
-                <Upload className="h-[100px] w-[100px] mx-auto my-5  " />
-                
+                <Label
+                  htmlFor="idVerification"
+                  className="cursor-pointer text-sm border-2 border-dashed border-gray-400 rounded-md p-4 flex flex-col items-center justify-center"
+                >
+                  <Upload className="h-[100px] w-[100px] mx-auto my-5  " />
                 </Label>
 
-                <p className="border-0 border-t-[1px] rounded-none border-b-black pt-5">  Upload a valid photo ID to complete your booking. No $1 hold will be placed.</p>
+                <p className="border-0 border-t-[1px] rounded-none border-b-black pt-5">
+                  {" "}
+                  Upload a valid photo ID to complete your booking. No $1 hold
+                  will be placed.
+                </p>
               </div>
             ) : (
               <div className="relative border rounded-md overflow-hidden">
@@ -313,7 +325,10 @@ export default function CheckoutPage() {
           {/* Products list */}
           <div className="space-y-4">
             {products.map((product) => (
-              <div key={product.id} className="flex items-start gap-4 border-b pb-4">
+              <div
+                key={product.id}
+                className="flex items-start gap-4 border-b pb-4"
+              >
                 <div className="w-20 h-20 bg-gray-200 rounded">
                   <Image
                     height={100}
@@ -326,9 +341,12 @@ export default function CheckoutPage() {
                 <div className="flex-grow">
                   <h3 className="font-bold">{product.name}</h3>
                   <p className="text-sm text-gray-600">
-                    ${product.price.toFixed(2)} / {orderDetails.rentalOption === "4day" ? "4 DAYS" : "8 DAYS"}
+                    ${product.price.toFixed(2)} /{" "}
+                    {orderDetails.rentalOption === "4day" ? "4 DAYS" : "8 DAYS"}
                   </p>
-                  <p className="text-sm text-gray-600">DRESS ID: {product.id}</p>
+                  <p className="text-sm text-gray-600">
+                    DRESS ID: {product.id}
+                  </p>
                 </div>
                 <Button
                   variant="ghost"
@@ -346,11 +364,17 @@ export default function CheckoutPage() {
             <Tabs
               defaultValue="4day"
               className="w-full"
-              onValueChange={(value) => handleOrderChange("rentalOption", value)}
+              onValueChange={(value) =>
+                handleOrderChange("rentalOption", value)
+              }
             >
               <TabsList className="grid w-full grid-cols-2 ">
-                <TabsTrigger className="bg-none" value="4day ">4 DAY RENT</TabsTrigger>
-                <TabsTrigger value="8day">8 DAY RENT(+$15 PER ITEM)</TabsTrigger>
+                <TabsTrigger className="bg-none" value="4day ">
+                  4 DAY RENT
+                </TabsTrigger>
+                <TabsTrigger value="8day">
+                  8 DAY RENT(+$15 PER ITEM)
+                </TabsTrigger>
               </TabsList>
             </Tabs>
           </div>
@@ -366,7 +390,9 @@ export default function CheckoutPage() {
                   id="startDate"
                   type="date"
                   value={orderDetails.startDate}
-                  onChange={(e) => handleOrderChange("startDate", e.target.value)}
+                  onChange={(e) =>
+                    handleOrderChange("startDate", e.target.value)
+                  }
                   className="w-full"
                 />
               </div>
@@ -396,7 +422,9 @@ export default function CheckoutPage() {
             <Tabs
               defaultValue="shipping"
               className="w-full"
-              onValueChange={(value) => handleOrderChange("deliveryOption", value)}
+              onValueChange={(value) =>
+                handleOrderChange("deliveryOption", value)
+              }
             >
               <TabsList className="grid w-full grid-cols-2">
                 <TabsTrigger value="shipping">SHIPPING</TabsTrigger>
@@ -414,13 +442,20 @@ export default function CheckoutPage() {
                 value={orderDetails.postCode}
                 onChange={(e) => handleOrderChange("postCode", e.target.value)}
               />
-              <Button size="icon" className="absolute right-0 top-0" variant="ghost">
+              <Button
+                size="icon"
+                className="absolute right-0 top-0"
+                variant="ghost"
+              >
                 <Search className="h-4 w-4" />
               </Button>
             </div>
-            <div className="h-32 bg-gray-200 rounded-md mt-2">
+            <div className="h-32   rounded-md mt-2">
               {/* Map placeholder */}
-              <div className="w-full h-full flex items-center justify-center text-gray-500">Map View</div>
+              <iframe
+                className="w-full"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2190.686032446237!2d-111.79177313086753!3d34.64661204100477!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x872daba16066fa05%3A0xbe4cb7b316b5f970!2zTiBEYXZlIFdpbmdmaWVsZCBSZCwgTGFrZSBNb250ZXp1bWEsIEFaIDg2MzM1LCDgpq7gpr7gprDgp43gppXgpr_gpqgg4Kav4KeB4KaV4KeN4Kak4Kaw4Ka-4Ka34KeN4Kaf4KeN4Kaw!5e0!3m2!1sbn!2sbd!4v1747378180721!5m2!1sbn!2sbd"
+              ></iframe>
             </div>
           </div>
 
@@ -456,7 +491,11 @@ export default function CheckoutPage() {
               onClick={() => setIsSizeGuideOpen(!isSizeGuideOpen)}
             >
               <h3 className="font-bold">SIZE GUIDE</h3>
-              <ChevronDown className={`h-4 w-4 transition-transform ${isSizeGuideOpen ? "rotate-180" : ""}`} />
+              <ChevronDown
+                className={`h-4 w-4 transition-transform ${
+                  isSizeGuideOpen ? "rotate-180" : ""
+                }`}
+              />
             </button>
 
             {isSizeGuideOpen && (
@@ -470,7 +509,10 @@ export default function CheckoutPage() {
                   <div className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 w-4 h-4 bg-black rounded-full"></div>
                 </div>
                 <div className="text-sm text-gray-600 mt-2">
-                  <p>This item fits true to size. We recommend selecting your normal size.</p>
+                  <p>
+                    This item fits true to size. We recommend selecting your
+                    normal size.
+                  </p>
                 </div>
               </div>
             )}
@@ -492,5 +534,5 @@ export default function CheckoutPage() {
         </div>
       </div>
     </div>
-  )
+  );
 }

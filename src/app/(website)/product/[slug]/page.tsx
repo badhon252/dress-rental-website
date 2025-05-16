@@ -3,7 +3,6 @@
 
 import { useState, useEffect } from "react"
 import Image from "next/image"
-import Link from "next/link"
 import { ShoppingBag, Heart, ZoomIn, X, ChevronLeft, ChevronRight } from "lucide-react"
 import { DatePicker } from "@/components/date-picker"
 import { DeliveryOptions } from "@/components/delivery-options"
@@ -14,8 +13,9 @@ import { ProductThumbnails } from "@/components/product-thumbnails"
 import type { DeliveryOption, Product, ProductSize, RentalDuration } from "@/types/product"
 import { useToast } from "@/hooks/use-toast"
 import { addDays, startOfDay } from "date-fns"
-import { getProductBySlug, styledByYouProducts } from "@/data/product-data"
+import { getProductBySlug} from "@/data/product-data"
 import GiveAndTake from "@/components/section/GiveAndTake"
+import StyledByYou from "@/components/product/styled_By_You"
 
 export default function ProductPage({ params }: { params: { slug: string } }) {
   const [selectedImageIndex, setSelectedImageIndex] = useState(0)
@@ -320,36 +320,7 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
       </div>
 
       {/* Styled By You Section */}
-      <div className="max-w-6xl mx-auto px-4 py-16">
-        <div className="text-center mb-8">
-          <h2 className="text-3xl tracking-[0.3em] mb-2">STYLED BY YOU</h2>
-          <div className="flex justify-center">
-            <Link href="#" className="text-sm tracking-widest border-b border-black pb-1">
-              EXPLORE THE EDIT
-            </Link>
-          </div>
-        </div>
-        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-6">
-          {styledByYouProducts.map((styledProduct) => (
-            <div key={styledProduct.id} className="flex flex-col">
-              <Link href={`/product/${styledProduct.slug}`} className="group">
-                <div className="overflow-hidden mb-4">
-                  <Image
-                    src={styledProduct.images[0]?.src || "/placeholder.svg"}
-                    alt={styledProduct.images[0]?.alt || "Product image"}
-                    width={400}
-                    height={600}
-                    className="w-full aspect-[2/3] object-cover transition-transform duration-300 group-hover:scale-105"
-                  />
-                </div>
-                <div className="text-center">
-                  <h3 className="uppercase tracking-widest text-sm">{styledProduct.name}</h3>
-                </div>
-              </Link>
-            </div>
-          ))}
-        </div>
-      </div>
+     <StyledByYou/>
 
       {/* How It Works Section */}
       <div className="max-w-6xl mx-auto px-4 py-16 text-center">
