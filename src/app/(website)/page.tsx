@@ -7,6 +7,7 @@ import ServiceFeatures from "@/components/ServiceFeatures";
 import Image from "next/image";
 import { Input } from "@/components/ui/input";
 import { ArrowRight } from "lucide-react";
+import StyledByYou from "@/components/product/styled_By_You";
 
 export default function Home() {
   const trendingProducts = getTrendingProducts();
@@ -83,6 +84,10 @@ export default function Home() {
         />
 
         <ServiceFeatures />
+
+        {/* style by you  */}
+
+         <StyledByYou/>
 
         <div className="container mx-auto px-4 py-8 md:py-12 lg:py-16 max-w-9xl">
           {/* Header */}
