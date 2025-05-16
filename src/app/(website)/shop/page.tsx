@@ -72,10 +72,10 @@ export default function ShopPage() {
   const nextBatchSize = Math.min(remainingProducts, PRODUCTS_PER_PAGE);
 
   return (
-    <div className="container mx-auto px-4 py-8">
+    <div className="container mx-auto px-4 py-8 mt-20">
       <div className="text-center mb-12">
-        <h1 className="text-3xl font-medium tracking-[0.5em] mb-2">SHOP</h1>
-        <p className="text-sm tracking-wider text-gray-600">
+        <h1 className="text-[56px] font-medium tracking-[0.5em] mb-2">SHOP</h1>
+        <p className="text-3xl tracking-wider text-gray-600">
           CURATED DESIGNER RENTALS FOR EVERY MOMENT.
         </p>
       </div>

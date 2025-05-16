@@ -48,7 +48,7 @@ const Navbar = () => {
       <div className="container mx-auto">
         <div className="flex justify-between items-center">
           {/* Desktop Menu */}
-          <div className="hidden md:flex items-center md:gap-x-3 lg:gap-x-2">
+          <div className="hidden md:flex items-center md:gap-x-3 lg:gap-x-1">
             {menus.map((menu) => (
               <Button
                 key={menu.id}
@@ -56,7 +56,12 @@ const Navbar = () => {
                 effect="hoverUnderline"
                 asChild
                 className={`text-[14px] font-normal ${
-                  pathname === "/become-lender" || scrolling
+                  pathname === "/become-lender" ||
+                  pathname === "/shop" ||
+                  pathname === "/about" ||
+                  pathname === "/how-it-works" ||
+                  pathname === "/find-near-you" ||
+                  scrolling
                     ? "text-black"
                     : "text-white"
                 }`}
@@ -74,7 +79,12 @@ const Navbar = () => {
           </div>
 
           {/* Logo */}
-          {scrolling ? (
+          {scrolling ||
+          pathname === "/become-lender" ||
+          pathname === "/shop" ||
+          pathname === "/about" ||
+          pathname === "/how-it-works" ||
+          pathname === "/find-near-you" ? (
             <div className="">
               <Image
                 src="/logos/Logo_black.png"
@@ -93,18 +103,27 @@ const Navbar = () => {
 
           <div
             className={`${
-              scrolling ? "text-black" : "text-white"
+              scrolling ||
+              pathname === "/become-lender" ||
+              pathname === "/shop" ||
+              pathname === "/about" ||
+              pathname === "/how-it-works" ||
+              pathname === "/find-near-you"
+                ? "text-black"
+                : "text-white"
             } flex gap-[30px]`}
           >
             <Search />
 
             {/* Hover User to reveal Login */}
-            <div className="relative group cursor-pointer">
+            <div className={`relative group cursor-pointer `}>
               <User />
               <div className="absolute top-5 -right-4 mt-1 hidden group-hover:block z-50">
                 <Link
                   href="/login"
-                  className={`block px-2 py-2 text-[16px] ${scrolling?'border-black':'border-white'} border-b  font-normal`}
+                  className={`block px-2 py-2 text-[16px] ${
+                    scrolling ? "border-black" : "border-white"
+                  } border-b  font-normal`}
                 >
                   Login
                 </Link>

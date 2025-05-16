@@ -16,6 +16,8 @@ import { addDays, startOfDay } from "date-fns"
 import { getProductBySlug} from "@/data/product-data"
 import GiveAndTake from "@/components/section/GiveAndTake"
 import StyledByYou from "@/components/product/styled_By_You"
+import { useRouter } from 'next/navigation'
+
 
 export default function ProductPage({ params }: { params: { slug: string } }) {
   const [selectedImageIndex, setSelectedImageIndex] = useState(0)
@@ -28,7 +30,7 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
   const [totalPrice, setTotalPrice] = useState<number>(0)
   const [isZoomModalOpen, setIsZoomModalOpen] = useState(false)
   const { toast } = useToast()
-
+  const router = useRouter()
   // Find the correct product based on the slug
   useEffect(() => {
     const foundProduct = getProductBySlug(params.slug)
@@ -116,6 +118,8 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
       description: "Item added to bag successfully!",
       duration: 3000,
     })
+  router.push('/checkout')
+    
     // Here you would typically add the item to a cart state or context
   }
 
