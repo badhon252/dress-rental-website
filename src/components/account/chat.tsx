@@ -1,3 +1,5 @@
+
+
 "use client";
 
 import { useState } from "react";
@@ -31,24 +33,9 @@ export default function ChatSystem() {
       preview: "Hi, I have a question...",
       timestamp: "10:15 AM",
       messages: [
-        {
-          id: "1",
-          content: "Hi, Mindy",
-          sender: "user",
-          timestamp: "09:41 AM",
-        },
-        {
-          id: "2",
-          content: "I've tried the app",
-          sender: "user",
-          timestamp: "09:41 AM",
-        },
-        {
-          id: "3",
-          content: "Really?",
-          sender: "support",
-          timestamp: "09:42 AM",
-        },
+        { id: "1", content: "Hi, Mindy", sender: "user", timestamp: "09:41 AM" },
+        { id: "2", content: "I've tried the app", sender: "user", timestamp: "09:41 AM" },
+        { id: "3", content: "Really?", sender: "support", timestamp: "09:42 AM" },
       ],
     },
     {
@@ -62,32 +49,27 @@ export default function ChatSystem() {
 
   const handleSendMessage = () => {
     if (newMessage.trim() === "") return;
-    // In a real app, you would add the message to the conversation
-    // and send it to the server
     console.log("Sending message:", newMessage);
     setNewMessage("");
   };
 
-  const activeChat = conversations.find(
-    (conv) => conv.id === activeConversation
-  );
+  const activeChat = conversations.find((conv) => conv.id === activeConversation);
 
   return (
-    <div className="font-sans">
-      {/* Chat Interface */}
-      <div className="flex mb-[100px] rounded-lg gap-7 overflow-hidden h-[600px]">
-        {/* Conversations List */}
-        <div className="w-1/3">
-          <div className="p-3  mb-[30px]">
+    <div className="font-sans px-4 sm:px-6 md:px-8">
+      <div className="flex flex-col md:flex-row md:h-[600px] gap-6 rounded-lg overflow-hidden mb-[100px]">
+        {/* Left Panel - Conversation List */}
+        <div className="w-full md:w-1/3">
+          <div className="p-3 mb-4">
             <div className="relative">
               <Search className="absolute left-3 top-2.5 h-4 w-4 text-[#595959]" />
               <Input
                 placeholder="SEARCH MESSAGE....."
-                className="px-11 py-4  border-[#E6E6E6] focus-visible:ring-0 text-sm"
+                className="pl-11 py-4 border-[#E6E6E6] focus-visible:ring-0 text-sm"
               />
             </div>
           </div>
-          <div className="overflow-y-auto h-[calc(600px-56px)]">
+          <div className="overflow-y-auto max-h-[400px] md:max-h-[544px]">
             {conversations.map((conversation) => (
               <div
                 key={conversation.id}
@@ -101,34 +83,28 @@ export default function ChatSystem() {
                 </div>
                 <div className="flex-1 min-w-0">
                   <div className="flex justify-between items-center">
-                    <p className="font-medium text-sm">
-                      Order #{conversation.orderId}
-                    </p>
-                    <span className="text-xs text-gray-500">
-                      {conversation.timestamp}
-                    </span>
+                    <p className="font-medium text-sm">Order #{conversation.orderId}</p>
+                    <span className="text-xs text-gray-500">{conversation.timestamp}</span>
                   </div>
-                  <p className="text-sm text-gray-500 truncate">
-                    {conversation.preview}
-                  </p>
+                  <p className="text-sm text-gray-500 truncate">{conversation.preview}</p>
                 </div>
               </div>
             ))}
           </div>
         </div>
 
-        {/* Chat Area */}
-        <div className="w-2/3 flex flex-col">
-          <div className="py-5  px-7 border border-[#E6E6E6] rounded-full flex items-center gap-3">
+        {/* Right Panel - Chat Area */}
+        <div className="w-full md:w-2/3 flex flex-col">
+          {/* Chat Header */}
+          <div className="py-4 px-4 sm:px-7 border border-[#E6E6E6] rounded-full flex items-center gap-3">
             <div className="bg-gray-100 rounded-full p-2">
-              <User className="h-7 w-7 text-gray-500" />
+              <User className="h-6 w-6 sm:h-7 sm:w-7 text-gray-500" />
             </div>
-            <p className="font-normal text-2xl ">
-              Order #{activeChat?.orderId}
-            </p>
+            <p className="font-normal text-lg sm:text-2xl">Order #{activeChat?.orderId}</p>
           </div>
 
-          <div className="flex-1 flex flex-col border-[#E6E6E6] border mt-[30px] rounded-xl overflow-hidden">
+          {/* Messages Area */}
+          <div className="flex-1 flex flex-col border-[#E6E6E6] border mt-5 rounded-xl overflow-hidden">
             <div className="flex-1 overflow-y-auto p-4 space-y-4">
               {activeChat?.messages.length ? (
                 <>
@@ -141,13 +117,11 @@ export default function ChatSystem() {
                     <div
                       key={message.id}
                       className={`flex ${
-                        message.sender === "user"
-                          ? "justify-end"
-                          : "justify-start"
+                        message.sender === "user" ? "justify-end" : "justify-start"
                       }`}
                     >
                       <div
-                        className={`max-w-[70%] rounded-lg px-4 py-2 ${
+                        className={`max-w-[85%] sm:max-w-[70%] rounded-lg px-4 py-2 ${
                           message.sender === "user"
                             ? "bg-black text-white"
                             : "bg-gray-100 text-gray-800"
@@ -165,26 +139,24 @@ export default function ChatSystem() {
               )}
             </div>
 
-            {/* Input box fixed at bottom */}
-            <div className="p-4  bg-white">
-              <div className="flex items-center justify-between  gap-2">
+            {/* Input */}
+            <div className="p-4 bg-white">
+              <div className="flex items-center gap-2">
                 <input
                   placeholder="Type your message"
                   value={newMessage}
                   onChange={(e) => setNewMessage(e.target.value)}
-                  className="rounded-full py-[18px] px-5 border w-full outline-none  bg-white"
                   onKeyDown={(e) => {
-                    if (e.key === "Enter") {
-                      handleSendMessage();
-                    }
+                    if (e.key === "Enter") handleSendMessage();
                   }}
+                  className="rounded-full py-4 px-5 border w-full outline-none bg-white text-sm"
                 />
                 <Button
                   onClick={handleSendMessage}
                   size="icon"
-                  className="rounded-full bg-black hover:bg-gray-800 p-5"
+                  className="rounded-full bg-black hover:bg-gray-800 p-4"
                 >
-                  <Send className="h-[60px] w-[60px] " />
+                  <Send className="h-5 w-5 sm:h-6 sm:w-6" />
                 </Button>
               </div>
             </div>

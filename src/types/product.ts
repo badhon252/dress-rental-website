@@ -11,7 +11,7 @@ export interface ProductImage {
 
 export interface Product {
   id: string
-  name: string
+  name: string,
   price: number
   images: ProductImage[]
   sizes: ProductSize[]
