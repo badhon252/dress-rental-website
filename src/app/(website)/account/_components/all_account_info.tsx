@@ -12,7 +12,7 @@ const AllAccountInfo = () => {
   const [tab, setTab] = useState<string>("Account Info");
 
   return (
-    <div>
+    <div className="">
       <div className="mt-20">
         <Headers setTab={setTab} tab={tab} />
         {tab === "Account Info" && (
