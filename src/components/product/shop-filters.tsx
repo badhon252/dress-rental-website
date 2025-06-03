@@ -1,15 +1,15 @@
-"use client"
+"use client";
 
-import type React from "react"
-
-import { useState, useEffect } from "react"
-import { ChevronDown, ChevronUp } from "lucide-react"
-import type { FilterOptions } from "@/lib/filter-utils"
-import type { ProductSize, RentalDuration } from "@/types/product"
+import type React from "react";
+import { useState, useEffect } from "react";
+import { ChevronDown, ChevronUp } from "lucide-react";
+import type { FilterOptions } from "@/lib/filter-utils";
+import type { ProductSize, RentalDuration } from "@/types/product";
+import { DualRangeSlider } from "../ui/DualRangeSlider";
 
 interface ShopFiltersProps {
-  filters: FilterOptions
-  onFilterChange: (filters: Partial<FilterOptions>) => void
+  filters: FilterOptions;
+  onFilterChange: (filters: Partial<FilterOptions>) => void;
 }
 
 export function ShopFilters({ filters, onFilterChange }: ShopFiltersProps) {
@@ -24,89 +24,99 @@ export function ShopFilters({ filters, onFilterChange }: ShopFiltersProps) {
     designer: true,
     category: true,
     location: true,
-  })
+  });
 
   // State for the pickup distance slider
-  const [pickupDistance, setPickupDistance] = useState(filters.pickupDistance || 50)
+  const [pickupDistance, setPickupDistance] = useState(
+    filters.pickupDistance || 50
+  );
 
   // Update filters when pickup distance changes
   useEffect(() => {
     if (pickupDistance !== filters.pickupDistance) {
-      onFilterChange({ pickupDistance })
+      onFilterChange({ pickupDistance });
     }
-  }, [pickupDistance, filters.pickupDistance, onFilterChange])
+  }, [pickupDistance, filters.pickupDistance, onFilterChange]);
 
   const toggleSection = (section: keyof typeof expandedSections) => {
     setExpandedSections({
       ...expandedSections,
       [section]: !expandedSections[section],
-    })
-  }
+    });
+  };
 
   const handleSizeChange = (size: ProductSize, checked: boolean) => {
-    const newSizes = checked ? [...(filters.sizes || []), size] : (filters.sizes || []).filter((s) => s !== size)
+    const newSizes = checked
+      ? [...(filters.sizes || []), size]
+      : (filters.sizes || []).filter((s) => s !== size);
 
-    onFilterChange({ sizes: newSizes })
-  }
+    onFilterChange({ sizes: newSizes });
+  };
 
-  const handleRentalDurationChange = (duration: RentalDuration, checked: boolean) => {
+  const handleRentalDurationChange = (
+    duration: RentalDuration,
+    checked: boolean
+  ) => {
     const newDurations = checked
       ? [...(filters.rentalDurations || []), duration]
-      : (filters.rentalDurations || []).filter((d) => d !== duration)
+      : (filters.rentalDurations || []).filter((d) => d !== duration);
 
-    onFilterChange({ rentalDurations: newDurations })
-  }
+    onFilterChange({ rentalDurations: newDurations });
+  };
 
   const handleAvailableNearMeChange = (checked: boolean) => {
-    onFilterChange({ availableNearMe: checked })
-  }
+    onFilterChange({ availableNearMe: checked });
+  };
 
   const handleColorChange = (color: string, checked: boolean) => {
-    const newColors = checked ? [...(filters.colors || []), color] : (filters.colors || []).filter((c) => c !== color)
+    const newColors = checked
+      ? [...(filters.colors || []), color]
+      : (filters.colors || []).filter((c) => c !== color);
 
-    onFilterChange({ colors: newColors })
-  }
+    onFilterChange({ colors: newColors });
+  };
 
-  const handlePriceChange = (value: number) => {
-    onFilterChange({ priceRange: value })
-  }
+  // const handlePriceChange = (value: number) => {
+  //   onFilterChange({ priceRange: value });
+  // };
 
-  const handleEventDateChange = (date: string) => {
-    onFilterChange({ eventDate: date })
-  }
+  // const handleEventDateChange = (date: string) => {
+  //   onFilterChange({ eventDate: date });
+  // };
 
   const handleDesignerChange = (designer: string, checked: boolean) => {
     const newDesigners = checked
       ? [...(filters.designers || []), designer]
-      : (filters.designers || []).filter((d) => d !== designer)
+      : (filters.designers || []).filter((d) => d !== designer);
 
-    onFilterChange({ designers: newDesigners })
-  }
+    onFilterChange({ designers: newDesigners });
+  };
+  const [values, setValues] = useState([0, 100]);
 
   const handleCategoryChange = (category: string, checked: boolean) => {
     const newCategories = checked
       ? [...(filters.categories || []), category]
-      : (filters.categories || []).filter((c) => c !== category)
+      : (filters.categories || []).filter((c) => c !== category);
 
-    onFilterChange({ categories: newCategories })
-  }
+    onFilterChange({ categories: newCategories });
+  };
 
   const handleLocationChange = (location: string, checked: boolean) => {
     const newLocations = checked
       ? [...(filters.locations || []), location]
-      : (filters.locations || []).filter((l) => l !== location)
+      : (filters.locations || []).filter((l) => l !== location);
 
-    onFilterChange({ locations: newLocations })
-  }
+    onFilterChange({ locations: newLocations });
+  };
 
   const FilterSection = ({
     title,
     section,
     children,
   }: {
-    title: string
-    section: keyof typeof expandedSections
-    children: React.ReactNode
+    title: string;
+    section: keyof typeof expandedSections;
+    children: React.ReactNode;
   }) => (
     <div className="mb-6 border-b border-gray-200 pb-4">
       <button
@@ -114,11 +124,15 @@ export function ShopFilters({ filters, onFilterChange }: ShopFiltersProps) {
         className="flex justify-between items-center w-full text-left text-xs uppercase tracking-widest mb-3"
       >
         {title}
-        {expandedSections[section] ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
+        {expandedSections[section] ? (
+          <ChevronUp size={16} />
+        ) : (
+          <ChevronDown size={16} />
+        )}
       </button>
       {expandedSections[section] && children}
     </div>
-  )
+  );
 
   const Checkbox = ({
     id,
@@ -126,10 +140,10 @@ export function ShopFilters({ filters, onFilterChange }: ShopFiltersProps) {
     checked,
     onChange,
   }: {
-    id: string
-    label: string
-    checked: boolean
-    onChange: (checked: boolean) => void
+    id: string;
+    label: string;
+    checked: boolean;
+    onChange: (checked: boolean) => void;
   }) => (
     <div className="flex items-center mb-2">
       <input
@@ -137,13 +151,13 @@ export function ShopFilters({ filters, onFilterChange }: ShopFiltersProps) {
         id={id}
         checked={checked}
         onChange={(e) => onChange(e.target.checked)}
-        className="h-4 w-4 border-gray-300 rounded text-black focus:ring-black"
+        className="h-4 w-4 cursor-pointer border-gray-300 rounded text-black focus:ring-black"
       />
       <label htmlFor={id} className="ml-2 text-xs uppercase tracking-wider">
         {label}
       </label>
     </div>
-  )
+  );
 
   const ColorOption = ({
     color,
@@ -151,10 +165,10 @@ export function ShopFilters({ filters, onFilterChange }: ShopFiltersProps) {
     checked,
     onChange,
   }: {
-    color: string
-    label: string
-    checked: boolean
-    onChange: (checked: boolean) => void
+    color: string;
+    label: string;
+    checked: boolean;
+    onChange: (checked: boolean) => void;
   }) => (
     <div className="flex items-center mb-2">
       <input
@@ -164,15 +178,20 @@ export function ShopFilters({ filters, onFilterChange }: ShopFiltersProps) {
         onChange={(e) => onChange(e.target.checked)}
         className="hidden"
       />
-      <label htmlFor={`color-${color}`} className="flex items-center cursor-pointer">
+      <label
+        htmlFor={`color-${color}`}
+        className="flex items-center cursor-pointer"
+      >
         <span
-          className={`inline-block w-4 h-4 rounded-full mr-2 ${checked ? "ring-1 ring-black" : ""}`}
+          className={`inline-block w-4 h-4 rounded-full mr-2 ${
+            checked ? "ring-1 ring-black" : ""
+          }`}
           style={{ backgroundColor: color }}
         ></span>
         <span className="text-xs uppercase tracking-wider">{label}</span>
       </label>
     </div>
-  )
+  );
 
   return (
     <div className="mt-6">
@@ -217,7 +236,7 @@ export function ShopFilters({ filters, onFilterChange }: ShopFiltersProps) {
             </div>
           </div>
         </div>
-        <select
+        {/* <select
           className="w-full border border-gray-300 py-2 px-3 text-xs tracking-wider focus:outline-none focus:ring-1 focus:ring-black focus:border-black mt-4"
           onChange={(e) => onFilterChange({ pickupLocation: e.target.value })}
           value={filters.pickupLocation || ""}
@@ -226,33 +245,19 @@ export function ShopFilters({ filters, onFilterChange }: ShopFiltersProps) {
           <option value="location-1">Location 1</option>
           <option value="location-2">Location 2</option>
           <option value="location-3">Location 3</option>
-        </select>
+        </select> */}
       </FilterSection>
 
-      <FilterSection title="EVENT DATE" section="eventDate">
-        <input
-          type="date"
-          className="w-full border border-gray-300 py-2 px-3 text-xs tracking-wider focus:outline-none focus:ring-1 focus:ring-black focus:border-black"
-          onChange={(e) => handleEventDateChange(e.target.value)}
-          value={filters.eventDate || ""}
+      <div className="w-full space-y-5   mb-10 mt-9">
+        <DualRangeSlider
+          label={(value) => <span>{value}$</span>}
+          value={values}
+          onValueChange={setValues}
+          min={0}
+          max={100}
+          step={1}
         />
-      </FilterSection>
-
-      <FilterSection title="PRICE" section="price">
-        <input
-          type="range"
-          min="0"
-          max="1000"
-          step="10"
-          value={filters.priceRange || 1000}
-          onChange={(e) => handlePriceChange(Number.parseInt(e.target.value))}
-          className="w-full h-1 bg-gray-200 rounded-lg appearance-none cursor-pointer"
-        />
-        <div className="flex justify-between mt-2 text-xs text-gray-500">
-          <span>$0</span>
-          <span>${filters.priceRange || 1000}</span>
-        </div>
-      </FilterSection>
+      </div>
 
       <FilterSection title="COLOR" section="color">
         <ColorOption
@@ -280,7 +285,9 @@ export function ShopFilters({ filters, onFilterChange }: ShopFiltersProps) {
           id="size-xxs"
           label="XXS"
           checked={filters.sizes?.includes("XXS" as ProductSize) || false}
-          onChange={(checked) => handleSizeChange("XXS" as ProductSize, checked)}
+          onChange={(checked) =>
+            handleSizeChange("XXS" as ProductSize, checked)
+          }
         />
         <Checkbox
           id="size-xs"
@@ -377,5 +384,5 @@ export function ShopFilters({ filters, onFilterChange }: ShopFiltersProps) {
         />
       </FilterSection>
     </div>
-  )
+  );
 }
