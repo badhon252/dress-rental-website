@@ -37,11 +37,11 @@ export default function Home() {
         />
 
         {/* FIND YOUR DRESS NEAR YOUr map */}
-        <div className="flex flex-col md:flex-row w-full ">
+        <div className="flex flex-col md:flex-row w-full container mx-auto">
           {/* Text content section */}
           <div className="w-full md:w-1/2 p-6 md:p-12 flex flex-col justify-center ">
-            <div className="max-w-3xl mx-auto md:mx-0">
-              <h1 className=" font-bold tracking-wider mb-6 sub-title">
+            <div className="md:mx-0">
+              <h1 className=" font-normal leading-[48px] tracking-[15px] mb-6 lg:text-[40px] md:text-[30px] text-[24px] w-full">
                 FIND YOUR DRESS NEAR YOU
               </h1>
               <p className="text-xl mb-8 text-gray-700">

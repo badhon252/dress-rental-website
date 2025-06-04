@@ -41,7 +41,7 @@ const HowItWork = () => {
   return (
     <div className="mt-24">
       <div className="container mx-auto">
-        <h2 className="text-4xl md:text-[45px] lg:text-[56px] leading-[64px] text-black text-center uppercase font-normal pb-[10px] md:pb-[13px] lg:pb-[15px]">
+        <h2 className="text-4xl md:text-[45px] lg:text-[56px] leading-[64px] tracking-[20px] text-black text-center uppercase font-normal pb-[10px] md:pb-[13px] lg:pb-[15px]">
           How it works
         </h2>
         <p className="text-2xl md:text-[27px] lg:text-3xl font-normal text-black leading-[36px] text-center">
