@@ -2,6 +2,16 @@
 
 import { useState } from "react";
 import { Search } from "lucide-react";
+import { Label } from "@/components/ui/label";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
 
 export default function FindNearYou() {
   const [postCode, setPostCode] = useState("");
@@ -9,6 +19,17 @@ export default function FindNearYou() {
   const [category, setCategory] = useState("");
   const [minPrice, setMinPrice] = useState("");
   const [maxPrice, setMaxPrice] = useState("");
+
+  const handleSearch = () => {
+    // You can later replace this with real query logic
+    console.log({
+      postCode,
+      size,
+      category,
+      minPrice,
+      maxPrice,
+    });
+  };
 
   return (
     <section className="container mx-auto pb-6 pt-12">
@@ -23,133 +44,84 @@ export default function FindNearYou() {
 
       <div className="py-[30px] md:py-[40px] lg:py-[50px]">
         <div className="relative">
-          <input
+          <Input
             type="text"
             placeholder="POST CODE"
             value={postCode}
             onChange={(e) => setPostCode(e.target.value)}
-            className="w-full border-b border-black text-xl md:text-2xl lg:text-3xl font-normal text-black uppercase leading-[36px] placeholder:text-xl md:placeholder:text-2xl lg:placeholder:text-3xl placeholder:text-black placeholder:font-normal placeholder:leading-[36px] py-2 pr-10 focus:outline-none focus:border-black"
+            className="w-full border-b border-black text-xl md:text-2xl lg:text-3xl font-normal text-black uppercase leading-[36px] placeholder:text-black placeholder:font-normal placeholder:leading-[36px] py-2 pr-10 rounded-none border-t-0 border-l-0 border-r-0 focus-visible:ring-0 focus-visible:ring-offset-0"
           />
-          <button className="absolute right-0 top-6">
-            <Search size={18} />
-          </button>
+          <Button
+            type="button"
+            variant="ghost"
+            className="absolute right-0 top-1/2 -translate-y-1/2 p-2"
+            onClick={handleSearch}
+          >
+            <Search size={20} />
+          </Button>
         </div>
 
-        <div className=" grid grid-cols-1 md:grid-cols-3 gap-[30px] md:gap-[45px] lg:gap-[60px] pt-[30px] md:pt-[45px] lg:pt-[60px]">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-[30px] md:gap-[45px] lg:gap-[60px] pt-[30px] md:pt-[45px] lg:pt-[60px]">
+          {/* Size */}
           <div>
-            <label className="text-lg md:text-xl lg:text-2xl text-black font-normal leading-[28px] tracking-[0.15em]">
+            <Label className="text-lg md:text-xl lg:text-2xl text-black font-normal leading-[28px] tracking-[0.15em]">
               Size
-            </label>
-            <select
-              value={size}
-              onChange={(e) => setSize(e.target.value)}
-              className="w-full border-b border-black focus:outline-none focus:border-black pt-5 pb-3"
-            >
-              <option
-                className="text-lg md:text-xl lg:text-2xl font-normal text-black leadintg-[28px] tracking-[0.15px] "
-                value=""
-              >
-                Please Select
-              </option>
-              <option
-                className="*:text-base font-normal text-black leadintg-[28px] tracking-[0.15px]"
-                value="xs"
-              >
-                XS
-              </option>
-              <option
-                className="*:text-base font-normal text-black leadintg-[28px] tracking-[0.15px]"
-                value="s"
-              >
-                S
-              </option>
-              <option
-                className="*:text-base font-normal text-black leadintg-[28px] tracking-[0.15px]"
-                value="m"
-              >
-                M
-              </option>
-              <option
-                className="*:text-base font-normal text-black leadintg-[28px] tracking-[0.15px]"
-                value="l"
-              >
-                L
-              </option>
-              <option
-                className="*:text-base font-normal text-black leadintg-[28px] tracking-[0.15px]"
-                value="xl"
-              >
-                XL
-              </option>
-            </select>
+            </Label>
+            <Select value={size} onValueChange={setSize}>
+              <SelectTrigger className="w-full border-b shadow-none border-t-0 border-r-0 border-l-0 border-black rounded-none pt-5 pb-3 h-auto focus:ring-0 focus:ring-offset-0">
+                <SelectValue placeholder="Please Select" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="xs">XS</SelectItem>
+                <SelectItem value="s">S</SelectItem>
+                <SelectItem value="m">M</SelectItem>
+                <SelectItem value="l">L</SelectItem>
+                <SelectItem value="xl">XL</SelectItem>
+              </SelectContent>
+            </Select>
           </div>
 
+          {/* Category */}
           <div>
-            <label className="text-lg md:text-xl lg:text-2xl text-black font-normal leading-[28px] tracking-[0.15em]">
+            <Label className="text-lg md:text-xl lg:text-2xl text-black font-normal leading-[28px] tracking-[0.15em]">
               Category
-            </label>
-            <select
-              value={category}
-              onChange={(e) => setCategory(e.target.value)}
-              className="w-full border-b border-black focus:outline-none focus:border-black pt-5 pb-3"
-            >
-              <option
-                className="*:text-base font-normal text-black leadintg-[28px] tracking-[0.15px] "
-                value=""
-              >
-                Please Select
-              </option>
-              <option
-                className="*:text-base font-normal text-black leadintg-[28px] tracking-[0.15px] "
-                value="evening"
-              >
-                Evening
-              </option>
-              <option
-                className="v font-normal text-black leadintg-[28px] tracking-[0.15px] "
-                value="casual"
-              >
-                Casual
-              </option>
-              <option
-                className="*:text-base font-normal text-black leadintg-[28px] tracking-[0.15px] "
-                value="wedding"
-              >
-                Wedding
-              </option>
-              <option
-                className="*:text-base font-normal text-black leadintg-[28px] tracking-[0.15px] "
-                value="cocktail"
-              >
-                Cocktail
-              </option>
-            </select>
+            </Label>
+            <Select value={category} onValueChange={setCategory}>
+              <SelectTrigger className="w-full border-b border-t-0 shadow-none border-r-0 border-l-0 border-black rounded-none pt-5 pb-3 h-auto focus:ring-0 focus:ring-offset-0">
+                <SelectValue placeholder="Please Select" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="evening">Evening</SelectItem>
+                <SelectItem value="casual">Casual</SelectItem>
+                <SelectItem value="wedding">Wedding</SelectItem>
+                <SelectItem value="cocktail">Cocktail</SelectItem>
+              </SelectContent>
+            </Select>
           </div>
 
-          <div className="w-full flex items-end justify-center gap-5">
-            <div className=" ">
-              <label className="text-lg md:text-xl lg:text-2xl text-black font-normal leading-[28px] tracking-[0.15em]">
+          {/* Price Range */}
+          <div className="w-full flex items-end gap-4">
+            <div className="w-full">
+              <Label className="text-lg md:text-xl lg:text-2xl text-black font-normal leading-[28px] tracking-[0.15em]">
                 Price Range
-              </label>
-              <div className="w-full border-b border-black pb-4">
-                <input
+              </Label>
+              <div className="flex items-center gap-2 border-b border-black pb-4">
+                <Input
                   type="number"
                   placeholder="Min"
                   value={minPrice}
                   onChange={(e) => setMinPrice(e.target.value)}
-                  className="w-full text-lg md:text-xl lg:text-2xl font-normal text-black leadintg-[28px] tracking-[0.15px] outlint-none focus:outline-none"
+                  className="text-lg shadow-none md:text-xl lg:text-2xl font-normal text-black tracking-[0.15px] border-none rounded-none p-0 focus-visible:ring-0 focus-visible:ring-offset-0"
+                />
+                <span className="text-2xl text-black px-2">—</span>
+                <Input
+                  type="number"
+                  placeholder="Max"
+                  value={maxPrice}
+                  onChange={(e) => setMaxPrice(e.target.value)}
+                  className="text-lg shadow-none md:text-xl lg:text-2xl font-normal text-black tracking-[0.15px] border-none rounded-none p-0 focus-visible:ring-0 focus-visible:ring-offset-0"
                 />
               </div>
-            </div>
-            <div className="w-[10%] py-4 ">—</div>
-            <div className="w-[60%] border-b border-black pb-3">
-              <input
-                type="number"
-                placeholder="MAX"
-                value={maxPrice}
-                onChange={(e) => setMaxPrice(e.target.value)}
-                className="w-full text-lg md:text-xl lg:text-2xl font-normal text-black leadintg-[28px] tracking-[0.15px] outlint-none focus:outline-none"
-              />
             </div>
           </div>
         </div>

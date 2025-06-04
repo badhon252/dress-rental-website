@@ -5,7 +5,6 @@ import { getTrendingProducts } from "@/data/product-data";
 import HowItWork from "@/components/HowItWork";
 import ServiceFeatures from "@/components/ServiceFeatures";
 import Image from "next/image";
-import { Input } from "@/components/ui/input";
 import { ArrowRight } from "lucide-react";
 import StyledByYou from "@/components/product/styled_By_You";
 
@@ -87,7 +86,7 @@ export default function Home() {
 
         {/* style by you  */}
 
-         <StyledByYou/>
+        <StyledByYou />
 
         <div className="container mx-auto px-4 py-8 md:py-12 lg:py-16 max-w-9xl">
           {/* Header */}
@@ -182,14 +181,18 @@ export default function Home() {
               Get $10 off your first rental when you join. Share your code and
               give friends $10 too.
             </p>
-            <div className="flex flex-col sm:flex-row justify-center items-center max-w-md mx-auto">
-              <Input
+            <div className="flex relative flex-col sm:flex-row justify-center items-center max-w-md mx-auto">
+              <input
                 type="email"
-                placeholder="your-Email@example.com"
-                className="border-b border-t-0 border-l-0 border-r-0 rounded-none focus-visible:ring-0 focus-visible:ring-offset-0 px-0 mb-4 sm:mb-0 sm:flex-1"
+                placeholder="Email@example.com"
+                className="border  border-t-0 border-l-0 border-r-0 border-[#000000]  px-2 py-[10px] mb-4 sm:mb-0 sm:flex-1 outline-none"
               />
-              <Button variant="ghost" size="icon" className="ml-0 sm:ml-2">
-                <ArrowRight className="h-5 w-5" />
+              <Button
+                variant="ghost"
+                size="icon"
+                className="ml-0 absolute right-0 sm:ml-2"
+              >
+                <ArrowRight className="h-5 w-6" />
               </Button>
             </div>
           </section>
