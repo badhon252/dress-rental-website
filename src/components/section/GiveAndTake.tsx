@@ -1,11 +1,15 @@
-import React from 'react'
+import React from "react";
 
 export default function GiveAndTake() {
   return (
-    <div>{/* Get $10, Give $10 Section */}
+    <div>
+      {/* Get $10, Give $10 Section */}
       <div className="max-w-6xl mx-auto px-4 py-16 text-center">
         <h2 className="text-3xl tracking-[0.3em] mb-4">GET $10, GIVE $10</h2>
-        <p className="mb-8">Get $10 off your first rental when you join. Share your code and give friends $10 too.</p>
+        <p className="mb-8">
+          Get $10 off your first rental when you join. Share your code and give
+          friends $10 too.
+        </p>
 
         <div className="max-w-md mx-auto relative">
           <input
@@ -29,6 +33,7 @@ export default function GiveAndTake() {
             </svg>
           </button>
         </div>
-      </div></div>
-  )
+      </div>
+    </div>
+  );
 }
