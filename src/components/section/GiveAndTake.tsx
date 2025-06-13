@@ -5,7 +5,7 @@ export default function GiveAndTake() {
     <div>
       {/* Get $10, Give $10 Section */}
       <div className="max-w-6xl mx-auto px-4 py-16 text-center">
-        <h2 className="text-3xl tracking-[0.3em] mb-4">GET $10, GIVE $10</h2>
+        <h2 className="md:text-3xl lg:text-5xl text-2xl tracking-[20px] leading-[20px] mb-4">GET $10, GIVE $10</h2>
         <p className="mb-8">
           Get $10 off your first rental when you join. Share your code and give
           friends $10 too.

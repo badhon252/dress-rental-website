@@ -21,10 +21,10 @@ const Footer = () => {
               CUSTOMER
             </h3>
             <nav className="flex flex-col space-y-2 text-xl">
-              <Link href="#" className="text-gray-600 hover:text-gray-900">
+              <Link href="/how-it-works/#faq" className="text-gray-600 hover:text-gray-900">
                 FAQ
               </Link>
-              <Link href="#" className="text-gray-600 hover:text-gray-900">
+              <Link href="/how-it-works" className="text-gray-600 avenir-text hover:text-gray-900">
                 How It Works
               </Link>
               <Link href="#" className="text-gray-600 hover:text-gray-900">

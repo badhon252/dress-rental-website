@@ -6,9 +6,9 @@ import React from "react";
 const StyledByYou = () => {
   return (
     <div>
-      <div className="max-w-6xl mx-auto px-4 py-16">
+      <div className="container mx-auto px-4 py-16">
         <div className="text-center mb-8">
-          <h2 className="text-3xl tracking-[0.3em] mb-2">STYLED BY YOU</h2>
+          <h2 className="md:text-3xl lg:text-5xl text-2xl tracking-[20px] leading-[20px] mb-2">STYLED BY YOU</h2>
           <div className="flex justify-center">
             <Link
               href="#"
@@ -18,7 +18,7 @@ const StyledByYou = () => {
             </Link>
           </div>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6">
           {styledByYouProducts.map((styledProduct) => (
             <div key={styledProduct.id} className="flex flex-col">
               <Link href={`/product/${styledProduct.slug}`} className="group">
@@ -26,9 +26,9 @@ const StyledByYou = () => {
                   <Image
                     src={styledProduct.images[0]?.src || "/placeholder.svg"}
                     alt={styledProduct.images[0]?.alt || "Product image"}
-                    width={400}
-                    height={600}
-                    className="w-full aspect-[2/3] object-cover transition-transform duration-300 group-hover:scale-105"
+                    width={360}
+                    height={360}
+                    className="w-full aspect-square object-cover "
                   />
                 </div>
                 <div className="text-center">

@@ -27,7 +27,7 @@ export function SizeGuide({ availableSizes, defaultSize, onSizeChange }: SizeGui
         className="w-full flex items-center justify-between border-b border-black py-4"
         onClick={() => setIsOpen(!isOpen)}
       >
-        <span className="uppercase tracking-widest text-sm">SIZE GUIDE</span>
+        <span className="uppercase tracking-[0.2rem] leading-[20px] text-[14px]">SIZE GUIDE</span>
         {isOpen ? <ChevronUp className="w-5 h-5" /> : <ChevronDown className="w-5 h-5" />}
       </button>
 
@@ -42,7 +42,7 @@ export function SizeGuide({ availableSizes, defaultSize, onSizeChange }: SizeGui
             </div>
             <div className="flex justify-between text-sm">
               {sizeGuideOptions.map((option) => (
-                <span key={option.value}>{option.label}</span>
+                <span className="text-[18px] leading-[24px]" key={option.value}>{option.label}</span>
               ))}
             </div>
           </div>

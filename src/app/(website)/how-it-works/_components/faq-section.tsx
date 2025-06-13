@@ -114,7 +114,7 @@ export default function FAQSection() {
   };
 
   return (
-    <div className="container mx-auto px-4 py-12 md:py-16">
+    <div id="faq" className="container mx-auto px-4 py-12 md:py-16">
       <h1 className="text-4xl md:text-[42px] lg:text-[48px] font-normal text-black leading-[48px] text-center pb-[30px] md:pb-[45px] lg:pb-[60px]">
         F A Q
       </h1>

@@ -40,13 +40,13 @@ export default function ProductCard({
         <div className="w-full relative">
           <div className="w-full flex flex-col md:flex-row items-center">
             <div className="flex-1 ">
-              <h3 className="text-3xl md:text-[40px] lg:text-[50px] font-light text-black leading-[30px] md:leading-[45px] lg:leading-[60px] uppercase tracking-[10%] font-nimbus">
+              <h3 className="text-3xl md:text-[30px] lg:text-[40px] font-normal text-black leading-[30px] md:leading-[45px] lg:leading-[60px] uppercase tracking-[10%] font-nimbus">
                 {name}
               </h3>
-              <p className="text-2xl md:text-[32px] lg:text-[40px] font-normal text-black leading-[24px] md:leading-[35px] lg:leading-[46px] tracking-[0.10rem] py-[20px] md:py-[28px] lg:py-[36px]">
+              <p className="text-xl md:text-[22px] lg:text-[30px] font-normal text-black leading-[24px] md:leading-[35px] lg:leading-[46px] tracking-[0.10rem] py-[20px] md:py-[28px] lg:py-[36px]">
                 {price} / {days} Days
               </p>
-              <p className="text-xl md:text-[25px] lg:text-[30px] font-normal text-black leading-[24px] md:leading-[32px] lg:leading-[40px] tracking-[0rem]">
+              <p className="text-xl md:text-[15px] lg:text-[20px] font-normal text-black leading-[24px] md:leading-[32px] lg:leading-[40px] tracking-[0rem]">
                 Size: {size}
               </p>
 
@@ -70,13 +70,13 @@ export default function ProductCard({
                 )}
               </div>
 
-              <p className="text-2xl md:text-3xl lg:text-[39px] text-black font-normal leading-[120%]">
+              <p className="text-2xl md:text-3xl lg:text-[29px] text-black font-normal leading-[120%]">
                 {description}
               </p>
             </div>
 
             <div className="hidden md:block">
-              <button className="bg-white border-b border-black text-black py-2 md:py-3 lg:py-4 text-xl md:text-2xl lg:text-[26px] uppercase tracking-[0.2043m]">
+              <button className="bg-white border-b border-black text-black py-2 md:py-3 lg:py-4 text-xl md:text-2xl lg:text-[20px] uppercase tracking-[0.2043m]">
                 BOOK NOW
               </button>
             </div>
