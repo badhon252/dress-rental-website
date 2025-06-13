@@ -151,7 +151,7 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
   }
 
   return (
-    <div className="bg-white">
+    <div className="bg-white mt-[60px]">
       <div className="grid md:grid-cols-2 gap-6 max-w-6xl mx-auto py-[50px] px-4">
         {/* Product Images */}
         <div className="grid md:grid-cols-5 gap-3 items-start">
@@ -328,7 +328,7 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
 
       {/* How It Works Section */}
       <div className="max-w-6xl mx-auto px-4 py-16 text-center">
-        <h2 className="text-3xl tracking-[0.3em] mb-4">HOW IT WORKS</h2>
+        <h2 className="text-3xl tracking-[0.3em] mb-4">HOW IT WORKSsdfas</h2>
         <p className="mb-12">WE MADE IT SIMPLE. YOU MAKE IT STYLISH.</p>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">

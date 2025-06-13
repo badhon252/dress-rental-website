@@ -151,7 +151,7 @@ const BecomeALenderForm = () => {
             <Accordion type="single" collapsible defaultValue="item-1">
               {/* first  */}
               <AccordionItem value="item-1">
-                <AccordionTrigger className="text-2xl md:text-[28px] lg:text-[32px] font-normal font-nimbus tracking-[20%] leading-[48px] uppercase">
+                <AccordionTrigger className="text-2xl md:text-[28px] lg:text-[32px] font-normal font-nimbus tracking-[0.2em] leading-[48px] uppercase">
                   BUSINESS INFORMATION
                 </AccordionTrigger>
                 <AccordionContent>
@@ -247,7 +247,7 @@ const BecomeALenderForm = () => {
               </AccordionItem>
               {/* second  */}
               <AccordionItem value="item-2">
-                <AccordionTrigger className="text-2xl md:text-[28px] lg:text-[32px] font-normal font-nimbus tracking-[20%] leading-[48px] uppercase">
+                <AccordionTrigger className="text-2xl md:text-[28px] lg:text-[32px] font-normal font-nimbus tracking-[0.2em] leading-[48px] uppercase">
                   Contact Information
                 </AccordionTrigger>
                 <AccordionContent>
@@ -341,7 +341,7 @@ const BecomeALenderForm = () => {
               </AccordionItem>
               {/* third  */}
               <AccordionItem value="item-3">
-                <AccordionTrigger className="text-2xl md:text-[28px] lg:text-[32px] font-normal font-nimbus tracking-[20%] leading-[48px] uppercase">
+                <AccordionTrigger className="text-2xl md:text-[28px] lg:text-[32px] font-normal font-nimbus tracking-[0.2em] leading-[48px] uppercase">
                   Collection Overview
                 </AccordionTrigger>
                 <AccordionContent>
@@ -517,7 +517,7 @@ const BecomeALenderForm = () => {
               </AccordionItem>
               {/* fourth part  */}
               <AccordionItem value="item-4">
-                <AccordionTrigger className="text-2xl md:text-[28px] lg:text-[32px] font-normal font-nimbus tracking-[20%] leading-[48px] uppercase">
+                <AccordionTrigger className="text-2xl md:text-[28px] lg:text-[32px] font-normal font-nimbus tracking-[0.2em] leading-[48px] uppercase">
                   Service Questions
                 </AccordionTrigger>
                 <AccordionContent>
