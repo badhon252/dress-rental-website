@@ -196,7 +196,7 @@ const Navbar = () => {
                 {!session?.user ? (
                   <>
                     <User size={20} />
-                    <div className="absolute top-6 -right-4 mt-1 hidden group-hover:block z-50 bg-white shadow-lg rounded-md border">
+                    <div className="absolute top-4 -right-4 mt-1 hidden group-hover:block z-50 bg-white shadow-lg rounded-md border">
                       <Link
                         href="/login"
                         className={`block px-4 py-2 text-[14px] text-black hover:bg-gray-50 whitespace-nowrap`}
@@ -212,7 +212,7 @@ const Navbar = () => {
                     >
                       {session?.user?.firstName?.slice(0, 1) || "U"}
                     </div>
-                    <div className="absolute top-8 -right-4 mt-1 hidden group-hover:block z-50 bg-white shadow-lg rounded-md border min-w-[120px]">
+                    <div className="absolute top-4 -right-4 mt-1 hidden group-hover:block z-50 bg-white shadow-lg rounded-md border min-w-[120px]">
                       <Link
                         href="/account"
                         className="block px-4 py-2 text-[14px] text-black hover:bg-gray-50 whitespace-nowrap"
