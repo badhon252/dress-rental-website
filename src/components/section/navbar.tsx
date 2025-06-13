@@ -1,22 +1,33 @@
 "use client";
 
+import type React from "react";
+
 // Packages
-import { Menu, Search, ShoppingBag, User } from "lucide-react";
+import { Menu, Search, ShoppingBag, User, X } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import Image from "next/image";
 import { useSession } from "next-auth/react";
 import { signOut } from "next-auth/react";
 // Components
-import { Button } from "../ui/button";
-import { Sheet, SheetClose, SheetContent, SheetTrigger } from "../ui/sheet";
+import { Button } from "@/components/ui/button";
+import {
+  Sheet,
+  SheetClose,
+  SheetContent,
+  SheetTrigger,
+} from "@/components/ui/sheet";
+// import { Input } from "@/components/ui/input";
 
 const Navbar = () => {
   const { data: session } = useSession();
 
   const [scrolling, setScrolling] = useState(false);
   const pathname = usePathname();
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
+  const searchRef = useRef<HTMLDivElement>(null);
 
   const menus = [
     { id: 1, href: "/", linkText: "HOME" },
@@ -36,212 +47,313 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        searchRef.current &&
+        !searchRef.current.contains(event.target as Node)
+      ) {
+        setIsSearchOpen(false);
+      }
+    };
+
+    const handleEscapeKey = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setIsSearchOpen(false);
+      }
+    };
+
+    if (isSearchOpen) {
+      document.addEventListener("mousedown", handleClickOutside);
+      document.addEventListener("keydown", handleEscapeKey);
+    }
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+      document.removeEventListener("keydown", handleEscapeKey);
+    };
+  }, [isSearchOpen]);
+
+  const handleSearchSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (searchQuery.trim()) {
+      // Handle search logic here
+      console.log("Searching for:", searchQuery);
+      // You can redirect to search results page or handle search
+      // router.push(`/search?q=${encodeURIComponent(searchQuery)}`)
+    }
+  };
+
   const isHomePage = pathname === "/";
-  console.log(session?.user);
+
+  const getTextColor = () => {
+    return scrolling ||
+      pathname === "/become-lender" ||
+      pathname.startsWith("/product/") ||
+      pathname === "/product/dress-name" ||
+      pathname === "/checkout" ||
+      pathname === "/shop" ||
+      pathname === "/account" ||
+      pathname === "/about" ||
+      pathname === "/how-it-works" ||
+      pathname === "/find-near-you" ||
+      pathname === "/login"
+      ? "text-black"
+      : "text-white";
+  };
+
+  const getBorderColor = () => {
+    return scrolling ||
+      pathname === "/become-lender" ||
+      pathname.startsWith("/product/") ||
+      pathname === "/product/dress-name" ||
+      pathname === "/checkout" ||
+      pathname === "/shop" ||
+      pathname === "/account" ||
+      pathname === "/about" ||
+      pathname === "/how-it-works" ||
+      pathname === "/find-near-you" ||
+      pathname === "/login"
+      ? "border-black"
+      : "border-white";
+  };
+
   return (
-    <div
-      className={`fixed top-0 z-50 min-w-full h-[70px] py-3 transition duration-300 ${
-        scrolling
-          ? "bg-transparent backdrop-blur-xl "
-          : isHomePage
-          ? ""
-          : "bg-transparent mt-0"
-      }`}
-    >
-      <div className="container mx-auto ">
-        <div className="flex justify-between items-center">
-          {/* Desktop Menu */}
-          <div className="hidden md:flex items-center md:gap-x-3 lg:gap-x-1">
-            {menus.map((menu) => (
-              <Button
-                key={menu.id}
-                variant="link"
-                effect="hoverUnderline"
-                asChild
-                className={`text-[14px] font-normal ${
-                  pathname === "/become-lender" ||
-                  pathname === "/product/wedding-guest-ready" ||
-                  pathname === "/checkout" ||
-                  pathname === "/shop" ||
-                  pathname === "/account" ||
-                  pathname === "/about" ||
-                  pathname === "/how-it-works" ||
-                  pathname === "/find-near-you" ||
-                  pathname === "/login" ||
-                  scrolling
-                    ? "text-black"
-                    : "text-white"
-                }`}
-              >
-                <Link
-                  href={menu.href}
-                  className={`${
-                    pathname === menu.href ? "font-normal" : "font-light"
-                  } leading-[20px] tracking-[0.2em]`}
+    <>
+      <div
+        className={`fixed top-0 z-50 min-w-full h-[70px] py-3 transition duration-300 ${
+          scrolling
+            ? "bg-transparent backdrop-blur-xl"
+            : isHomePage
+            ? ""
+            : "bg-transparent mt-0"
+        }`}
+      >
+        <div className="container mx-auto">
+          <div className="flex justify-between items-center">
+            {/* Desktop Menu */}
+            <div className="hidden md:flex items-center md:gap-x-3 lg:gap-x-1">
+              {menus.map((menu) => (
+                <Button
+                  key={menu.id}
+                  variant="link"
+                  effect="hoverUnderline"
+                  asChild
+                  className={`text-[14px] font-normal ${getTextColor()}`}
                 >
-                  {menu.linkText}
-                </Link>
-              </Button>
-            ))}
-          </div>
-
-          {/* Logo */}
-          {scrolling ||
-          pathname === "/account" ||
-          pathname === "/product/wedding-guest-ready" ||
-          pathname === "/login" ||
-          pathname === "/checkout" ||
-          pathname === "/become-lender" ||
-          pathname === "/shop" ||
-          pathname === "/about" ||
-          pathname === "/how-it-works" ||
-          pathname === "/find-near-you" ? (
-            <div className="">
-              <Image
-                src="/logos/Logo_black.png"
-                height={60}
-                width={60}
-                alt="Logo"
-              />
+                  <Link
+                    href={menu.href}
+                    className={`${
+                      pathname === menu.href ? "font-normal" : "font-light"
+                    } leading-[20px] tracking-[0.2em]`}
+                  >
+                    {menu.linkText}
+                  </Link>
+                </Button>
+              ))}
             </div>
-          ) : (
-            <div className="">
-              <Image src="/logos/logo.png" height={60} width={60} alt="Logo" />
-            </div>
-          )}
 
-          {/* Desktop Login */}
-
-          <div
-            className={`${
-              scrolling ||
+            {/* Logo */}
+            <div className="flex-shrink-0">
+              {scrolling ||
               pathname === "/account" ||
-              pathname === "/checkout" ||
-              pathname === "/product/wedding-guest-ready" ||
+              pathname.startsWith("/product/") ||
               pathname === "/login" ||
+              pathname === "/checkout" ||
               pathname === "/become-lender" ||
               pathname === "/shop" ||
               pathname === "/about" ||
               pathname === "/how-it-works" ||
-              pathname === "/find-near-you"
-                ? "text-black"
-                : "text-white"
-            } flex gap-[30px]`}
-          >
-            <Search />
-
-            {/* Hover User to reveal Login */}
-            <div className={`relative group cursor-pointer `}>
-              {!session?.user ? (
-                <>
-                  <User />
-                  <div className="absolute top-5 -right-4 mt-1 hidden group-hover:block z-50">
-                    <Link
-                      href="/login"
-                      className={`block px-2 py-2 text-[16px] ${
-                        scrolling ? "border-black" : "border-white"
-                      } border-b  font-normal`}
-                    >
-                      Login
-                    </Link>
-                  </div>
-                </>
+              pathname === "/find-near-you" ? (
+                <Image
+                  src="/logos/Logo_black.png"
+                  height={60}
+                  width={60}
+                  alt="Logo"
+                />
               ) : (
-                <>
-                  <p
-                    className={`border rounded-full w-7 h-7 text-center 
-                    ${
-                      scrolling ||
-                      pathname === "/account" ||
-                      pathname === "/checkout" ||
-                      pathname === "/product/wedding-guest-ready" ||
-                      pathname === "/login" ||
-                      pathname === "/become-lender" ||
-                      pathname === "/shop" ||
-                      pathname === "/about" ||
-                      pathname === "/how-it-works" ||
-                      pathname === "/find-near-you"
-                        ? "border-black"
-                        : "border-white"
-                    }
-                    `}
-                  >
-                    {session?.user?.firstName.slice(0, 1)}
-                  </p>
-                  <div className="absolute top-5 -right-4 mt-1 hidden group-hover:block z-50">
-                    <Link
-                      href="/account"
-                      className={`block  px-2 py-2 text-[16px] ${
-                        scrolling ? "border-black" : "border-white"
-                      } border-b  font-normal whitespace-nowrap`}
-                    >
-                      My account
-                    </Link>
-                    <Link
-                      onClick={() => signOut()}
-                      href=""
-                      className={`block  px-2 py-2 text-[16px] ${
-                        scrolling ? "border-black" : "border-white"
-                      } border-b  font-normal whitespace-nowrap`}
-                    >
-                      Sign out
-                    </Link>
-                  </div>
-                </>
+                <Image
+                  src="/logos/logo.png"
+                  height={60}
+                  width={60}
+                  alt="Logo"
+                />
               )}
             </div>
 
-       <Link href={'/checkout'}>
-            <ShoppingBag  />
-       </Link>
-          </div>
+            {/* Desktop Actions */}
+            <div className={`${getTextColor()} flex gap-[30px] items-center`}>
+              <div className="relative" ref={searchRef}>
+                <Search
+                  className="cursor-pointer hover:opacity-70 transition-opacity"
+                  onClick={() => setIsSearchOpen(!isSearchOpen)}
+                  size={20}
+                />
+              </div>
 
-          {/* Mobile Menu */}
-          <div className="md:hidden flex items-center justify-between gap-x-4 w-full">
-            <Sheet>
-              <SheetTrigger asChild>
-                <Button variant="ghost" className="p-1" size="icon">
-                  <Menu />
-                </Button>
-              </SheetTrigger>
-              <SheetContent side="top" className="bg-white text-black">
-                <div className="flex flex-col items-center gap-y-8 mt-6">
-                  <div className="flex flex-col items-center gap-y-5">
-                    {menus.map((menu) => (
+              {/* User Menu */}
+              <div className="relative group cursor-pointer">
+                {!session?.user ? (
+                  <>
+                    <User size={20} />
+                    <div className="absolute top-4 -right-4 mt-1 hidden group-hover:block z-50 bg-white shadow-lg rounded-md border">
                       <Link
-                        key={menu.id}
-                        href={menu.href}
-                        className={`${
-                          pathname === menu.href
-                            ? "font-semibold"
-                            : "font-light"
-                        } text-lg`}
+                        href="/login"
+                        className={`block px-4 py-2 text-[14px] text-black hover:bg-gray-50 whitespace-nowrap`}
                       >
-                        <SheetClose>{menu.linkText}</SheetClose>
+                        Login
                       </Link>
-                    ))}
-                    <Link href="/login" className="text-lg font-medium">
-                      <SheetClose>Login</SheetClose>
-                    </Link>
-                  </div>
-                </div>
-              </SheetContent>
-            </Sheet>
+                    </div>
+                  </>
+                ) : (
+                  <>
+                    <div
+                      className={`border rounded-full w-7 h-7 flex items-center justify-center text-sm font-medium ${getBorderColor()}`}
+                    >
+                      {session?.user?.firstName?.slice(0, 1) || "U"}
+                    </div>
+                    <div className="absolute top-4 -right-4 mt-1 hidden group-hover:block z-50 bg-white shadow-lg rounded-md border min-w-[120px]">
+                      <Link
+                        href="/account"
+                        className="block px-4 py-2 text-[14px] text-black hover:bg-gray-50 whitespace-nowrap"
+                      >
+                        My account
+                      </Link>
+                      <button
+                        onClick={() => signOut()}
+                        className="block w-full text-left px-4 py-2 text-[14px] text-black hover:bg-gray-50 whitespace-nowrap"
+                      >
+                        Sign out
+                      </button>
+                    </div>
+                  </>
+                )}
+              </div>
 
-            <div>
-              <Button
-                variant="link"
-                effect="hoverUnderline"
-                asChild
-                className="text-white"
+              <Link
+                href="/checkout"
+                className="hover:opacity-70 transition-opacity"
               >
-                <Link href="/login">Login</Link>
-              </Button>
+                <ShoppingBag size={20} />
+              </Link>
+            </div>
+
+            {/* Mobile Menu */}
+            <div className="md:hidden flex items-center justify-between gap-x-4 w-full">
+              <Sheet>
+                <SheetTrigger asChild>
+                  <Button variant="ghost" className="p-1" size="icon">
+                    <Menu className={getTextColor()} />
+                  </Button>
+                </SheetTrigger>
+                <SheetContent side="top" className="bg-white text-black">
+                  <div className="flex flex-col items-center gap-y-8 mt-6">
+                    <div className="flex flex-col items-center gap-y-5">
+                      {menus.map((menu) => (
+                        <Link
+                          key={menu.id}
+                          href={menu.href}
+                          className={`${
+                            pathname === menu.href
+                              ? "font-semibold"
+                              : "font-light"
+                          } text-lg hover:text-gray-600 transition-colors`}
+                        >
+                          <SheetClose>{menu.linkText}</SheetClose>
+                        </Link>
+                      ))}
+                      {!session?.user && (
+                        <Link
+                          href="/login"
+                          className="text-lg font-medium hover:text-gray-600 transition-colors"
+                        >
+                          <SheetClose>Login</SheetClose>
+                        </Link>
+                      )}
+                    </div>
+                  </div>
+                </SheetContent>
+              </Sheet>
+
+              <div className="flex items-center gap-4">
+                <Search
+                  className={`${getTextColor()} cursor-pointer`}
+                  onClick={() => setIsSearchOpen(!isSearchOpen)}
+                  size={20}
+                />
+                {!session?.user && (
+                  <Button
+                    variant="link"
+                    effect="hoverUnderline"
+                    asChild
+                    className={getTextColor()}
+                  >
+                    <Link href="/login">Login</Link>
+                  </Button>
+                )}
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
+
+      {/* Full-width Search Dropdown */}
+      {isSearchOpen && (
+        <div className="fixed top-[70px] left-[14%] w-full bg-white border-b border-gray-200 shadow-lg z-[60] animate-in slide-in-from-top-2 duration-200 container">
+          <div className="container mx-auto py-8 px-4">
+            <form
+              onSubmit={handleSearchSubmit}
+              className="flex items-center gap-4"
+            >
+              <div className="flex-1 relative">
+  <input
+    type="text"
+    placeholder="Search..."
+    value={searchQuery}
+    onChange={(e) => setSearchQuery(e.target.value)}
+    className="w-full border-0 border-b border-gray-500 focus:border-gray-500 focus:outline-none px-0 py-2 placeholder:text-gray-400"
+    autoFocus
+  />
+</div>
+              <button
+                type="button"
+                onClick={() => setIsSearchOpen(false)}
+                className="text-gray-400 hover:text-black transition-colors p-2"
+              >
+                <X size={24} />
+              </button>
+            </form>
+
+            {/* Optional: Add popular searches or categories */}
+            {/* <div className="mt-6">
+              <p className="text-sm text-gray-500 mb-3">Popular searches</p>
+              <div className="flex flex-wrap gap-2">
+                {["Dresses", "Accessories", "Formal wear", "Casual", "Designer"].map((term) => (
+                  <button
+                    key={term}
+                    onClick={() => {
+                      setSearchQuery(term)
+                      // Handle search for this term
+                    }}
+                    className="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm hover:bg-gray-200 transition-colors"
+                  >
+                    {term}
+                  </button>
+                ))}
+              </div>
+            </div> */}
+          </div>
+        </div>
+      )}
+
+      {/* Overlay to close search when clicking outside */}
+      {isSearchOpen && (
+        <div
+          className="fixed inset-0 bg-black bg-opacity-20 z-[59]"
+          onClick={() => setIsSearchOpen(false)}
+        />
+      )}
+    </>
   );
 };
 
