@@ -8,7 +8,7 @@ import { Toaster } from "@/components/ui/toaster";
 import AuthSessionProvider from "@/providers/AuthSessionProvider";
 
 const nimbus = localFont({
-  src: "./fonts/nimbus/nimbussannovdlig.ttf",
+  src: "./fonts/nimbus/NimbusSanNovD.ttf",
   variable: "--font-nimbus",
   weight: "100 900",
   display: "auto",

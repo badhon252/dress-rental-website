@@ -68,7 +68,7 @@ const BecomeLender = () => {
         {/* How It Works */}
         <section className="py-12 md:py-16">
           <div className="container px-4 md:px-6">
-            <h2 className="mb-10 text-center  font-normal uppercase tracking-widest  sub-title">
+            <h2 className="mb-10 text-center font-normal uppercase tracking-widest  sub-title">
               How It Works
             </h2>
             <div className="mx-auto max-w-2xl space-y-8">

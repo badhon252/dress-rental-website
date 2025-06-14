@@ -1,33 +1,31 @@
-"use client";
+"use client"
 
-import type React from "react";
+import type React from "react"
 
 // Packages
-import { Menu, Search, ShoppingBag, User, X } from "lucide-react";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
-import { useEffect, useState, useRef } from "react";
-import Image from "next/image";
-import { useSession } from "next-auth/react";
-import { signOut } from "next-auth/react";
+import { Menu, Search, ShoppingBag, User, X } from "lucide-react"
+import Link from "next/link"
+import { usePathname } from "next/navigation"
+import { useEffect, useState, useRef } from "react"
+import Image from "next/image"
+import { useSession } from "next-auth/react"
+import { signOut } from "next-auth/react"
 // Components
-import { Button } from "@/components/ui/button";
-import {
-  Sheet,
-  SheetClose,
-  SheetContent,
-  SheetTrigger,
-} from "@/components/ui/sheet";
+import { Button } from "@/components/ui/button"
+import { Sheet, SheetClose, SheetContent, SheetTrigger } from "@/components/ui/sheet"
 // import { Input } from "@/components/ui/input";
 
 const Navbar = () => {
-  const { data: session } = useSession();
+  const { data: session } = useSession()
 
-  const [scrolling, setScrolling] = useState(false);
-  const pathname = usePathname();
-  const [isSearchOpen, setIsSearchOpen] = useState(false);
-  const [searchQuery, setSearchQuery] = useState("");
-  const searchRef = useRef<HTMLDivElement>(null);
+  const [scrolling, setScrolling] = useState(false)
+  const pathname = usePathname()
+  const [isSearchOpen, setIsSearchOpen] = useState(false)
+  const [searchQuery, setSearchQuery] = useState("")
+  const searchRef = useRef<HTMLDivElement>(null)
+  const searchModalRef = useRef<HTMLDivElement>(null)
+  const [isAccountOpen, setIsAccountOpen] = useState(false)
+  const accountRef = useRef<HTMLDivElement>(null)
 
   const menus = [
     { id: 1, href: "/", linkText: "HOME" },
@@ -36,55 +34,65 @@ const Navbar = () => {
     { id: 4, href: "/how-it-works", linkText: "HOW IT WORKS" },
     { id: 5, href: "/become-lender", linkText: "BECOME A LENDER" },
     { id: 6, href: "/find-near-you", linkText: "FIND NEAR YOU" },
-  ];
+  ]
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolling(window.scrollY > 0);
-    };
+      setScrolling(window.scrollY > 0)
+    }
 
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+    window.addEventListener("scroll", handleScroll)
+    return () => window.removeEventListener("scroll", handleScroll)
+  }, [])
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
+      // Handle search modal click outside
       if (
+        isSearchOpen &&
         searchRef.current &&
-        !searchRef.current.contains(event.target as Node)
+        !searchRef.current.contains(event.target as Node) &&
+        searchModalRef.current &&
+        !searchModalRef.current.contains(event.target as Node)
       ) {
-        setIsSearchOpen(false);
+        setIsSearchOpen(false)
       }
-    };
+
+      // Handle account dropdown click outside
+      if (isAccountOpen && accountRef.current && !accountRef.current.contains(event.target as Node)) {
+        setIsAccountOpen(false)
+      }
+    }
 
     const handleEscapeKey = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
-        setIsSearchOpen(false);
+        setIsSearchOpen(false)
+        setIsAccountOpen(false)
       }
-    };
+    }
 
-    if (isSearchOpen) {
-      document.addEventListener("mousedown", handleClickOutside);
-      document.addEventListener("keydown", handleEscapeKey);
+    if (isSearchOpen || isAccountOpen) {
+      document.addEventListener("mousedown", handleClickOutside)
+      document.addEventListener("keydown", handleEscapeKey)
     }
 
     return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-      document.removeEventListener("keydown", handleEscapeKey);
-    };
-  }, [isSearchOpen]);
+      document.removeEventListener("mousedown", handleClickOutside)
+      document.removeEventListener("keydown", handleEscapeKey)
+    }
+  }, [isSearchOpen, isAccountOpen])
 
   const handleSearchSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
+    e.preventDefault()
     if (searchQuery.trim()) {
       // Handle search logic here
-      console.log("Searching for:", searchQuery);
+      console.log("Searching for:", searchQuery)
       // You can redirect to search results page or handle search
       // router.push(`/search?q=${encodeURIComponent(searchQuery)}`)
     }
-  };
+  }
 
-  const isHomePage = pathname === "/";
+  const isHomePage = pathname === "/"
 
   const getTextColor = () => {
     return scrolling ||
@@ -99,8 +107,8 @@ const Navbar = () => {
       pathname === "/find-near-you" ||
       pathname === "/login"
       ? "text-black"
-      : "text-white";
-  };
+      : "text-white"
+  }
 
   const getBorderColor = () => {
     return scrolling ||
@@ -115,18 +123,14 @@ const Navbar = () => {
       pathname === "/find-near-you" ||
       pathname === "/login"
       ? "border-black"
-      : "border-white";
-  };
+      : "border-white"
+  }
 
   return (
     <>
       <div
         className={`fixed top-0 z-50 min-w-full h-[70px] py-3 transition duration-300 ${
-          scrolling
-            ? "bg-transparent backdrop-blur-xl"
-            : isHomePage
-            ? ""
-            : "bg-transparent mt-0"
+          scrolling ? "bg-transparent backdrop-blur-xl" : isHomePage ? "" : "bg-transparent mt-0"
         }`}
       >
         <div className="container mx-auto">
@@ -143,18 +147,14 @@ const Navbar = () => {
                 >
                   <Link
                     href={menu.href}
-                    className={`${
-                      pathname === menu.href ? "font-normal" : "font-light"
-                    } leading-[20px] tracking-[0.2em]`}
+                    className={`${pathname === menu.href ? "font-normal" : "font-light"} leading-[20px] tracking-[0.2em]`}
                   >
                     {menu.linkText}
                   </Link>
                 </Button>
               ))}
-            </div>
 
-            {/* Logo */}
-            <div className="flex-shrink-0">
+              <div className="flex-shrink-0">
               {scrolling ||
               pathname === "/account" ||
               pathname.startsWith("/product/") ||
@@ -165,75 +165,89 @@ const Navbar = () => {
               pathname === "/about" ||
               pathname === "/how-it-works" ||
               pathname === "/find-near-you" ? (
-                <Image
-                  src="/logos/Logo_black.png"
-                  height={60}
-                  width={60}
-                  alt="Logo"
-                />
+                <Image src="/logos/Logo_black.png" height={60} width={60} alt="Logo" />
               ) : (
-                <Image
-                  src="/logos/logo.png"
-                  height={60}
-                  width={60}
-                  alt="Logo"
-                />
+                <Image src="/logos/logo.png" height={60} width={60} alt="Logo" />
               )}
             </div>
+            </div>
+
+            {/* Logo */}
+            {/* <div className="flex-shrink-0">
+              {scrolling ||
+              pathname === "/account" ||
+              pathname.startsWith("/product/") ||
+              pathname === "/login" ||
+              pathname === "/checkout" ||
+              pathname === "/become-lender" ||
+              pathname === "/shop" ||
+              pathname === "/about" ||
+              pathname === "/how-it-works" ||
+              pathname === "/find-near-you" ? (
+                <Image src="/logos/Logo_black.png" height={60} width={60} alt="Logo" />
+              ) : (
+                <Image src="/logos/logo.png" height={60} width={60} alt="Logo" />
+              )}
+            </div> */}
 
             {/* Desktop Actions */}
             <div className={`${getTextColor()} flex gap-[30px] items-center`}>
               <div className="relative" ref={searchRef}>
                 <Search
                   className="cursor-pointer hover:opacity-70 transition-opacity"
-                  onClick={() => setIsSearchOpen(!isSearchOpen)}
+                  onClick={(e) => {
+                    e.stopPropagation()
+                    setIsSearchOpen(!isSearchOpen)
+                  }}
                   size={20}
                 />
               </div>
 
               {/* User Menu */}
-              <div className="relative group cursor-pointer">
+              <div className="relative cursor-pointer" ref={accountRef}>
                 {!session?.user ? (
                   <>
-                    <User size={20} />
-                    <div className="absolute top-4 -right-4 mt-1 hidden group-hover:block z-50 bg-white shadow-lg rounded-md border">
-                      <Link
-                        href="/login"
-                        className={`block px-4 py-2 text-[14px] text-black hover:bg-gray-50 whitespace-nowrap`}
-                      >
-                        Login
-                      </Link>
+                    <div onClick={() => setIsAccountOpen(!isAccountOpen)} className="flex items-center">
+                      <User size={20} className="hover:opacity-70 transition-opacity" />
                     </div>
+                    {isAccountOpen && (
+                      <div className="absolute top-8 right-0 mt-1 z-50 bg-white p-6 shadow-md min-w-[180px]">
+                        <div className="flex flex-col items-center">
+                          <Link href="/login" className="block text-center">
+                            <span className="text-black text-sm tracking-[0.2em] uppercase">LOGIN</span>
+                            <div className="h-[1px] bg-black w-full mt-1"></div>
+                          </Link>
+                        </div>
+                      </div>
+                    )}
                   </>
                 ) : (
                   <>
                     <div
-                      className={`border rounded-full w-7 h-7 flex items-center justify-center text-sm font-medium ${getBorderColor()}`}
+                      onClick={() => setIsAccountOpen(!isAccountOpen)}
+                      className={`border rounded-full w-7 h-7 flex items-center justify-center text-sm font-medium ${getBorderColor()} hover:opacity-70 transition-opacity`}
                     >
                       {session?.user?.firstName?.slice(0, 1) || "U"}
                     </div>
-                    <div className="absolute top-4 -right-4 mt-1 hidden group-hover:block z-50 bg-white shadow-lg rounded-md border min-w-[120px]">
-                      <Link
-                        href="/account"
-                        className="block px-4 py-2 text-[14px] text-black hover:bg-gray-50 whitespace-nowrap"
-                      >
-                        My account
-                      </Link>
-                      <button
-                        onClick={() => signOut()}
-                        className="block w-full text-left px-4 py-2 text-[14px] text-black hover:bg-gray-50 whitespace-nowrap"
-                      >
-                        Sign out
-                      </button>
-                    </div>
+                    {isAccountOpen && (
+                      <div className="absolute top-8 right-0 mt-1 z-50 bg-white p-6 shadow-md min-w-[180px]">
+                        <div className="flex flex-col items-center space-y-6">
+                          <Link href="/account" className="block text-center w-full">
+                            <span className="text-black text-sm tracking-[0.2em] uppercase">MY ACCOUNT</span>
+                            <div className="h-[1px] bg-black w-full mt-1"></div>
+                          </Link>
+                          <button onClick={() => signOut()} className="block text-center w-full">
+                            <span className="text-black text-sm tracking-[0.2em] uppercase">SIGN OUT</span>
+                            <div className="h-[1px] bg-black w-full mt-1"></div>
+                          </button>
+                        </div>
+                      </div>
+                    )}
                   </>
                 )}
               </div>
 
-              <Link
-                href="/checkout"
-                className="hover:opacity-70 transition-opacity"
-              >
+              <Link href="/checkout" className="hover:opacity-70 transition-opacity">
                 <ShoppingBag size={20} />
               </Link>
             </div>
@@ -254,19 +268,14 @@ const Navbar = () => {
                           key={menu.id}
                           href={menu.href}
                           className={`${
-                            pathname === menu.href
-                              ? "font-semibold"
-                              : "font-light"
+                            pathname === menu.href ? "font-semibold" : "font-light"
                           } text-lg hover:text-gray-600 transition-colors`}
                         >
                           <SheetClose>{menu.linkText}</SheetClose>
                         </Link>
                       ))}
                       {!session?.user && (
-                        <Link
-                          href="/login"
-                          className="text-lg font-medium hover:text-gray-600 transition-colors"
-                        >
+                        <Link href="/login" className="text-lg font-medium hover:text-gray-600 transition-colors">
                           <SheetClose>Login</SheetClose>
                         </Link>
                       )}
@@ -278,16 +287,14 @@ const Navbar = () => {
               <div className="flex items-center gap-4">
                 <Search
                   className={`${getTextColor()} cursor-pointer`}
-                  onClick={() => setIsSearchOpen(!isSearchOpen)}
+                  onClick={(e) => {
+                    e.stopPropagation()
+                    setIsSearchOpen(!isSearchOpen)
+                  }}
                   size={20}
                 />
                 {!session?.user && (
-                  <Button
-                    variant="link"
-                    effect="hoverUnderline"
-                    asChild
-                    className={getTextColor()}
-                  >
+                  <Button variant="link" effect="hoverUnderline" asChild className={getTextColor()}>
                     <Link href="/login">Login</Link>
                   </Button>
                 )}
@@ -299,49 +306,34 @@ const Navbar = () => {
 
       {/* Full-width Search Dropdown */}
       {isSearchOpen && (
-        <div className="fixed top-[70px] left-[14%] w-full bg-white border-b border-gray-200 shadow-lg z-[60] animate-in slide-in-from-top-2 duration-200 container">
+        <div
+          ref={searchModalRef}
+          className="fixed top-[70px] left-[14%] w-full bg-white border-b border-gray-200 shadow-lg z-[60] animate-in slide-in-from-top-2 duration-200 container"
+          onClick={(e) => e.stopPropagation()} // Prevent clicks inside from bubbling up
+        >
           <div className="container mx-auto py-8 px-4">
-            <form
-              onSubmit={handleSearchSubmit}
-              className="flex items-center gap-4"
-            >
+            <form onSubmit={handleSearchSubmit} className="flex items-center gap-4">
               <div className="flex-1 relative">
-  <input
-    type="text"
-    placeholder="Search..."
-    value={searchQuery}
-    onChange={(e) => setSearchQuery(e.target.value)}
-    className="w-full border-0 border-b border-gray-500 focus:border-gray-500 focus:outline-none px-0 py-2 placeholder:text-gray-400"
-    autoFocus
-  />
-</div>
+                <input
+                  type="text"
+                  placeholder="Search..."
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  className="w-full border-0 border-b border-gray-500 focus:border-gray-500 focus:outline-none px-0 py-2 placeholder:text-gray-400"
+                  autoFocus
+                />
+              </div>
               <button
                 type="button"
-                onClick={() => setIsSearchOpen(false)}
+                onClick={(e) => {
+                  e.stopPropagation()
+                  setIsSearchOpen(false)
+                }}
                 className="text-gray-400 hover:text-black transition-colors p-2"
               >
                 <X size={24} />
               </button>
             </form>
-
-            {/* Optional: Add popular searches or categories */}
-            {/* <div className="mt-6">
-              <p className="text-sm text-gray-500 mb-3">Popular searches</p>
-              <div className="flex flex-wrap gap-2">
-                {["Dresses", "Accessories", "Formal wear", "Casual", "Designer"].map((term) => (
-                  <button
-                    key={term}
-                    onClick={() => {
-                      setSearchQuery(term)
-                      // Handle search for this term
-                    }}
-                    className="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm hover:bg-gray-200 transition-colors"
-                  >
-                    {term}
-                  </button>
-                ))}
-              </div>
-            </div> */}
           </div>
         </div>
       )}
@@ -350,11 +342,15 @@ const Navbar = () => {
       {isSearchOpen && (
         <div
           className="fixed inset-0 bg-black bg-opacity-20 z-[59]"
-          onClick={() => setIsSearchOpen(false)}
+          onClick={(e) => {
+            // This will be handled by the click outside detection
+            // We don't want to close here directly as it would interfere with our logic
+            e.stopPropagation()
+          }}
         />
       )}
     </>
-  );
-};
+  )
+}
 
-export default Navbar;
+export default Navbar
