@@ -85,6 +85,7 @@
   }
   body {
     @apply bg-background text-foreground;
+    font-family: var(--font-nimbus), sans-serif;
   }
 }
 
@@ -103,3 +104,13 @@
     letter-spacing: 10px;
   }
 }
+
+
+
+@layer base {
+  .avenir-text {
+    font-family: var(--font-avenir);
+  }
+}
+
+

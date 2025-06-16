@@ -20,11 +20,13 @@ export function DeliveryOptions({ onOptionChange }: DeliveryOptionsProps) {
 
   return (
     <div className="space-y-4">
-      <h3 className="uppercase tracking-widest text-xs">DELIVERY OPTION</h3>
+      <h3 className="uppercase tracking-[0.2rem] leading-[20px] text-[14px]">DELIVERY OPTION</h3>
+
+      <div className="h-[1px] bg-black w-full"></div>
 
       <div className="flex border-b border-black">
         <button
-          className={`w-1/2 py-4 uppercase tracking-widest text-sm ${
+          className={`w-1/2 py-4 text-center tracking-[0.2em] uppercase leading-[20px] text-base ${
             activeOption === "shipping" ? "border-b-2 border-black" : ""
           }`}
           onClick={() => handleOptionChange("shipping")}
@@ -32,7 +34,7 @@ export function DeliveryOptions({ onOptionChange }: DeliveryOptionsProps) {
           Shipping
         </button>
         <button
-          className={`w-1/2 py-4 uppercase tracking-widest text-sm ${
+          className={`w-1/2 py-4 text-center tracking-[0.2em] leading-[20px] text-base uppercase${
             activeOption === "local-pickup" ? "border-b-2 border-black" : ""
           }`}
           onClick={() => handleOptionChange("local-pickup")}
@@ -42,9 +44,9 @@ export function DeliveryOptions({ onOptionChange }: DeliveryOptionsProps) {
       </div>
 
       {activeOption === "shipping" && (
-        <div className="py-4">
-          <p className="text-sm">$10 shipping fee (includes prepaid return label)</p>
-          <p className="text-sm">Estimated delivery: 1-2 business days</p>
+        <div className="py-4 text-[18px] leading-[24px]">
+          <p className="">$10 shipping fee (includes prepaid return label)</p>
+          <p className="">Estimated delivery: 1-2 business days</p>
         </div>
       )}
 

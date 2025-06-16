@@ -19,18 +19,22 @@ export function RentalDurationTabs({ baseRentalFee, onDurationChange }: RentalDu
 
   return (
     <div className="flex border-b border-black">
-      <button
-        className={`w-1/2 py-4 text-center ${activeDuration === "4" ? "border-b-2 border-black" : ""}`}
-        onClick={() => handleDurationChange("4")}
-      >
-        4 DAY RENT
-      </button>
-      <button
-        className={`w-1/2 py-4 text-center ${activeDuration === "8" ? "border-b-2 border-black" : ""}`}
-        onClick={() => handleDurationChange("8")}
-      >
-        8 DAY RENT (${baseRentalFee * 2})
-      </button>
-    </div>
+  <button
+    className={`w-1/2 py-4 text-center tracking-[0.2em] text-base leading-[20px] ${
+      activeDuration === "4" ? "border-b-2 border-black" : ""
+    }`}
+    onClick={() => handleDurationChange("4")}
+  >
+    4 DAY RENT
+  </button>
+  <button
+    className={`w-1/2 py-4 text-center tracking-[0.2em] leading-[20px] ${
+      activeDuration === "8" ? "border-b-2 border-black" : ""
+    }`}
+    onClick={() => handleDurationChange("8")}
+  >
+    8 DAY RENT (${baseRentalFee * 2})
+  </button>
+</div>
   )
 }

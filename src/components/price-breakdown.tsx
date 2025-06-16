@@ -10,8 +10,9 @@ export function PriceBreakdown({ rentalFee, insuranceFee, shippingFee, total }: 
   const calculatedTotal = total ?? rentalFee + insuranceFee + shippingFee
 
   return (
-    <div className="space-y-4">
+    <div className="space-y-4 text-[14px] leading-[20px] tracking-[0.2rem]">
       <h3 className="uppercase tracking-widest text-xs">PRICE BREAKDOWN</h3>
+      <div className="h-[1px] bg-black w-full"></div>
       <div className="space-y-2">
         <div className="flex justify-between">
           <span className="uppercase tracking-widest text-xs">RENTAL FEE</span>
@@ -27,8 +28,8 @@ export function PriceBreakdown({ rentalFee, insuranceFee, shippingFee, total }: 
             <span>${shippingFee.toFixed(2)}</span>
           </div>
         )}
-        <div className="flex justify-between pt-2 border-t border-gray-200">
-          <span className="uppercase tracking-widest text-xs">TOTAL</span>
+        <div className="flex justify-between pt-2 border-t border-t-black">
+          <span className="uppercase text-[18px]">TOTAL</span>
           <span>${calculatedTotal.toFixed(2)}</span>
         </div>
       </div>
