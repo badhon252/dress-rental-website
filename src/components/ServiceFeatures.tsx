@@ -1,4 +1,4 @@
-import Image from "next/image"
+import Image from "next/image";
 
 export default function ServiceFeatures() {
   const features = [
@@ -27,7 +27,7 @@ export default function ServiceFeatures() {
       title: "OPTIONAL INSURANCE",
       description: "FOR PEACE OF MIND",
     },
-  ]
+  ];
 
   return (
     <section className="py-12 px-4 bg-white">
@@ -40,13 +40,17 @@ export default function ServiceFeatures() {
                 <Image
                   src={feature.imageSrc || "/placeholder.svg"}
                   alt={feature.title}
-                  width={50}
-                  height={50}
+                  width={35}
+                  height={35}
                   className="mx-auto"
                 />
               </div>
-              <h3 className="text-sm font-medium tracking-wider mb-1">{feature.title}</h3>
-              {feature.description && <p className="text-sm tracking-wider">{feature.description}</p>}
+              <h3 className="text-sm font-normal font-inter tracking-wider mb-1">
+                {feature.title}
+              </h3>
+              {feature.description && (
+                <p className="text-sm tracking-wider">{feature.description}</p>
+              )}
             </div>
           ))}
         </div>
@@ -64,13 +68,16 @@ export default function ServiceFeatures() {
                   className="mx-auto"
                 />
               </div>
-              <h3 className="text-sm font-medium tracking-wider mb-1">{feature.title}</h3>
-              {feature.description && <p className="text-sm tracking-wider">{feature.description}</p>}
+              <h3 className="text-sm font-medium tracking-wider mb-1">
+                {feature.title}
+              </h3>
+              {feature.description && (
+                <p className="text-sm tracking-wider">{feature.description}</p>
+              )}
             </div>
           ))}
         </div>
-        
       </div>
     </section>
-  )
+  );
 }

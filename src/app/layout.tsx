@@ -1,24 +1,24 @@
-import { cn } from "@/lib/utils";
-import AppProvider from "@/providers/AppProvider";
-import type { Metadata } from "next";
-import localFont from "next/font/local";
-import "./globals.css";
 import Footer from "@/components/Footer/Footer";
 import { Toaster } from "@/components/ui/toaster";
+import { cn } from "@/lib/utils";
+import AppProvider from "@/providers/AppProvider";
 import AuthSessionProvider from "@/providers/AuthSessionProvider";
+import type { Metadata } from "next";
+import { Inter } from "next/font/google";
+import localFont from "next/font/local";
+import "./globals.css";
 
-const nimbus = localFont({
-  src: "./fonts/nimbus/NimbusSanNovD.ttf",
-  variable: "--font-nimbus",
-  weight: "100 900",
-  display: "auto",
-});
-
-const avenir = localFont({
+export const avenir = localFont({
   src: "./fonts/avenir/Avenir Regular.ttf",
   variable: "--font-avenir",
   weight: "100 900",
   display: "swap",
+});
+
+export const inter = Inter({
+  weight: ["300", "400", "500", "600", "700", "800", "900"],
+  variable: "--font-inter",
+  subsets: ["latin"],
 });
 
 export const metadata: Metadata = {
@@ -33,7 +33,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={cn("antialiased", nimbus.className, avenir.variable)}>
+      <body className={cn("antialiased", inter.className)}>
         <AuthSessionProvider>
           <AppProvider>
             {children}
