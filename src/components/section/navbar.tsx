@@ -180,18 +180,13 @@ const Navbar = () => {
                 pathname === "/how-it-works" ||
                 pathname === "/find-near-you" ? (
                   <Image
-                    src="/logos/Logo_black.png"
+                    src="/logo-black.svg"
                     height={60}
                     width={60}
                     alt="Logo"
                   />
                 ) : (
-                  <Image
-                    src="/logos/logo.png"
-                    height={60}
-                    width={60}
-                    alt="Logo"
-                  />
+                  <Image src="/logo.svg" height={60} width={60} alt="Logo" />
                 )}
               </div>
             </div>

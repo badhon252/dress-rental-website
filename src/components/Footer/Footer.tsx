@@ -151,9 +151,9 @@ const Footer = () => {
         </div>
 
         {/* LOGO AND PAYMENT METHODS */}
-        <div className="mt-12 flex flex-col items-center justify-between space-y-6  pt-8 md:flex-row md:space-y-0">
-          <div className="flex flex-col items-center space-y-4 md:flex-row md:space-x-4 md:space-y-0">
-            <div className="flex space-x-4">
+        <div className="mt-12 flex flex-col items-center justify-between space-y-6  pt-8 md:flex-row md:space-y-0 relative pb-10">
+          <div className="flex flex-col gap-y-10 items-center space-y-4 md:flex-row md:space-x-4 md:space-y-0">
+            <div className="flex space-x-4 mb-10 md:mb-0">
               <Image
                 src="/images/footer/amex.svg"
                 alt="Mastercard"
@@ -185,24 +185,24 @@ const Footer = () => {
             </div>
           </div>
 
-          <div className="flex flex-col items-center">
+          <div className="flex flex-col items-center absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 my-5">
             <div>
               <Image
-                src={"/logos/Logo_black.png"}
-                width={500}
-                height={500}
+                src={"/logo-black.svg"}
+                width={300}
+                height={300}
                 alt="logo"
-                className="w-16 h-16"
+                className="w-12 h-12"
               />
             </div>
             <div className="flex items-center space-x-2">
-              <span className="text-2xl font-bold">MUSE GALA</span>
+              <span className="text-[16px] font-light">MUSE GALA</span>
             </div>
           </div>
           <div></div>
         </div>
       </div>
-      <p className="text-center border-t border-gray-700 py-4">
+      <p className="text-center border-t border-gray-600  py-4 text-[14px]">
         © MUSE GALA 2025
       </p>
     </footer>
