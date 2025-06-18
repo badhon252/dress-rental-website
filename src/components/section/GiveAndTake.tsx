@@ -1,12 +1,10 @@
-import React from "react";
-
 export default function GiveAndTake() {
   return (
     <div>
       {/* Get $10, Give $10 Section */}
       <div className="max-w-6xl mx-auto px-4 py-16 text-center">
-        <h2 className="md:text-3xl lg:text-5xl text-2xl tracking-[20px] leading-[20px] mb-4">GET $10, GIVE $10</h2>
-        <p className="mb-8">
+        <h2 className="headerClass mb-4">GET $10, GIVE $10</h2>
+        <p className="mb-8 sub-title">
           Get $10 off your first rental when you join. Share your code and give
           friends $10 too.
         </p>

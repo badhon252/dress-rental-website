@@ -69,15 +69,12 @@
 //   );
 // }
 
-
-
-
 "use client";
 
+import type { Product } from "@/types/product";
 import Image from "next/image";
 import Link from "next/link";
-import { useState, useEffect } from "react";
-import type { Product } from "@/types/product";
+import { useEffect, useState } from "react";
 
 interface ProductCardProps {
   product: Product;
@@ -130,7 +127,7 @@ export function ProductCard({ product }: ProductCardProps) {
           />
           <div className="absolute bottom-0 left-0 right-0 p-4 opacity-0 group-hover:opacity-100 transition-all duration-500 ease-in-out">
             <button
-              className="w-full bg-white py-2 rounded hover:bg-gray-200 transition duration-300 text-black"
+              className="w-full bg-white py-2 rounded hover:bg-gray-200 transition duration-300 text-black text-[14px]"
               onClick={(e) => e.preventDefault()} // prevent navigating on button click
             >
               BOOK NOW
@@ -138,10 +135,10 @@ export function ProductCard({ product }: ProductCardProps) {
           </div>
         </div>
         <div className="text-center space-y-1 mt-auto">
-          <h3 className="text-lg tracking-widest transition-colors duration-300 group-hover:text-gray-700">
+          <h3 className="text-[14px] tracking-widest transition-colors duration-300 group-hover:text-gray-700">
             {product.name}
           </h3>
-          <p className="text-sm tracking-wider transition-colors duration-300 group-hover:text-gray-600">
+          <p className="text-[10px] tracking-wider transition-colors duration-300 group-hover:text-gray-600">
             RENT ${product.price} | RRP ${Math.round(product.price * 3.5)}
           </p>
         </div>
