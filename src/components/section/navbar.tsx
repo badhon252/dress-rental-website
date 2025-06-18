@@ -148,7 +148,7 @@ const Navbar = () => {
         <div className="container mx-auto">
           <div className="flex justify-between items-center">
             {/* Desktop Menu */}
-            <div className="hidden md:flex items-center md:gap-x-3 lg:gap-x-1">
+            <div className="hidden md:flex items-center md:gap-x-2 lg:gap-x-0">
               {menus.map((menu) => (
                 <Button
                   key={menu.id}
