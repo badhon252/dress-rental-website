@@ -226,7 +226,8 @@ const Navbar = () => {
               <div className="relative cursor-pointer" ref={accountRef}>
                 {!session?.user ? (
                   <>
-                    <div
+                    <Link
+                      href="/login"
                       onClick={() => setIsAccountOpen(!isAccountOpen)}
                       className="flex items-center"
                     >
@@ -234,8 +235,8 @@ const Navbar = () => {
                         size={20}
                         className="hover:opacity-70 transition-opacity"
                       />
-                    </div>
-                    {isAccountOpen && (
+                    </Link>
+                    {/* {isAccountOpen && (
                       <div className="absolute top-8 right-0 mt-1 z-50 bg-white p-6 shadow-md min-w-[180px]">
                         <div className="flex flex-col items-center">
                           <Link href="/login" className="block text-center">
@@ -246,7 +247,7 @@ const Navbar = () => {
                           </Link>
                         </div>
                       </div>
-                    )}
+                    )} */}
                   </>
                 ) : (
                   <>
