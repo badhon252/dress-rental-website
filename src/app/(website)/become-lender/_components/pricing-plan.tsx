@@ -1,20 +1,20 @@
-"use client"
-import { useRouter } from "next/navigation"
-import { Check } from "lucide-react"
+"use client";
+import { Check } from "lucide-react";
+import { useRouter } from "next/navigation";
 
 type PlanFeature = {
-  text: string
-}
+  text: string;
+};
 
 type PricingPlan = {
-  id: string
-  title: string
-  subtitle: string
-  price: string
-  period: string
-  commission: string
-  features: PlanFeature[]
-}
+  id: string;
+  title: string;
+  subtitle: string;
+  price: string;
+  period: string;
+  commission: string;
+  features: PlanFeature[];
+};
 
 const pricingPlans: PricingPlan[] = [
   {
@@ -59,28 +59,35 @@ const pricingPlans: PricingPlan[] = [
       { text: "Guaranteed VIP Invites" },
     ],
   },
-]
+];
 
 export default function PricingPlan() {
-  const router = useRouter()
+  const router = useRouter();
 
   const handleChoosePlan = (planId: string) => {
     // Store the selected plan in localStorage
-    localStorage.setItem("selectedPlan", planId)
+    localStorage.setItem("selectedPlan", planId);
     // Navigate to the form page
-    router.push("/become-lender/form")
-  }
+    router.push("/become-lender/form");
+  };
 
   return (
     <div className="w-full max-w-7xl mx-auto px-4 py-16 sm:px-6 lg:px-8">
       <div className="text-center mb-16">
-        <h2 className="text-3xl sm:text-4xl md:text-5xl font-normal tracking-[20px] mb-2">CHOOSE THE PLAN</h2>
-        <h3 className="text-3xl sm:text-4xl md:text-5xl font-normal tracking-[20px]">THAT GROWS WITH YOU</h3>
+        <h2 className="headerClass font-normal tracking-[20px] mb-2">
+          CHOOSE THE PLAN
+        </h2>
+        <h3 className="headerClass font-normal tracking-[20px]">
+          THAT GROWS WITH YOU
+        </h3>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
         {pricingPlans.map((plan) => (
-          <div key={plan.id} className="border border-gray-200 p-8 flex flex-col h-full">
+          <div
+            key={plan.id}
+            className="border border-gray-200 p-8 flex flex-col h-full"
+          >
             <div className="text-center mb-8">
               <h3 className="text-xl font-bold mb-1">{plan.title}</h3>
               <p className="text-sm text-gray-600 mb-8">{plan.subtitle}</p>
@@ -118,5 +125,5 @@ export default function PricingPlan() {
         ))}
       </div>
     </div>
-  )
+  );
 }

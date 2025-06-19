@@ -72,7 +72,7 @@ export default function ShopPage() {
   const nextBatchSize = Math.min(remainingProducts, PRODUCTS_PER_PAGE);
 
   return (
-    <div className="container mx-auto px-4 py-8 mt-20">
+    <div className="container mx-auto  py-8 mt-20">
       <div className="text-center mb-12">
         <h1 className="headerClass">SHOP</h1>
         <p className="sub-title text-gray-600">

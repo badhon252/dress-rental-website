@@ -12,7 +12,7 @@ interface ProductGridProps {
 export function ProductGrid({ title, subtitle, products }: ProductGridProps) {
   return (
     <section className=" container mx-auto">
-      <div className="text-center mb-8">
+      <div className="text-center mb-5">
         <h2 className={cn("headerClass")}>{title}</h2>
         {subtitle && (
           <div className="flex justify-center">
