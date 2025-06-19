@@ -115,7 +115,7 @@ export default function FAQSection() {
 
   return (
     <div id="faq" className="container mx-auto px-4 py-12 md:py-16">
-      <h1 className="text-4xl md:text-[42px] lg:text-[48px] font-normal text-black leading-[48px] text-center pb-[30px] md:pb-[45px] lg:pb-[60px]">
+      <h1 className="headerClass text-center pb-[30px] md:pb-[45px] lg:pb-[60px]">
         F A Q
       </h1>
 
@@ -131,7 +131,7 @@ export default function FAQSection() {
           >
             <button
               onClick={() => handleCategoryToggle(category.id)}
-              className="flex justify-between items-center w-full pb-2 pt-3 text-left text-2xl font-normal text-black leading-[24px] focus:outline-none"
+              className="flex justify-between items-center w-full pb-2 pt-3 text-left text-[16px] font-normal text-black leading-[24px] focus:outline-none"
             >
               <span>{category.title}</span>
               <svg
@@ -163,10 +163,10 @@ export default function FAQSection() {
                 <div className="space-y-4">
                   {category.questions.map((faq, index) => (
                     <div key={index} className=" pt-4">
-                      <h3 className="text-lg md:text-xl lg:text-[22px] font-normal text-black leading-[24px] mb-2">
+                      <h3 className="text-[16px] font-normal text-black leading-[24px] mb-2">
                         {faq.question}
                       </h3>
-                      <p className="text-base md:text-[17px] lg:text-lg font-normal text-black leading-[24px]">
+                      <p className="text-[14px] font-light text-black leading-[24px]">
                         {faq.answer}
                       </p>
                     </div>
