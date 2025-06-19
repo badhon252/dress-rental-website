@@ -12,7 +12,7 @@ interface ProductGridProps {
 export function ProductGrid({ title, subtitle, products }: ProductGridProps) {
   return (
     <section className=" container mx-auto">
-      <div className="text-center mb-8">
+      <div className="text-center mb-5">
         <h2 className={cn("headerClass")}>{title}</h2>
         {subtitle && (
           <div className="flex justify-center">
@@ -23,7 +23,7 @@ export function ProductGrid({ title, subtitle, products }: ProductGridProps) {
         )}
       </div>
       <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6">
-        {products?.map((product) => (
+        {products?.slice(0, 4).map((product) => (
           <div key={product.id} className="flex">
             <div className="w-full flex flex-col h-full">
               <ProductCard product={product} />

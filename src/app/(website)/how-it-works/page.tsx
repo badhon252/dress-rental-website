@@ -1,14 +1,13 @@
-import React from 'react';
-import FAQSection from './_components/faq-section';
-import HowItWork from './_components/how-it-works';
+import HowItWork from "@/components/HowItWork";
+import FAQSection from "./_components/faq-section";
 
 const Faq = () => {
-    return (
-        <div className='bg-white'>
-            <HowItWork/>
-            <FAQSection/>
-        </div>
-    );
+  return (
+    <div className="bg-white pt-[120px]">
+      <HowItWork />
+      <FAQSection />
+    </div>
+  );
 };
 
 export default Faq;

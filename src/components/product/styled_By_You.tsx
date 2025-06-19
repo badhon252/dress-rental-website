@@ -17,7 +17,7 @@ const StyledByYou = () => {
             </Link>
           </div>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6 container">
           {styledByYouProducts.map((styledProduct) => (
             <div key={styledProduct.id} className="flex flex-col">
               <Link href={`/product/${styledProduct.slug}`} className="group">
