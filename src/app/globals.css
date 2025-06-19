@@ -2,7 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-
 @layer utilities {
   .text-balance {
     text-wrap: balance;
@@ -85,32 +84,34 @@
   }
   body {
     @apply bg-background text-foreground;
-    font-family: var(--font-nimbus), sans-serif;
+  }
+
+  .headerClass {
+    @apply text-[18px] md:text-[24px] tracking-[10px] md:tracking-[20px] mb-2 font-avenir;
+  }
+  .sub-header {
+    @apply font-inter font-light uppercase tracking-[8px] text-[16px];
   }
 }
 
 .sub-title {
   font-weight: 400;
-  font-size: 48px;
-  line-height: 48px;
-  letter-spacing: 20px;
+  font-size: 16px;
+  line-height: 32px;
+  letter-spacing: 0px;
   text-transform: uppercase;
 }
 
 @media (max-width: 768px) {
   .sub-title {
-    font-size: 24px;
-    line-height: 24px;
-    letter-spacing: 10px;
+    font-size: 12px;
+    line-height: 18px;
+    letter-spacing: 4px;
   }
 }
-
-
 
 @layer base {
   .avenir-text {
     font-family: var(--font-avenir);
   }
 }
-
-

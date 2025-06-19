@@ -1,14 +1,13 @@
 import { styledByYouProducts } from "@/data/product-data";
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
 
 const StyledByYou = () => {
   return (
     <div>
       <div className="container mx-auto px-4 py-16">
         <div className="text-center mb-8">
-          <h2 className="md:text-3xl lg:text-5xl text-2xl tracking-[20px] leading-[20px] mb-2">STYLED BY YOU</h2>
+          <h2 className="headerClass mb-2">STYLED BY YOU</h2>
           <div className="flex justify-center">
             <Link
               href="#"
@@ -18,7 +17,7 @@ const StyledByYou = () => {
             </Link>
           </div>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6 container">
           {styledByYouProducts.map((styledProduct) => (
             <div key={styledProduct.id} className="flex flex-col">
               <Link href={`/product/${styledProduct.slug}`} className="group">
